@@ -5,7 +5,7 @@ const Section4 = () => {
   return (
     <>
       <section className="bg-yatch h-screen bg-cover bg-center relative">
-        <div className="grid grid-cols-3 gap-x-9 gap-y-12  z-10 containers absolute top-[50%] pb-16">
+        <div className="grid grid-cols-3 gap-x-9 gap-y-12  z-10 containers absolute top-[50%] ">
           {homeCardData2?.map((cardData, index) => (
             <div
               key={cardData?.id || index}

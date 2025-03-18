@@ -32,6 +32,9 @@ module.exports = {
         yatch: "url('/Home/yatch.png')",
         homeBottomGrad:
           "linear-gradient(0deg, #000 0%, rgba(0, 0, 0, 0.00) 100%)",
+        footerBG: "url('/Home/footer.png')",
+        footerGrad:
+          "linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0.00) 76.82%)",
       },
     },
   },
