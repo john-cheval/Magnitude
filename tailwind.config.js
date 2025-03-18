@@ -29,6 +29,9 @@ module.exports = {
         homeHero: "url('/Home/bottomgrad.svg')",
         homeHero2: "url('/Home/topGrad.svg')",
         cruise: "url('/Home/cruise.png')",
+        yatch: "url('/Home/yatch.png')",
+        homeBottomGrad:
+          "linear-gradient(0deg, #000 0%, rgba(0, 0, 0, 0.00) 100%)",
       },
     },
   },
