@@ -40,7 +40,9 @@
   font-style: normal;
 }
 
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 *,
 *::before,
@@ -50,25 +52,18 @@
   box-sizing: border-box;
 }
 
-@theme {
-  --color-main: #fff;
-  --color-secondary: #000;
-  --font-helvatica: "Helvetica Neue";
-  --font-century: "Century Gothic";
-}
-
 :root {
   --text-main: #fff;
 }
 
 body {
   overscroll-behavior: none;
-  color: var(--color-main);
+  color: var(--text-main);
   -webkit-font-smoothing: antialiased;
   font-weight: 400;
   font-size: 16px;
   overflow-x: hidden;
-  font-family: var(--font-century);
+  font-family: "Century Gothic";
 }
 a {
   text-decoration: none;
