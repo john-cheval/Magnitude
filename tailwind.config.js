@@ -25,6 +25,10 @@ module.exports = {
         helvatica: ["Helvetica Neue"],
         century: ["Century Gothic"],
       },
+      backgroundImage: {
+        homeHero: "url('/Home/bottomgrad.svg')",
+        homeHero2: "url('/Home/topGrad.svg')",
+      },
     },
   },
   plugins: [],
