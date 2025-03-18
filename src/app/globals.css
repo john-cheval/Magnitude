@@ -1,0 +1,98 @@
+@font-face {
+  font-family: "Century Gothic";
+  src: url("/fonts/GOTHIC.TTF") format("truetype");
+  font-weight: 300 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Century Gothic";
+  src: url("/fonts/GOTHICB.TTF") format("truetype");
+  font-weight: 700 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Helvetica Neue";
+  src: url("/fonts/HelveticaNeueThin.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Helvetica Neue";
+  src: url("/fonts/HelveticaNeueLight.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Helvetica Neue";
+  src: url("/fonts/HelveticaNeueMedium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Helvetica Neue";
+  src: url("/fonts/HelveticaNeueBold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@import "tailwindcss";
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@theme {
+  --color-main: #fff;
+  --color-secondary: #000;
+  --font-helvatica: "Helvetica Neue";
+  --font-century: "Century Gothic";
+}
+
+:root {
+  --text-main: #fff;
+}
+
+body {
+  overscroll-behavior: none;
+  color: var(--color-main);
+  -webkit-font-smoothing: antialiased;
+  font-weight: 400;
+  font-size: 16px;
+  overflow-x: hidden;
+  font-family: var(--font-century);
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+ul {
+  list-style: none;
+}
+button {
+  outline: none;
+  font-family: inherit;
+  color: inherit;
+  background-color: inherit;
+  font-size: inherit;
+  cursor: pointer;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
