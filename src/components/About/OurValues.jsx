@@ -17,7 +17,7 @@ const OurValues = () => {
           className="w-full h-auto object-cover"
         />
 
-        <div className="pl-14 space-y-5 pt-10">
+        <div className="pl-14 space-y-5 pt-11 bg-red-500--">
           <h3 className="text-[40px] ">Our Values</h3>
           <span className="block h-[2px] w-14 bg-altermain"></span>
           <p className="font-light leading-[186%] max-w-[432px] font-helvatica">
@@ -25,7 +25,7 @@ const OurValues = () => {
             word: Excellence.{" "}
           </p>
 
-          <div className="space-y-3">
+          <div className="space-y-4">
             {aboutData2?.map((data, index) => (
               <div key={index} className="flex gap-x-3 ">
                 <Image
@@ -40,7 +40,7 @@ const OurValues = () => {
                   <span className="font-semibold leading-[186%] font-helvatica">
                     {data?.title}
                   </span>
-                  <p className="font-helvatica text-justify font-light leading-[186%] max-w-[448px]">
+                  <p className="font-helvatica text-justify font-light leading-[186%] max-w-[448px]--">
                     {data?.desc}
                   </p>
                 </div>
@@ -48,7 +48,7 @@ const OurValues = () => {
             ))}
           </div>
 
-          <p className="font-light leading-[186%] max-w-[486px] font-helvatica">
+          <p className="font-light leading-[186%] max-w-[486px]-- font-helvatica">
             With a profound understanding of the superyacht industry and an
             unwavering commitment to doing things better, we lead with
             expertise, knowledge, and an unrelenting pursuit of perfection at
