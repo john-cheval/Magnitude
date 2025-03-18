@@ -7,6 +7,7 @@ import { LiaLinkedinIn } from "react-icons/lia";
 const Footer = () => {
   return (
     <footer className="containers  bg-footerBG bg-cover bg-center h-full relative">
+      <div className="w-full h-[1px] bg-main relative z-50 overflow-hidden" />
       <div className="flex flex-col items-center justify-center pt-20 pb-[150px] space-y-5 z-50 relative">
         <Image
           src={Logo}
