@@ -28,6 +28,7 @@ module.exports = {
       backgroundImage: {
         homeHero: "url('/Home/bottomgrad.svg')",
         homeHero2: "url('/Home/topGrad.svg')",
+        cruise: "url('/Home/cruise.png')",
       },
     },
   },
