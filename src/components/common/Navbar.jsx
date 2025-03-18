@@ -4,15 +4,16 @@ import Logo from "../../../public/Home/Logo.svg";
 import { navLinks } from "@/data/navLinks";
 import Link from "next/link";
 import Image from "next/image";
+import { IoMdMenu } from "react-icons/io";
 import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const pathname = usePathname();
 
   return (
-    <header className="bg-navBg pt-12 pb-8 px-[52px]">
-      <nav className="flex justify-between ">
-        <ul className="flex items-center gap-x-10">
+    <header className="bg-navBg pt-12 pb-8 px-10 md:px-16 lg:px-[52px]">
+      <nav className="flex justify-between items-center">
+        <ul className="md:flex items-center gap-x-10 hidden ">
           {navLinks?.leftLink?.map((link) => {
             const isActive = pathname === link.url;
             return (
@@ -44,7 +45,7 @@ const Navbar = () => {
           />
         </Link>
 
-        <ul className="flex items-center gap-x-10">
+        <ul className="md:flex items-center gap-x-10 hidden ">
           {navLinks?.rightLink?.map((link) => {
             const isActive = pathname === link.url;
             return (
@@ -63,6 +64,8 @@ const Navbar = () => {
             );
           })}
         </ul>
+
+        <IoMdMenu className="md:hidden " size={30} />
       </nav>
     </header>
   );
