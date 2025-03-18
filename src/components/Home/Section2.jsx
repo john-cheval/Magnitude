@@ -5,7 +5,7 @@ const Section2 = () => {
   return (
     <section className="h-screen--  bg-cruise bg-cover bg-center">
       <div className="flex flex-col pt-28 pb-24 items-center sm:items-start containers justify-center h-full gap-y-6">
-        <h2 className="text-5xl">Who We Are</h2>
+        <h2 className="main-heading">Who We Are</h2>
         <span className="block w-14 h-[2px] bg-main"></span>
         <p className="text-justify font-helvatica font-light leading-[186%] max-w-[467px]">
           Magnitude is rooted in decades of collective expertise, honed through

@@ -96,3 +96,6 @@ input[type="number"]::-webkit-outer-spin-button {
 .containers {
   padding-inline: 133px;
 }
+.main-heading {
+  @apply text-5xl text-main leading-normal;
+}
