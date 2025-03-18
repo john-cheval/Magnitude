@@ -19,6 +19,7 @@ module.exports = {
       colors: {
         main: "#fff",
         altermain: "#000",
+        navBg: "#000",
       },
       fontFamily: {
         helvatica: ["Helvetica Neue"],
