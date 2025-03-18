@@ -18,7 +18,7 @@ const Footer = () => {
           className="w-full h-auto max-w-[266px] object-cover"
         />
 
-        <div className="flex gap-x-3">
+        <div className="flex flex-col sm:flex-row gap-x-3">
           <Link
             href={"tel:+971 56 5048488"}
             className="font-helvatica font-light leading-[186%] flex items-center gap-x-2"
@@ -41,7 +41,7 @@ const Footer = () => {
           <LiaLinkedinIn />
         </Link>
 
-        <p className="center text-sm font-light leading-[170%] capitalize max-w-[515px]">
+        <p className="text-center text-sm font-light leading-[170%] capitalize max-w-[515px]">
           Designed & Developed by Cheval | © 2024 Magnitude . All rights
           reserved
         </p>
