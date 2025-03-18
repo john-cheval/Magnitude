@@ -1,5 +1,15 @@
+import HomeHero from "@/components/Home/HomeHero";
+import Section2 from "@/components/Home/Section2";
+import Section3 from "@/components/Home/Section3";
+import Section4 from "@/components/Home/Section4";
+
 export default function Home() {
   return (
-    <p className="flex items-center justify-center  h-screen ">Home page</p>
+    <>
+      <HomeHero />
+      <Section2 />
+      <Section3 />
+      <Section4 />
+    </>
   );
 }

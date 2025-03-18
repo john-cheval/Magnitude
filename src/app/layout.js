@@ -1,5 +1,6 @@
 import Navbar from "@/components/common/Navbar";
 import "./globals.css";
+import Footer from "@/components/common/Footer";
 
 export const metadata = {
   title: "Magnitude",
@@ -17,6 +18,7 @@ export default function RootLayout({ children }) {
       <body className={` antialiased flex flex-col min-h-screen`}>
         <Navbar />
         <main className="flex-grow">{children}</main>
+        <Footer />
       </body>
     </html>
   );

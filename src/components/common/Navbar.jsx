@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "../../../public/Home/Logo.svg";
 import { navLinks } from "@/data/navLinks";
 import Link from "next/link";
@@ -9,11 +9,31 @@ import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const pathname = usePathname();
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > lastScrollY) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+      setLastScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
 
   return (
-    <header className="bg-navBg pt-12 pb-8 px-10 md:px-16 lg:px-[52px]">
+    <header
+      className={`bg-navBg pt-12 pb-8 px-10 md:px-16 lg:px-[52px] fixed left-0 top-0  w-full z-[999] transition-transform duration-300 ${
+        isVisible ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
       <nav className="flex justify-between items-center">
-        <ul className="md:flex items-center gap-x-10 hidden ">
+        <ul className="md:flex items-center gap-x-10 hidden  ">
           {navLinks?.leftLink?.map((link) => {
             const isActive = pathname === link.url;
             return (
