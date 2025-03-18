@@ -64,6 +64,7 @@ body {
   font-size: 16px;
   overflow-x: hidden;
   font-family: "Century Gothic";
+  line-height: normal;
 }
 a {
   text-decoration: none;
