@@ -19,16 +19,12 @@ const AboutHero = () => {
       <div className="containers -mt-36">
         <h1 className="main-heading mb-8">Who we are</h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 ">
+        <div className="grid grid-cols-1 lg:grid-cols-2 ">
           {aboutData.map((item, index) => (
             <div
               key={item.id}
               className={` ${
-                item.imageUrl
-                  ? ""
-                  : index === 1
-                  ? "bg-[#1D2025] "
-                  : "bg-altermain "
+                index === 1 ? "bg-[#1D2025]  " : "bg-altermain  "
               }`}
             >
               {item.imageUrl ? (
@@ -37,12 +33,12 @@ const AboutHero = () => {
                   alt={`about-${item.id}`}
                   width={0}
                   height={0}
-                  className="w-full h-auto max-w-[553px]-- max-h-[536px] object-cover"
+                  className="w-full h-full max-w-[553px]-- max-h-[536px]-- object-cover"
                   sizes="100vw"
                 />
               ) : (
-                <div className="col-span-7--  max-w-[622px]-- pl-[59px] pr-20 py-16 space-y-6">
-                  <h2 className="text-[40px]">{item?.title}</h2>
+                <div className="col-span-7--  max-w-[622px]-- lg:pl-[59px] lg:pr-20 px-14 py-16 space-y-6">
+                  <h2 className="text-3xl lg:text-[40px]">{item?.title}</h2>
                   <span className="block w-14 h-[2px] bg-main"></span>
                   <p className="text-justify font-helvatica font-light leading-[186%]">
                     {item.desc}
