@@ -16,7 +16,7 @@ const HomeHero = () => {
       </video>
 
       <div className="absolute bottom-[76px] left-1/2 -translate-x-1/2 space-y-9 z-50">
-        <h1 className="text-3xl"> Crafting a legacy</h1>
+        <h1 className="text-2xl sm:text-3xl"> Crafting a legacy</h1>
         <div className="flex items-center justify-center">
           <OutlineButton link="/" text="Explore" />
         </div>
