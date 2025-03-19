@@ -2,9 +2,11 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import PreConstruction from "./PreConstruction";
+import DuringConstruction from "./DuringConstruction";
+import PostConstruction from "./PostConstruction";
 
 const ServiceInner = () => {
-  const [active, setActive] = useState("Pre-Construction");
+  const [active, setActive] = useState("Post Construction");
   return (
     <section className="  pt-44">
       <div className="flex containers justify-between px-36">
@@ -23,7 +25,9 @@ const ServiceInner = () => {
         )}
       </div>
 
-      <PreConstruction />
+      {/* <PreConstruction /> */}
+      {/* <DuringConstruction /> */}
+      <PostConstruction />
     </section>
   );
 };

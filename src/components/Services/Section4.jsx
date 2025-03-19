@@ -1,11 +1,19 @@
 import React from "react";
-import image1 from "../../../public/Services/Inner/image7.png";
+import image9 from "../../../public/Services/Inner/image9.png";
 import Image from "next/image";
 
-const Section3 = () => {
+const Section4 = () => {
   return (
-    <section className="bg-altermain mt-16 py-20 text-main">
-      <div className="grid grid-cols-2 containers gap-x-32">
+    <section className="bg-altermain mt-16 py-20  text-main">
+      <div className="grid grid-cols-2 containers gap-x-[72px]">
+        <Image
+          src={image9}
+          alt="image"
+          width={0}
+          height={0}
+          sizes="100vw"
+          className="w-full h-full object-cover"
+        />
         <div className="space-y-7 pt-12">
           <h2 className="text-2xl ">Why It Matters</h2>
           <span className="w-8 h-[2px]  block bg-main"></span>
@@ -19,17 +27,9 @@ const Section3 = () => {
             Contact us to begin your journey.
           </p>
         </div>
-        <Image
-          src={image1}
-          alt="image"
-          width={0}
-          height={0}
-          sizes="100vw"
-          className="w-full h-full object-cover"
-        />
       </div>
     </section>
   );
 };
 
-export default Section3;
+export default Section4;
