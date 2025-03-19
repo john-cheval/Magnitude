@@ -37,9 +37,9 @@ const OurValues = () => {
                   sizes="100vw"
                 />
                 <div className="space-y-3">
-                  <span className="font-semibold leading-[186%] font-helvatica">
+                  <h3 className="font-semibold leading-[186%] font-helvatica">
                     {data?.title}
-                  </span>
+                  </h3>
                   <p className="font-helvatica text-justify font-light leading-[186%] max-w-[448px]--">
                     {data?.desc}
                   </p>
