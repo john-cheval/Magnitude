@@ -29,7 +29,7 @@ const CareersList = () => {
             career while creating unforgettable experiences on board.
           </p>
 
-          <FillButton link={"/careers/1"} text={"View all"} dark={true} />
+          <FillButton link={"/careers/crew"} text={"View all"} dark={true} />
         </div>
       </div>
 
@@ -44,7 +44,11 @@ const CareersList = () => {
             heights in an inspiring environment.
           </p>
 
-          <FillButton link={"/careers/1"} text={"View all"} dark={true} />
+          <FillButton
+            link={"/careers/corporate"}
+            text={"View all"}
+            dark={true}
+          />
         </div>
 
         <Image

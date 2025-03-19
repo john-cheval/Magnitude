@@ -7,7 +7,7 @@ const FillButton = ({ link, text, dark = false }) => {
       href={link}
       className={`text-sm uppercase  px-9 py-4 ${
         dark ? "bg-altermain text-main" : "bg-main text-altermain"
-      } text-center inline-block w-fit mt-2`}
+      } text-center inline-block w-fit  mt-2`}
     >
       {text}
     </Link>
