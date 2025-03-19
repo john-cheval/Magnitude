@@ -5,7 +5,7 @@ import Image from "next/image";
 const Section4 = () => {
   return (
     <section className="bg-altermain mt-16 py-20  text-main">
-      <div className="grid grid-cols-2 containers gap-x-[72px]">
+      <div className="grid grid-cols-1 md:grid-cols-2 containers gap-x-[72px]">
         <Image
           src={image9}
           alt="image"
