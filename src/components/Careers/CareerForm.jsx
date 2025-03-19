@@ -7,7 +7,7 @@ const CareerForm = () => {
     firstName: "",
     lasstName: "",
     jobType: "",
-    Subject: "",
+    subject: "",
     resume: "",
     message: "",
   });
@@ -20,8 +20,21 @@ const CareerForm = () => {
     });
   };
 
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setFormData({
+        ...formData,
+        resume: file.name,
+      });
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    console.log("Form Submitted:", formData);
+
     setFormData({
       firstName: "",
       lasstName: "",
@@ -108,7 +121,7 @@ const CareerForm = () => {
             maxLength={200}
             id="Subject"
             name="Subject"
-            value={formData.Subject}
+            value={formData.subject}
             onChange={handleChange}
             className="input"
           />
@@ -120,13 +133,13 @@ const CareerForm = () => {
             id="fileUpload"
             name="fileUpload"
             accept=".pdf, .doc, .docx"
-            // onChange={handleFileChange}
+            onChange={handleFileChange}
             className="hidden"
           />
 
           <div className="input flex items-center justify-between pr-[10px] cursor-pointer">
             <p className="font-helvatica  font-medium leading-[154%]">
-              {/* fileName || */ "Upload Resume/CV"}{" "}
+              {formData.resume || "Upload Resume/CV"}{" "}
               <span className="text-[#979797]">
                 ( PDF, DOC, DOCX. File size limit: 2MB )
               </span>
@@ -153,7 +166,7 @@ const CareerForm = () => {
           className="input"
         />
 
-        <div className="flex justify-center">
+        <div className="flex justify-center mt-2">
           <button
             type="submit"
             className="text-sm uppercase  px-9 py-4 text-center inline-block w-fit bg-main text-altermain mx-auto"
