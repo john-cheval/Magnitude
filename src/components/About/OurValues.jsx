@@ -7,17 +7,17 @@ import { aboutData2 } from "@/data/aboutData";
 const OurValues = () => {
   return (
     <section className="containers text-altermain mt-12">
-      <div className="grid grid-cols-2 ">
+      <div className="grid grid-cols-1 md:grid-cols-2 ">
         <Image
           src={image}
           alt="image"
           width={0}
           height={0}
           sizes="100vw"
-          className="w-full h-auto object-cover"
+          className="w-full h-full object-cover"
         />
 
-        <div className="pl-14 space-y-5 pt-11 bg-red-500--">
+        <div className="pl-14 space-y-5 pt-11 ">
           <h3 className="text-[40px] ">Our Values</h3>
           <span className="block h-[2px] w-14 bg-altermain"></span>
           <p className="font-light leading-[186%] max-w-[432px] font-helvatica">
