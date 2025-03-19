@@ -105,3 +105,12 @@ input[type="number"]::-webkit-outer-spin-button {
 .main-heading {
   @apply text-4xl lg:text-5xl text-main leading-normal;
 }
+.main-heading2 {
+  @apply text-3xl lg:text-[40px]  leading-normal;
+}
+.seperator {
+  @apply w-11 h-[2px]  block bg-main;
+}
+.description {
+  @apply text-base text-justify font-helvatica font-light leading-[186%];
+}
