@@ -35,7 +35,11 @@ const Navbar = () => {
       <nav className="flex justify-between items-center">
         <ul className="md:flex items-center gap-x-10 hidden  ">
           {navLinks?.leftLink?.map((link) => {
-            const isActive = pathname === link.url;
+            const isActive =
+              link.url === "/"
+                ? pathname === "/"
+                : pathname.startsWith(link.url);
+
             return (
               <li key={link.id}>
                 <Link
@@ -67,7 +71,10 @@ const Navbar = () => {
 
         <ul className="md:flex items-center gap-x-10 hidden ">
           {navLinks?.rightLink?.map((link) => {
-            const isActive = pathname === link.url;
+            const isActive =
+              link.url === "/"
+                ? pathname === "/"
+                : pathname.startsWith(link.url);
             return (
               <li key={link.id}>
                 <Link

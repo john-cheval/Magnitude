@@ -45,7 +45,7 @@ const CareerForm = () => {
     });
   };
   return (
-    <section className="bg-altermain pt-16 pb-12 containers">
+    <section id="career-form" className="bg-altermain pt-16 pb-12 containers">
       <div className="flex flex-col items-center">
         <h2 className="main-heading2 mb-6">Apply for a Career Opportunity</h2>
         <span className="seperator mb-6"></span>
