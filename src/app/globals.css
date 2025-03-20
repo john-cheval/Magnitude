@@ -185,3 +185,20 @@ input[type="number"]::-webkit-outer-spin-button {
 .list2 p {
   @apply description;
 }
+
+.why h4 {
+  @apply text-base font-helvatica font-medium leading-[186%] mb-2;
+  background-image: url("/common/listTYpeWhite.svg");
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 21px;
+  padding-left: 33px;
+}
+
+.why p {
+  @apply text-base text-justify font-helvatica font-light leading-[186%] mb-2;
+}
+
+.why:has(h4) {
+  display: block;
+}

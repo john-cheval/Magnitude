@@ -24,7 +24,7 @@ const SectionThree = ({ data, layout = false }) => {
           <span className="w-8 h-[2px]  block bg-main"></span>
 
           <div
-            className="description max-w-[517px] space-y-8"
+            className="description why max-w-[517px] space-y-6"
             dangerouslySetInnerHTML={{ __html: data?.description }}
           ></div>
         </div>
