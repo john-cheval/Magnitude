@@ -5,7 +5,6 @@ import SectionWhatWeOffer from "./SectionWhatWeOffer";
 import SectionThree from "./SectionThree";
 
 const PostConstruction = ({ serviceData }) => {
-  const data = Array.from({ length: 4 }, (_, i) => i + 1);
   return (
     <>
       <section className=" containers pt-16 text-altermain">
