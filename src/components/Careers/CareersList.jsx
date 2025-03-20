@@ -4,7 +4,7 @@ import image2 from "../../../public/Careers/image2.png";
 import Image from "next/image";
 import FillButton from "../common/FillButton";
 
-const CareersList = () => {
+const CareersList = ({ careersCategory }) => {
   return (
     <section className="containers text-altermain mt-20">
       <div className="grid grid-cols-1 md:grid-cols-2">
