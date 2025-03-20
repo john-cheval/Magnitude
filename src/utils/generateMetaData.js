@@ -1,7 +1,7 @@
 async function generateMetadataData(id, path, slug = false) {
   try {
     const res = await fetch(
-      `https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/full_details_meta??${
+      `https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/full_details_meta?${
         slug ? "slug" : "ID"
       }=${id}`
     );

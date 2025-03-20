@@ -115,8 +115,14 @@ input[type="number"]::-webkit-outer-spin-button {
 .seperator {
   @apply w-14 h-[2px]  block bg-main;
 }
+.seperatorDark {
+  @apply w-14 h-[2px]  block bg-altermain;
+}
 .seperator2Dark {
   @apply w-12 h-[2px]  block bg-altermain;
+}
+.seperator2 {
+  @apply w-12 h-[2px]  block bg-main;
 }
 .description {
   @apply text-base text-justify font-helvatica font-light leading-[186%];
