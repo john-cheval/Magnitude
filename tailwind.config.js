@@ -31,7 +31,7 @@ module.exports = {
         cruise: "url('/Home/cruise.png')",
         yatch: "url('/Home/yatch.png')",
         homeBottomGrad:
-          "linear-gradient(0deg, #000 0%, rgba(0, 0, 0, 0.00) 100%)",
+          "linear-gradient(360deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%)",
         footerBG: "url('/Home/footer.png')",
         footerGrad:
           "linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0.00) 76.82%)",

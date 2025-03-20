@@ -108,8 +108,15 @@ input[type="number"]::-webkit-outer-spin-button {
 .main-heading2 {
   @apply text-3xl lg:text-[40px]  leading-normal;
 }
+
+.main-heading3 {
+  @apply text-3xl leading-[150%]  text-main;
+}
 .seperator {
-  @apply w-11 h-[2px]  block bg-main;
+  @apply w-14 h-[2px]  block bg-main;
+}
+.seperator2Dark {
+  @apply w-12 h-[2px]  block bg-altermain;
 }
 .description {
   @apply text-base text-justify font-helvatica font-light leading-[186%];
