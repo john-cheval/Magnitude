@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import listtype from "../../../public/About/list.svg";
+import listtype from "../../../public/common/list.svg";
 import { aboutData2 } from "@/data/aboutData";
 
 const OurValues = ({ ourValuesData }) => {
