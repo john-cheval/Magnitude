@@ -46,7 +46,7 @@ const CareersList = ({ careersCategory }) => {
           </p>
 
           <FillButton
-            link={`/careers/${careersCategory[1]?.slug}`}
+            link={`/careers/${careersCategory[0]?.slug}`}
             text={"View all"}
             dark={true}
           />

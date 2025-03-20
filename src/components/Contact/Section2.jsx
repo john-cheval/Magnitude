@@ -4,11 +4,11 @@ import { RiPhoneFill } from "react-icons/ri";
 import { MdLocationPin } from "react-icons/md";
 import Link from "next/link";
 
-function Section2() {
+function Section2({ emailAddress, address, phoneList, title }) {
   return (
     <section className="bg-altermain py-9 containers">
       <div className="flex items-center flex-col">
-        <h1 className="main-heading2 mb-6">Contact</h1>
+        <h1 className="main-heading2 mb-6">{title}</h1>
         <span className="seperator"></span>
 
         <div className="mt-4 space-y-4">
@@ -16,33 +16,34 @@ function Section2() {
             href={"mailto:contact@magnitudeyachts.com"}
             className="flex items-center justify-center font-helvatica gap-x-2 font-light leading-[186%]"
           >
-            <IoMail color="#fff" /> contact@magnitudeyachts.com
+            <IoMail color="#fff" /> {emailAddress}
           </Link>
 
           <div className="flex items-center gap-x-3">
             {" "}
             <Link
-              href={"tel:+971 56 50 48488"}
+              href={`tel:${phoneList[0]?.phone_number}`}
               className="flex items-center font-helvatica gap-x-2 font-light leading-[186%]"
             >
               <RiPhoneFill color="#fff" />
-              Dubai: +971 56 50 48488
+              {phoneList[0]?.title} {phoneList[0]?.phone_number}
             </Link>
             |
             <Link
-              href={"tel:+852 2824 8139"}
+              href={`tel:${phoneList[1]?.phone_number}`}
               className="flex items-center font-helvatica gap-x-2 font-light leading-[186%]"
             >
-              Hong Kong: +852 2824 8139
+              {phoneList[1]?.title} {phoneList[1]?.phone_number}
             </Link>
           </div>
 
           <Link
             href={"#"}
+            target="_blank"
             className="flex items-center font-helvatica gap-x-2 font-light leading-[186%] justify-center"
           >
             <MdLocationPin color="#fff" />
-            Downtown, Dubai, UAE
+            {address}
           </Link>
         </div>
       </div>
