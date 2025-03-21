@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
+import { toast } from "react-toastify";
 
 const CareerForm = () => {
   const [formData, setFormData] = useState({
@@ -23,10 +24,12 @@ const CareerForm = () => {
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-    setFormData({
-      ...formData,
-      resume: file,
-    });
+    if (file) {
+      setFormData({
+        ...formData,
+        resume: file.name,
+      });
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -46,7 +49,7 @@ const CareerForm = () => {
 
     try {
       const response = await fetch(
-        "https://chevaldemo.xyz/demo/magnitude/wp-json/contact-form-7/v1/contact-forms/111/feedback",
+        "https://chevaldemo.xyz/demo/magnitude/wp-json/contact-form-7/v1/contact-forms/6/feedback",
 
         {
           method: "POST",
@@ -61,8 +64,9 @@ const CareerForm = () => {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-      const data = await response.json();
-      console.log("Form Submitted Successfully:", data);
+      // const data = await response.json();
+      // console.log("Form Submitted Successfully:", data);
+      toast.success("Form Submitted Successfully");
 
       setFormData({
         firstName: "",
@@ -77,15 +81,6 @@ const CareerForm = () => {
       console.log("Error submitting form:", e.message);
     }
     console.log("Form Submitted:", formData);
-
-    setFormData({
-      firstName: "",
-      lasstName: "",
-      jobType: "",
-      Subject: "",
-      resume: "",
-      message: "",
-    });
   };
   return (
     <section
@@ -125,9 +120,9 @@ const CareerForm = () => {
             placeholder="Last Name"
             required
             maxLength={50}
-            id="lasstName"
-            name="lasstName"
-            value={formData.lasstName}
+            id="lastName"
+            name="lastName"
+            value={formData.lastName}
             onChange={handleChange}
             className="input"
           />
@@ -169,8 +164,8 @@ const CareerForm = () => {
             placeholder="Subject"
             required
             maxLength={200}
-            id="Subject"
-            name="Subject"
+            id="subject"
+            name="subject"
             value={formData.subject}
             onChange={handleChange}
             className="input"
