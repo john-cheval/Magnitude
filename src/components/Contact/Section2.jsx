@@ -13,21 +13,34 @@ function Section2({ emailAddress, address, phoneList, title }) {
   const sectionRef = useRef(null);
 
   useEffect(() => {
-    const el = sectionRef.current;
-    const elements = gsap.utils.toArray(".fade-item");
+    gsap.registerPlugin(ScrollTrigger);
 
-    gsap.from(elements, {
-      opacity: 0,
-      y: 50,
-      duration: 1,
-      ease: "power3.out",
-      stagger: 0.05,
-      scrollTrigger: {
-        trigger: el,
-        start: "top 50%",
-        toggleActions: "play none none none",
-      },
-    });
+    const ctx = gsap.context(() => {
+      const elements = gsap.utils.toArray(".fade-item");
+
+      ScrollTrigger.clearMatchMedia();
+      ScrollTrigger.refresh();
+
+      gsap.from(elements, {
+        opacity: 0,
+        y: 50,
+        duration: 1,
+        ease: "power3.out",
+        stagger: 0.05,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 50%",
+          toggleActions: "play none none none",
+          // Force re-initialization
+          // invalidateOnRefresh: true,
+        },
+      });
+    }, sectionRef);
+
+    return () => {
+      ctx.revert();
+      ScrollTrigger.clearMatchMedia();
+    };
   }, []);
 
   return (

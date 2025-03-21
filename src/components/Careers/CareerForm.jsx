@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
+import { toast } from "react-toastify";
 
 const CareerForm = () => {
   const [formData, setFormData] = useState({
@@ -23,10 +24,12 @@ const CareerForm = () => {
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-    setFormData({
-      ...formData,
-      resume: file,
-    });
+    if (file) {
+      setFormData({
+        ...formData,
+        resume: file.name,
+      });
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -46,7 +49,7 @@ const CareerForm = () => {
 
     try {
       const response = await fetch(
-        "https://chevaldemo.xyz/demo/magnitude/wp-json/contact-form-7/v1/contact-forms/111/feedback",
+        "https://chevaldemo.xyz/demo/magnitude/wp-json/contact-form-7/v1/contact-forms/6/feedback",
 
         {
           method: "POST",
@@ -61,8 +64,9 @@ const CareerForm = () => {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-      const data = await response.json();
-      console.log("Form Submitted Successfully:", data);
+      // const data = await response.json();
+      // console.log("Form Submitted Successfully:", data);
+      toast.success("Form Submitted Successfully");
 
       setFormData({
         firstName: "",
@@ -77,30 +81,28 @@ const CareerForm = () => {
       console.log("Error submitting form:", e.message);
     }
     console.log("Form Submitted:", formData);
-
-    setFormData({
-      firstName: "",
-      lasstName: "",
-      jobType: "",
-      Subject: "",
-      resume: "",
-      message: "",
-    });
   };
   return (
-    <section id="career-form" className="bg-altermain pt-16 pb-12 containers">
+    <section
+      id="career-form"
+      className="bg-altermain pt-11 md:pt-16 pb-12 containers"
+    >
       <div className="flex flex-col items-center">
-        <h2 className="main-heading2 mb-6">Apply for a Career Opportunity</h2>
-        <span className="seperator mb-6"></span>
-        <h4 className="!text-2xl description mb-3">Join Our Team</h4>
-        <p className="description">
+        <h2 className="main-heading2 mb-5 md:mb-6">
+          Apply for a Career Opportunity
+        </h2>
+        <span className="seperator mb-5 md:mb-6"></span>
+        <h4 className=" text-sm sm:!text-base md:!text-xl lg:!text-2xl description mb-3">
+          Join Our Team
+        </h4>
+        <p className="description !text-center md:text-justify">
           We are excited to learn more about you! Please complete the form below
           to apply for a position with us.
         </p>
       </div>
 
       <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <input
             type="text"
             placeholder="First Name"
@@ -118,9 +120,9 @@ const CareerForm = () => {
             placeholder="Last Name"
             required
             maxLength={50}
-            id="lasstName"
-            name="lasstName"
-            value={formData.lasstName}
+            id="lastName"
+            name="lastName"
+            value={formData.lastName}
             onChange={handleChange}
             className="input"
           />
@@ -162,8 +164,8 @@ const CareerForm = () => {
             placeholder="Subject"
             required
             maxLength={200}
-            id="Subject"
-            name="Subject"
+            id="subject"
+            name="subject"
             value={formData.subject}
             onChange={handleChange}
             className="input"
@@ -180,10 +182,10 @@ const CareerForm = () => {
             className="hidden"
           />
 
-          <div className="input flex items-center justify-between pr-[10px] cursor-pointer">
-            <p className="font-helvatica  font-medium leading-[154%]">
+          <div className="input flex items-center gap-x-5 justify-between pr-[10px] cursor-pointer">
+            <p className="font-helvatica text-sm md:text-base  font-medium leading-[154%]">
               {formData.resume || "Upload Resume/CV"}{" "}
-              <span className="text-[#979797]">
+              <span className="text-[#979797] text-xs md:text-sm">
                 ( PDF, DOC, DOCX. File size limit: 2MB )
               </span>
             </p>
@@ -199,7 +201,7 @@ const CareerForm = () => {
 
         <textarea
           type="text"
-          placeholder="Message"
+          placeholder="Message/Additional Notes"
           maxLength={2000}
           rows={5}
           id="message"
@@ -209,7 +211,7 @@ const CareerForm = () => {
           className="input"
         />
 
-        <div className="flex justify-center mt-2">
+        <div className="flex justify-center mt-4 md:mt-2">
           <button
             type="submit"
             className="text-sm uppercase  px-9 py-4 text-center inline-block w-fit bg-main text-altermain mx-auto"

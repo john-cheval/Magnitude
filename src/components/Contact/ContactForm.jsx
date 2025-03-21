@@ -1,12 +1,8 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React, { useState } from "react";
 import { toast } from "react-toastify";
-gsap.registerPlugin(ScrollTrigger);
-const ContactForm = () => {
-  const sectionRef = useRef(null);
 
+const ContactForm = () => {
   const [formData, setFormData] = useState({
     firstName: "",
     lasstName: "",
@@ -22,24 +18,6 @@ const ContactForm = () => {
       [name]: value,
     });
   };
-
-  useEffect(() => {
-    const el = sectionRef.current;
-    const elements = gsap.utils.toArray(".fade-item3");
-
-    gsap.from(elements, {
-      opacity: 0,
-      y: 50,
-      duration: 1,
-      ease: "power3.out",
-      stagger: 0.05,
-      scrollTrigger: {
-        trigger: el,
-        start: "top 50%",
-        toggleActions: "play none none none",
-      },
-    });
-  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -84,14 +62,11 @@ const ContactForm = () => {
   };
 
   return (
-    <section
-      ref={sectionRef}
-      className="bg-altermain pt-16 pb-12  md:py-12  containers"
-    >
-      <h3 className="main-heading2 mb-6 fade-item3 text-center md:text-left">
+    <section className="bg-altermain pt-16 pb-12  md:py-12  containers">
+      <h3 className="main-heading2 mb-6  text-center md:text-left">
         Enquire Now
       </h3>
-      <span className="seperator mb-7 fade-item3 mx-auto md:mx-0"></span>
+      <span className="seperator mb-7  mx-auto md:mx-0"></span>
       <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <input
@@ -103,7 +78,7 @@ const ContactForm = () => {
             name="firstName"
             value={formData.firstName}
             onChange={handleChange}
-            className="input fade-item3"
+            className="input "
           />
 
           <input
@@ -115,7 +90,7 @@ const ContactForm = () => {
             name="lasstName"
             value={formData.lasstName}
             onChange={handleChange}
-            className="input fade-item3"
+            className="input "
           />
 
           <input
@@ -127,7 +102,7 @@ const ContactForm = () => {
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            className="input fade-item3"
+            className="input "
           />
 
           <input
@@ -139,7 +114,7 @@ const ContactForm = () => {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className="input fade-item3"
+            className="input "
           />
         </div>
 
@@ -152,10 +127,10 @@ const ContactForm = () => {
           name="message"
           value={formData.message}
           onChange={handleChange}
-          className="input fade-item3"
+          className="input "
         />
 
-        <div className="flex justify-center mt-3 fade-item3">
+        <div className="flex justify-center mt-3 ">
           <button
             type="submit"
             className="text-sm uppercase  px-9 py-4 text-center inline-block w-fit bg-main text-altermain mx-auto"
