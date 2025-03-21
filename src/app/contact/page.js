@@ -24,7 +24,7 @@ const ContactPage = async () => {
         phoneList={contactData?.address_list}
         title={contactData?.post_title}
       />
-      <Locations />
+      {/* <Locations /> */}
       <ContactForm />
     </>
   );
