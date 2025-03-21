@@ -46,7 +46,7 @@ const CareerForm = () => {
 
     try {
       const response = await fetch(
-        "https://chevaldemo.xyz/demo/alpha-experience/wp-json/contact-form-7/v1/contact-forms/6/feedback",
+        "https://chevaldemo.xyz/demo/magnitude/wp-json/contact-form-7/v1/contact-forms/111/feedback",
 
         {
           method: "POST",
