@@ -5,11 +5,12 @@ import { IoIosArrowDown } from "react-icons/io";
 const CareerForm = () => {
   const [formData, setFormData] = useState({
     firstName: "",
-    lasstName: "",
+    lastName: "",
     jobType: "",
     subject: "",
-    resume: "",
+    resume: null,
     message: "",
+    email: "",
   });
 
   const handleChange = (e) => {
@@ -22,17 +23,59 @@ const CareerForm = () => {
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-    if (file) {
-      setFormData({
-        ...formData,
-        resume: file.name,
-      });
-    }
+    setFormData({
+      ...formData,
+      resume: file,
+    });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const newFormData = new FormData();
+    newFormData.append("text-fname", formData.firstName);
+    newFormData.append("text-lname", formData.lastName);
+    newFormData.append("text-jobtype", formData.jobType);
+    newFormData.append("text-subject", formData.subject);
+    newFormData.append("email-address", formData.email);
+    newFormData.append("textarea-message", formData.message);
+    newFormData.append("_wpcf7_unit_tag", "69a98fb");
 
+    if (formData.resume) {
+      newFormData.append("file-cv", formData.resume);
+    }
+
+    try {
+      const response = await fetch(
+        "https://chevaldemo.xyz/demo/alpha-experience/wp-json/contact-form-7/v1/contact-forms/6/feedback",
+
+        {
+          method: "POST",
+          body: newFormData,
+          // headers: {
+          //   "Content-Type": "multipart/form-data",
+          // },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log("Form Submitted Successfully:", data);
+
+      setFormData({
+        firstName: "",
+        lastName: "",
+        jobType: "",
+        subject: "",
+        resume: null,
+        message: "",
+        email: "",
+      });
+    } catch (e) {
+      console.log("Error submitting form:", e.message);
+    }
     console.log("Form Submitted:", formData);
 
     setFormData({
