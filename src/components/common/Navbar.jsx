@@ -7,7 +7,7 @@ import Image from "next/image";
 import { IoMdMenu } from "react-icons/io";
 import { usePathname } from "next/navigation";
 
-const Navbar = () => {
+const Navbar = (/* { navLinks } */) => {
   const pathname = usePathname();
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);

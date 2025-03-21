@@ -108,12 +108,97 @@ input[type="number"]::-webkit-outer-spin-button {
 .main-heading2 {
   @apply text-3xl lg:text-[40px]  leading-normal;
 }
+
+.main-heading3 {
+  @apply text-3xl leading-[150%]  text-main;
+}
 .seperator {
-  @apply w-11 h-[2px]  block bg-main;
+  @apply w-14 h-[2px]  block bg-main;
+}
+.seperatorDark {
+  @apply w-14 h-[2px]  block bg-altermain;
+}
+.seperator2Dark {
+  @apply w-12 h-[2px]  block bg-altermain;
+}
+.seperator2 {
+  @apply w-12 h-[2px]  block bg-main;
 }
 .description {
   @apply text-base text-justify font-helvatica font-light leading-[186%];
 }
 .input {
   @apply outline-none bg-transparent border border-main placeholder:text-main leading-[154%] font-medium placeholder:font-medium text-main  py-6 px-7 w-full;
+}
+
+.description {
+  @apply text-base text-justify font-helvatica font-light leading-[186%];
+}
+
+.description p:first-child {
+  @apply max-w-[432px] mb-5;
+}
+
+.list ul li {
+  background-image: url("/common/list.svg");
+  background-repeat: no-repeat;
+  background-position: left 10px;
+  background-size: 19px;
+  padding-left: 32px;
+  margin-bottom: 12px;
+  margin-right: 3px;
+}
+.list ul li h4 {
+  @apply font-semibold leading-[186%] font-helvatica mb-2;
+}
+
+.description p:last-of-type {
+  @apply text-base text-justify font-helvatica font-light leading-[186%];
+}
+
+.serviceKey h4 {
+  @apply text-base font-helvatica font-medium leading-[186%] mb-6;
+  background-image: url("/common/list.svg");
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 21px;
+  padding-left: 33px;
+}
+
+.serviceKey p {
+  @apply description max-w-[413px] mb-2;
+}
+
+.list2 ul li {
+  background-image: url("/common/listTYpeWhite.svg");
+  background-repeat: no-repeat;
+  background-position: left 10px;
+  background-size: 21px;
+  padding-left: 37px;
+  margin-bottom: 12px;
+}
+
+.list2 h4 {
+  @apply text-base font-helvatica font-medium leading-[186%];
+}
+
+.list2 p {
+  @apply description;
+}
+
+.why h4 {
+  @apply text-base font-helvatica font-medium leading-[186%] mb-2;
+  background-image: url("/common/listTYpeWhite.svg");
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 21px;
+  padding-left: 33px;
+}
+
+.why p {
+  @apply text-base text-justify font-helvatica font-light leading-[186%] mb-2;
+}
+
+.why:has(h4) {
+  display: block;
 }

@@ -1,9 +1,10 @@
 import React from "react";
 import Image from "next/image";
 import FillButton from "../common/FillButton";
-import { serviceData } from "@/data/servicesData";
 
-const Services = () => {
+const Services = ({ servicesList }) => {
+  const serviceData = Object.values(servicesList);
+
   return (
     <section className="bg-altermain  pt-12 containers pb-20">
       {serviceData.map((service, index) => {
@@ -26,26 +27,29 @@ const Services = () => {
               <div
                 className={`lg:pl-[59px] lg:pr-20 px-14 py-16 space-y-6 ${bgColor}`}
               >
-                <h2 className="main-heading2">{service.title}</h2>
+                <h2 className="main-heading2">{service?.post_title}</h2>
                 <span
                   className={`block w-14 h-[2px]   ${
                     index === 2 ? "bg-altermain" : "bg-main"
                   }`}
                 ></span>
-                <p className="description max-w-[480px]">
-                  {service.desc || service.desc1}
-                </p>
-                {service.desc2 && (
-                  <p className="mt-7 description max-w-[480px]">
-                    {service.desc2}
-                  </p>
-                )}
-                <FillButton link={service.link} text={service.linkText} />
+
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: service?.short_description,
+                  }}
+                  className="description max-w-[480px] space-y-7"
+                />
+
+                <FillButton
+                  link={`/services/${service?.post_name}`}
+                  text={"Read more"}
+                />
               </div>
             ) : (
               <Image
-                src={service.imageUrl}
-                alt={service.title}
+                src={service?.image}
+                alt={service?.post_title}
                 width={0}
                 height={0}
                 className="w-full h-full max-w-[553px]-- max-h-[536px]-- object-cover"
@@ -57,26 +61,27 @@ const Services = () => {
               <div
                 className={`lg:pl-[59px] lg:pr-20 px-14 py-16 space-y-6 ${bgColor}`}
               >
-                <h2 className="main-heading2">{service.title}</h2>
+                <h2 className="main-heading2">{service?.post_title}</h2>
                 <span
                   className={`block w-14 h-[2px]   ${
                     index === 2 ? "bg-altermain" : "bg-main"
                   }`}
                 ></span>
-                <p className="description max-w-[480px]">
-                  {service.desc || service.desc1}
-                </p>
-                {service.desc2 && (
-                  <p className="mt-7 description max-w-[480px]">
-                    {service.desc2}
-                  </p>
-                )}
-                <FillButton link={service.link} text={service.linkText} />
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: service?.short_description,
+                  }}
+                  className="description max-w-[480px] space-y-7"
+                />
+                <FillButton
+                  link={`/services/${service?.post_name}`}
+                  text={"Read more"}
+                />
               </div>
             ) : (
               <Image
-                src={service.imageUrl}
-                alt={service.title}
+                src={service?.image}
+                alt={service?.post_title}
                 width={0}
                 height={0}
                 className="w-full h-full max-w-[553px]-- max-h-[536px]-- object-cover"

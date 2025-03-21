@@ -18,18 +18,45 @@ const ContactForm = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const newformData = new FormData();
+    newformData.append("text-fname", formData.firstName);
+    newformData.append("text-lname", formData.lasstName);
+    newformData.append("tel-phone", formData.phone);
+    newformData.append("email-address", formData.email);
+    newformData.append("textarea-message", formData.message);
+    newformData.append("_wpcf7_unit_tag", "00b8018");
 
-    console.log("Form Submitted:", formData);
+    try {
+      const response = await fetch(
+        "https://chevaldemo.xyz/demo/magnitude/wp-json/contact-form-7/v1/contact-forms/5/feedback",
+        {
+          method: "POST",
+          body: newformData,
+          // headers: {
+          //   "Content-Type": "multipart/form-data",
+          // },
+        }
+      );
 
-    setFormData({
-      firstName: "",
-      lasstName: "",
-      phone: "",
-      email: "",
-      message: "",
-    });
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log("Form Submitted Successfully:", data);
+
+      setFormData({
+        firstName: "",
+        lasstName: "",
+        phone: "",
+        email: "",
+        message: "",
+      });
+    } catch (e) {
+      console.log("Error submitting form:", e.message);
+    }
   };
 
   return (
