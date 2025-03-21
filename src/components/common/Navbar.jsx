@@ -1,10 +1,10 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Logo from "../../../public/Home/Logo.svg";
+import Logo from "../../../public/common/Logo.svg";
 import { navLinks } from "@/data/navLinks";
 import Link from "next/link";
 import Image from "next/image";
-import { IoMdMenu } from "react-icons/io";
+import { RiMenu3Fill } from "react-icons/ri";
 import { usePathname } from "next/navigation";
 
 const Navbar = (/* { navLinks } */) => {
@@ -28,7 +28,7 @@ const Navbar = (/* { navLinks } */) => {
 
   return (
     <header
-      className={`bg-navBg pt-12 pb-8 px-10 md:px-16 lg:px-[52px] fixed left-0 top-0  w-full z-[999] transition-transform duration-300 ${
+      className={`bg-navBg py-7 md:pt-12 md:pb-8 px-6   md:px-16 lg:px-[52px] fixed left-0 top-0  w-full z-[999] transition-transform duration-300 ${
         isVisible ? "translate-y-0" : "-translate-y-full"
       }`}
     >
@@ -92,7 +92,7 @@ const Navbar = (/* { navLinks } */) => {
           })}
         </ul>
 
-        <IoMdMenu className="md:hidden " size={30} />
+        <RiMenu3Fill className="md:hidden " size={30} />
       </nav>
     </header>
   );

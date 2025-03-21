@@ -30,7 +30,7 @@ const Footer = () => {
   }, []);
   return (
     <footer className="containers  bg-footerBG bg-cover bg-center h-full relative">
-      <div className="w-full h-[1px] bg-main relative z-50 overflow-hidden" />
+      <div className="w-full h-[1px] bg-main relative z-50 hidden md:block overflow-hidden" />
       <div className="flex flex-col items-center justify-center pt-20 pb-20 lg:pb-[150px] space-y-5 z-50 relative">
         <Image
           src={Logo}
@@ -41,16 +41,16 @@ const Footer = () => {
           className="w-full h-auto max-w-[266px] object-cover fade-footer"
         />
 
-        <div className="flex flex-col sm:flex-row gap-x-3">
+        <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:gap-x-3">
           <Link
             href={"tel:+971 56 5048488"}
-            className="font-helvatica font-light leading-[186%] flex items-center gap-x-2 fade-footer"
+            className="description flex items-center gap-x-2 fade-footer"
           >
             <span className="text-center font-bold  ">T :</span>+971 56 5048488
           </Link>
           <Link
             href={"mailto:+971 56 5048488"}
-            className="font-helvatica font-light leading-[186%] flex items-center gap-x-2 fade-footer"
+            className="description flex items-center gap-x-2 fade-footer"
           >
             <span className="text-center font-bold ">E :</span>+971 56 5048488
           </Link>
@@ -64,13 +64,14 @@ const Footer = () => {
           <LiaLinkedinIn />
         </Link>
 
-        <p className="text-center text-sm font-light leading-[170%] capitalize max-w-[515px] fade-footer">
-          Designed & Developed by Cheval | © 2024 Magnitude . All rights
-          reserved
+        <p className="text-center text-sm font-light leading-[170%] capitalize max-w-[515px] fade-footer flex flex-col sm:flex-row ">
+          <span>Designed & Developed by Cheval</span>{" "}
+          <span className="mx-1 hidden sm:block">|</span>{" "}
+          <span>© 2024 Magnitude . All rights reserved</span>
         </p>
       </div>
 
-      <div className="absolute w-full h-full max-h-[345px] bg-footerGrad top-0 left-0" />
+      <div className="absolute w-full h-full max-h-[345px] bg-footerGrad2 md:bg-footerGrad top-0 left-0" />
     </footer>
   );
 };

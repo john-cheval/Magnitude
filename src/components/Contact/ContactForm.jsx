@@ -84,11 +84,16 @@ const ContactForm = () => {
   };
 
   return (
-    <section ref={sectionRef} className="bg-altermain py-12  containers">
-      <h3 className="main-heading2 mb-6 fade-item3">Enquire Now</h3>
-      <span className="seperator mb-7 fade-item3"></span>
+    <section
+      ref={sectionRef}
+      className="bg-altermain pt-16 pb-12  md:py-12  containers"
+    >
+      <h3 className="main-heading2 mb-6 fade-item3 text-center md:text-left">
+        Enquire Now
+      </h3>
+      <span className="seperator mb-7 fade-item3 mx-auto md:mx-0"></span>
       <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <input
             type="text"
             placeholder="First Name"

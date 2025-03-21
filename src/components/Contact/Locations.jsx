@@ -1,15 +1,11 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import dynamic from "next/dynamic";
+
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const MapComponent = dynamic(() => import("@/components/common/MapComponent"), {
-  ssr: false,
-});
 
 const Locations = () => {
   const sectionRef = useRef(null);
@@ -33,10 +29,25 @@ const Locations = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-altermain containers space-y-6">
-      <h3 className="main-heading2 fade-item2">Our Locations</h3>
+    <section
+      ref={sectionRef}
+      className="bg-altermain containers space-y-6 pt-4 md:pt-0"
+    >
+      <h3 className="main-heading2 md:text-left text-center fade-item2 mb-8 md:mb-0">
+        Our Locations
+      </h3>
       <div className="fade-item2">
-        <MapComponent />
+        <iframe
+          src="https://snazzymaps.com/embed/693860"
+          // width="100%"
+          // height="300px"
+          // style="border:none;"
+          style={{
+            border: "none",
+            maxHeight: "300px",
+            width: "100%",
+          }}
+        ></iframe>
       </div>
     </section>
   );

@@ -33,6 +33,8 @@ module.exports = {
         footerBG: "url('/Home/footer.png')",
         footerGrad:
           "linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0.00) 76.82%)",
+        footerGrad2:
+          "linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0.00) 76.82%)",
         aboutBgGrad: "linear-gradient(0deg, #000 0%, rgba(0, 0, 0, 0.00) 100%)",
         serviceHeroGrad:
           "linear-gradient(120deg, rgba(0, 0, 0, 0.93) 0.27%, rgba(0, 0, 0, 0.00) 75.73%)",
