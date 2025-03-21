@@ -1,7 +1,12 @@
 "use client";
-import React, { useState } from "react";
-
+import React, { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { toast } from "react-toastify";
+gsap.registerPlugin(ScrollTrigger);
 const ContactForm = () => {
+  const sectionRef = useRef(null);
+
   const [formData, setFormData] = useState({
     firstName: "",
     lasstName: "",
@@ -18,6 +23,24 @@ const ContactForm = () => {
     });
   };
 
+  useEffect(() => {
+    const el = sectionRef.current;
+    const elements = gsap.utils.toArray(".fade-item3");
+
+    gsap.from(elements, {
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      ease: "power3.out",
+      stagger: 0.05,
+      scrollTrigger: {
+        trigger: el,
+        start: "top 50%",
+        toggleActions: "play none none none",
+      },
+    });
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newformData = new FormData();
@@ -30,7 +53,7 @@ const ContactForm = () => {
 
     try {
       const response = await fetch(
-        "https://chevaldemo.xyz/demo/magnitude/wp-json/contact-form-7/v1/contact-forms/5/feedback",
+        "https://chevaldemo.xyz/demo/magnitude/wp-json/contact-form-7/v1/contact-forms/111/feedback",
         {
           method: "POST",
           body: newformData,
@@ -44,8 +67,9 @@ const ContactForm = () => {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-      const data = await response.json();
-      console.log("Form Submitted Successfully:", data);
+      // const data = await response.json();
+      // console.log("Form Submitted Successfully:", data);
+      toast.success("Form Submitted Successfully");
 
       setFormData({
         firstName: "",
@@ -60,11 +84,16 @@ const ContactForm = () => {
   };
 
   return (
-    <section className="bg-altermain py-12  containers">
-      <h3 className="main-heading2 mb-6">Enquire Now</h3>
-      <span className="seperator mb-7"></span>
+    <section
+      ref={sectionRef}
+      className="bg-altermain pt-16 pb-12  md:py-12  containers"
+    >
+      <h3 className="main-heading2 mb-6 fade-item3 text-center md:text-left">
+        Enquire Now
+      </h3>
+      <span className="seperator mb-7 fade-item3 mx-auto md:mx-0"></span>
       <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <input
             type="text"
             placeholder="First Name"
@@ -74,7 +103,7 @@ const ContactForm = () => {
             name="firstName"
             value={formData.firstName}
             onChange={handleChange}
-            className="input"
+            className="input fade-item3"
           />
 
           <input
@@ -86,7 +115,7 @@ const ContactForm = () => {
             name="lasstName"
             value={formData.lasstName}
             onChange={handleChange}
-            className="input"
+            className="input fade-item3"
           />
 
           <input
@@ -98,7 +127,7 @@ const ContactForm = () => {
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            className="input"
+            className="input fade-item3"
           />
 
           <input
@@ -110,7 +139,7 @@ const ContactForm = () => {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className="input"
+            className="input fade-item3"
           />
         </div>
 
@@ -123,10 +152,10 @@ const ContactForm = () => {
           name="message"
           value={formData.message}
           onChange={handleChange}
-          className="input"
+          className="input fade-item3"
         />
 
-        <div className="flex justify-center mt-3">
+        <div className="flex justify-center mt-3 fade-item3">
           <button
             type="submit"
             className="text-sm uppercase  px-9 py-4 text-center inline-block w-fit bg-main text-altermain mx-auto"
