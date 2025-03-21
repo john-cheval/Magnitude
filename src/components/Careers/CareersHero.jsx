@@ -14,8 +14,8 @@ const CareersHero = ({ title, bannerImage }) => {
       : pathSegments[pathSegments.length - 1];
 
   return (
-    <section className="containers pt-44">
-      <h1 className="main-heading !text-altermain capitalize">
+    <section className="containers pt-28 md:pt-40 lg:pt-44">
+      <h1 className="main-heading !text-altermain capitalize text-center md:text-left">
         {title || titles}
       </h1>
       <Image
@@ -24,7 +24,7 @@ const CareersHero = ({ title, bannerImage }) => {
         width={0}
         height={0}
         sizes="100vw"
-        className="w-full h-auto max-h-[530px]-- object-cover mt-10"
+        className="w-full h-auto max-h-[530px]-- object-cover mt-5 md:mt-8 lg:mt-10"
       />
     </section>
   );
