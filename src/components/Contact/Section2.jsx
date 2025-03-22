@@ -31,8 +31,6 @@ function Section2({ emailAddress, address, phoneList, title }) {
           trigger: sectionRef.current,
           start: "top 50%",
           toggleActions: "play none none none",
-          // Force re-initialization
-          // invalidateOnRefresh: true,
         },
       });
     }, sectionRef);

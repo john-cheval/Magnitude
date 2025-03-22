@@ -86,9 +86,6 @@ const ContactForm = () => {
         {
           method: "POST",
           body: newformData,
-          // headers: {
-          //   "Content-Type": "multipart/form-data",
-          // },
         }
       );
 
@@ -96,8 +93,6 @@ const ContactForm = () => {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-      // const data = await response.json();
-      // console.log("Form Submitted Successfully:", data);
       toast.success("Form Submitted Successfully");
 
       setFormData({
@@ -108,7 +103,7 @@ const ContactForm = () => {
         message: "",
       });
     } catch (e) {
-      console.log("Error submitting form:", e.message);
+      toast.error("Error submitting form");
     }
   };
 
