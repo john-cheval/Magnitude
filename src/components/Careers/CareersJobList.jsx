@@ -1,10 +1,47 @@
 "use client";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { IoLocationSharp } from "react-icons/io5";
 import { FaRegCalendarAlt } from "react-icons/fa";
+import { format } from "date-fns";
+import { gsap } from "gsap";
 
-const CareersJobList = () => {
-  const data = Array.from({ length: 5 }, (_, i) => i + 1);
+const CareersJobList = ({ careersList }) => {
+  const jobList = careersList && Object.values(careersList);
+  const sectionRef = useRef(null);
+  const jobItemRefs = useRef([]);
+  const jobContentRefs = useRef([]);
+
+  useEffect(() => {
+    gsap.fromTo(
+      jobItemRefs.current,
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        stagger: 0.3,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
+      }
+    );
+
+    gsap.fromTo(
+      jobContentRefs.current,
+      { opacity: 0, y: 20 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        stagger: 0.2,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
+      }
+    );
+  }, []);
 
   const handleScroll = () => {
     const formSection = document.getElementById("career-form");
@@ -14,39 +51,52 @@ const CareersJobList = () => {
   };
 
   return (
-    <section className="text-altermain mt-20 pb-10 containers ">
-      {data?.map((_, index) => (
+    <section
+      ref={sectionRef}
+      className="text-altermain mt-5 sm:mt-10 lg:mt-20 pb-10 containers"
+    >
+      {jobList?.map((job, index) => (
         <div
           key={index + 1}
-          className="flex justify-between border-t items-center border-altermain pt-5 pb-9"
+          ref={(el) => (jobItemRefs.current[index] = el)}
+          className={`flex flex-col md:flex-row md:justify-between gap-x-5 border-t md:items-center border-altermain pt-5 pb-9 ${
+            index === jobList.length - 1 ? "border-b md:border-b-0" : ""
+          }`}
         >
-          <div className="space-y-4 ">
-            <h3 className="text-2xl leading-[136%]">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry.
+          <div className="space-y-4">
+            <h3
+              ref={(el) => (jobContentRefs.current[index * 4] = el)}
+              className="text-lg sm:text-xl lg:text-2xl leading-[136%]"
+            >
+              {job?.post_title}
             </h3>
 
-            <div className="flex gap-x-4">
+            <div
+              ref={(el) => (jobContentRefs.current[index * 4 + 1] = el)}
+              className="flex gap-x-4"
+            >
               <p className="text-sm font-helvatica font-light leading-[154%] text-[#989898] flex gap-x-2 items-center">
-                <IoLocationSharp color="#787878" /> Dubai
+                <IoLocationSharp color="#787878" />{" "}
+                {job?.post_location || "Dubai"}
               </p>
 
               <p className="text-sm font-helvatica font-light leading-[154%] text-[#989898] flex gap-x-2 items-center">
-                <FaRegCalendarAlt color="#787878" /> 25 january 2024
+                <FaRegCalendarAlt color="#787878" />{" "}
+                {format(new Date(job?.post_date), "dd MMMM yyyy")}
               </p>
             </div>
 
-            <p className="description !text-sm max-w-[823px]">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book.
-            </p>
+            <div
+              ref={(el) => (jobContentRefs.current[index * 4 + 2] = el)}
+              dangerouslySetInnerHTML={{ __html: job?.post_content }}
+              className="description !text-sm max-w-[823px]"
+            ></div>
           </div>
 
           <button
+            ref={(el) => (jobContentRefs.current[index * 4 + 3] = el)}
             onClick={handleScroll}
-            className="text-sm uppercase  px-9 py-4 text-center inline-block bg-altermain text-main w-fit  mt-2"
+            className="text-xs md:text-sm uppercase px-9 py-4 text-center inline-block bg-altermain text-main w-fit mt-4 md:mt-2"
           >
             Apply Now
           </button>

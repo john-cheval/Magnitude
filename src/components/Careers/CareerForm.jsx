@@ -1,9 +1,15 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { toast } from "react-toastify";
+import { gsap } from "gsap";
 
 const CareerForm = () => {
+  const formRef = useRef(null);
+  const titleRef = useRef(null);
+  const titleChildrenRef = useRef([]);
+  const inputRefs = useRef([]);
+  const buttonRef = useRef(null);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -13,6 +19,53 @@ const CareerForm = () => {
     message: "",
     email: "",
   });
+
+  useEffect(() => {
+    gsap.fromTo(
+      titleChildrenRef.current,
+      { opacity: 0, y: 20 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        stagger: 0.3,
+        scrollTrigger: {
+          trigger: formRef.current,
+          start: "top 80%",
+        },
+      }
+    );
+
+    gsap.fromTo(
+      inputRefs.current,
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        stagger: 0.2,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: formRef.current,
+          start: "top 75%",
+        },
+      }
+    );
+
+    gsap.fromTo(
+      buttonRef.current,
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.3,
+        scrollTrigger: {
+          trigger: formRef.current,
+          start: "top 90%",
+        },
+      }
+    );
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -50,13 +103,9 @@ const CareerForm = () => {
     try {
       const response = await fetch(
         "https://chevaldemo.xyz/demo/magnitude/wp-json/contact-form-7/v1/contact-forms/6/feedback",
-
         {
           method: "POST",
           body: newFormData,
-          // headers: {
-          //   "Content-Type": "multipart/form-data",
-          // },
         }
       );
 
@@ -64,8 +113,6 @@ const CareerForm = () => {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-      // const data = await response.json();
-      // console.log("Form Submitted Successfully:", data);
       toast.success("Form Submitted Successfully");
 
       setFormData({
@@ -82,20 +129,34 @@ const CareerForm = () => {
     }
     console.log("Form Submitted:", formData);
   };
+
   return (
     <section
+      ref={formRef}
       id="career-form"
       className="bg-altermain pt-11 md:pt-16 pb-12 containers"
     >
-      <div className="flex flex-col items-center">
-        <h2 className="main-heading2 mb-5 md:mb-6">
+      <div ref={titleRef} className="flex flex-col items-center">
+        <h2
+          ref={(el) => (titleChildrenRef.current[0] = el)}
+          className="main-heading2 mb-5 md:mb-6"
+        >
           Apply for a Career Opportunity
         </h2>
-        <span className="seperator mb-5 md:mb-6"></span>
-        <h4 className=" text-sm sm:!text-base md:!text-xl lg:!text-2xl description mb-3">
+        <span
+          ref={(el) => (titleChildrenRef.current[1] = el)}
+          className="seperator mb-5 md:mb-6"
+        ></span>
+        <h4
+          ref={(el) => (titleChildrenRef.current[2] = el)}
+          className="text-sm sm:!text-base md:!text-xl lg:!text-2xl description mb-3"
+        >
           Join Our Team
         </h4>
-        <p className="description !text-center md:text-justify">
+        <p
+          ref={(el) => (titleChildrenRef.current[3] = el)}
+          className="description !text-center md:text-justify"
+        >
           We are excited to learn more about you! Please complete the form below
           to apply for a position with us.
         </p>
@@ -104,6 +165,7 @@ const CareerForm = () => {
       <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <input
+            ref={(el) => (inputRefs.current[0] = el)}
             type="text"
             placeholder="First Name"
             required
@@ -116,6 +178,7 @@ const CareerForm = () => {
           />
 
           <input
+            ref={(el) => (inputRefs.current[1] = el)}
             type="text"
             placeholder="Last Name"
             required
@@ -127,7 +190,10 @@ const CareerForm = () => {
             className="input"
           />
 
-          <div className="relative w-full">
+          <div
+            className="relative w-full"
+            ref={(el) => (inputRefs.current[2] = el)}
+          >
             <select
               required
               id="jobType"
@@ -155,11 +221,12 @@ const CareerForm = () => {
 
             <IoIosArrowDown
               size={20}
-              className="absolute right-5 top-1/2 transform -translate-y-1/2 text-main pointer-events-none "
+              className="absolute right-5 top-1/2 transform -translate-y-1/2 text-main pointer-events-none"
             />
           </div>
 
           <input
+            ref={(el) => (inputRefs.current[3] = el)}
             type="text"
             placeholder="Subject"
             required
@@ -172,7 +239,10 @@ const CareerForm = () => {
           />
         </div>
 
-        <div className="relative w-full">
+        <div
+          className="relative w-full"
+          ref={(el) => (inputRefs.current[4] = el)}
+        >
           <input
             type="file"
             id="fileUpload"
@@ -183,7 +253,7 @@ const CareerForm = () => {
           />
 
           <div className="input flex items-center gap-x-5 justify-between pr-[10px] cursor-pointer">
-            <p className="font-helvatica text-sm md:text-base  font-medium leading-[154%]">
+            <p className="font-helvatica text-sm md:text-base font-medium leading-[154%]">
               {formData.resume || "Upload Resume/CV"}{" "}
               <span className="text-[#979797] text-xs md:text-sm">
                 ( PDF, DOC, DOCX. File size limit: 2MB )
@@ -200,6 +270,7 @@ const CareerForm = () => {
         </div>
 
         <textarea
+          ref={(el) => (inputRefs.current[5] = el)}
           type="text"
           placeholder="Message/Additional Notes"
           maxLength={2000}
@@ -211,10 +282,13 @@ const CareerForm = () => {
           className="input"
         />
 
-        <div className="flex justify-center mt-4 md:mt-2">
+        <div
+          className="flex justify-center mt-4 md:mt-2"
+          ref={(el) => (inputRefs.current[6] = el)}
+        >
           <button
             type="submit"
-            className="text-sm uppercase  px-9 py-4 text-center inline-block w-fit bg-main text-altermain mx-auto"
+            className="text-sm uppercase px-9 py-4 text-center inline-block w-fit bg-main text-altermain mx-auto"
           >
             Submit Your Application
           </button>

@@ -1,8 +1,14 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
+import { gsap } from "gsap";
 
 const ContactForm = () => {
+  const locationRef = useRef(null);
+  const titleRef = useRef(null);
+  const inputRefs = useRef([]);
+  const buttonRef = useRef(null);
+
   const [formData, setFormData] = useState({
     firstName: "",
     lasstName: "",
@@ -11,6 +17,51 @@ const ContactForm = () => {
     message: "",
   });
 
+  useEffect(() => {
+    gsap.fromTo(
+      titleRef.current,
+      { opacity: 0, y: -50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        scrollTrigger: {
+          trigger: locationRef.current,
+          start: "top 80%",
+        },
+      }
+    );
+
+    gsap.fromTo(
+      inputRefs.current,
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        stagger: 0.2,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: locationRef.current,
+          start: "top 75%",
+        },
+      }
+    );
+
+    gsap.fromTo(
+      buttonRef.current,
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.3,
+        scrollTrigger: {
+          trigger: locationRef.current,
+          start: "top 90%",
+        },
+      }
+    );
+  }, []);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -35,9 +86,6 @@ const ContactForm = () => {
         {
           method: "POST",
           body: newformData,
-          // headers: {
-          //   "Content-Type": "multipart/form-data",
-          // },
         }
       );
 
@@ -45,8 +93,6 @@ const ContactForm = () => {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-      // const data = await response.json();
-      // console.log("Form Submitted Successfully:", data);
       toast.success("Form Submitted Successfully");
 
       setFormData({
@@ -57,19 +103,26 @@ const ContactForm = () => {
         message: "",
       });
     } catch (e) {
-      console.log("Error submitting form:", e.message);
+      toast.error("Error submitting form");
     }
   };
 
   return (
-    <section className="bg-altermain pt-16 pb-12  md:py-12  containers">
-      <h3 className="main-heading2 mb-6  text-center md:text-left">
+    <section
+      ref={locationRef}
+      className="bg-altermain pt-16 pb-12  md:py-12  containers"
+    >
+      <h3
+        ref={titleRef}
+        className="main-heading2 mb-6  text-center md:text-left"
+      >
         Enquire Now
       </h3>
       <span className="seperator mb-7  mx-auto md:mx-0"></span>
       <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <input
+            ref={(el) => (inputRefs.current[0] = el)}
             type="text"
             placeholder="First Name"
             required
@@ -82,6 +135,7 @@ const ContactForm = () => {
           />
 
           <input
+            ref={(el) => (inputRefs.current[1] = el)}
             type="text"
             placeholder="Last Name"
             required
@@ -94,6 +148,7 @@ const ContactForm = () => {
           />
 
           <input
+            ref={(el) => (inputRefs.current[2] = el)}
             type="number"
             placeholder="Phone"
             required
@@ -106,6 +161,7 @@ const ContactForm = () => {
           />
 
           <input
+            ref={(el) => (inputRefs.current[3] = el)}
             type="email"
             placeholder="email"
             required
@@ -121,6 +177,7 @@ const ContactForm = () => {
         <textarea
           type="text"
           placeholder="Message"
+          ref={(el) => (inputRefs.current[4] = el)}
           maxLength={2000}
           rows={5}
           id="message"
@@ -132,6 +189,7 @@ const ContactForm = () => {
 
         <div className="flex justify-center mt-3 ">
           <button
+            ref={buttonRef}
             type="submit"
             className="text-sm uppercase  px-9 py-4 text-center inline-block w-fit bg-main text-altermain mx-auto"
           >

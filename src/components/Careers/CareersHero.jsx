@@ -1,24 +1,55 @@
 "use client";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import heroImage from "../../../public/Careers/hero.png";
-import { usePathname } from "next/navigation";
+import { gsap } from "gsap";
 
 const CareersHero = ({ title, bannerImage }) => {
-  const pathname = usePathname();
+  const headingRef = useRef(null);
+  const sectionRef = useRef(null);
+  const imageRef = useRef(null);
 
-  const pathSegments = pathname.split("/").filter(Boolean);
-  const titles =
-    pathSegments.length === 1
-      ? "Careers"
-      : pathSegments[pathSegments.length - 1];
+  useEffect(() => {
+    gsap.fromTo(
+      headingRef.current,
+      { opacity: 0, y: -50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
+      }
+    );
+
+    gsap.fromTo(
+      imageRef.current,
+      { opacity: 0, y: -30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        delay: 0.2,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
+      }
+    );
+  }, []);
 
   return (
-    <section className="containers pt-28 md:pt-40 lg:pt-44">
-      <h1 className="main-heading !text-altermain capitalize text-center md:text-left ">
-        {title || titles}
+    <section ref={sectionRef} className="containers pt-28 md:pt-40 lg:pt-44">
+      <h1
+        ref={headingRef}
+        className="main-heading !text-altermain capitalize text-center md:text-left "
+      >
+        {title}
       </h1>
       <Image
+        ref={imageRef}
         src={bannerImage || heroImage}
         alt={title}
         width={0}
