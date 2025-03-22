@@ -6,30 +6,57 @@ import Link from "next/link";
 import { LiaLinkedinIn } from "react-icons/lia";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 gsap.registerPlugin(ScrollTrigger);
 
 const Footer = () => {
   const footerRef = useRef(null);
   const fadeElementsRef = useRef([]);
+
   useEffect(() => {
     const elements = fadeElementsRef.current;
 
-    gsap.fromTo(
-      elements,
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        stagger: 0.2,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: footerRef.current,
-          start: "top 85%",
-        },
-      }
-    );
+    const trigger = ScrollTrigger.create({
+      trigger: footerRef.current,
+      start: "top 85%",
+      onEnter: () => {
+        gsap.fromTo(
+          elements,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            stagger: 0.2,
+            ease: "power2.out",
+          }
+        );
+      },
+    });
+
+    const footer = footerRef.current;
+    const rect = footer.getBoundingClientRect();
+    const isInView = rect.top < window.innerHeight && rect.bottom >= 0;
+
+    if (isInView) {
+      gsap.fromTo(
+        elements,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.2,
+          ease: "power2.out",
+        }
+      );
+    }
+
+    return () => {
+      trigger.kill();
+    };
   }, []);
+
   return (
     <footer
       ref={footerRef}
