@@ -1,9 +1,17 @@
+"use client";
+import useIsMobile from "@/hooks/useIsMobile";
 import Image from "next/image";
 import React from "react";
 
 const SectionOne = ({ serviceData }) => {
+  const isMobile = useIsMobile();
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2">
+    <div
+      className={`grid grid-cols-1 md:grid-cols-2 ${
+        isMobile ? "" : "containers"
+      }`}
+    >
       <Image
         src={serviceData?.image}
         alt={serviceData?.title}
@@ -13,17 +21,19 @@ const SectionOne = ({ serviceData }) => {
         sizes="100vw"
       />
 
-      <div className={` px-20 py-12  bg-[#f5f5f5]`}>
-        <h2 className="main-heading2 mb-6">{serviceData?.title}</h2>
+      <div
+        className={` px-7 md:px-14 lg:px-16 py-12  bg-[#f5f5f5] flex flex-col items-center md:items-start`}
+      >
+        <h2 className="main-heading2 mb-4 md:mb-6">{serviceData?.title}</h2>
         <span className="block w-14 h-[2px]   bg-altermain mb-5"></span>
-        <h3 className="text-2xl  leading-[160%] mb-4">
+        <h3 className="text-sm sm:!text-lg  !text-center md:!text-left lg:text-2xl  leading-[160%] mb-4">
           {serviceData?.sub_title}
         </h3>
         <div
           dangerouslySetInnerHTML={{
             __html: serviceData?.description,
           }}
-          className="description max-w-[348px]-- mb-2"
+          className="description  !text-center md:!text-justify"
         ></div>
       </div>
     </div>

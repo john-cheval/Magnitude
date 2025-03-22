@@ -31,14 +31,14 @@ const ServiceInner = ({ serviceData }) => {
   };
 
   return (
-    <section className="pt-44 ">
+    <section className="pt-28 md:pt-40 lg:pt-44 ">
       <div className="containers">
-        <div className="flex  justify-between px-36">
+        <div className="flex  justify-between lg:px-16 xl:px-36">
           {Object.values(sectionMap).map((section) => (
             <Link
               key={section}
               href={`/services/${section.toLowerCase().replace(" ", "-")}`}
-              className={`text-center text-2xl leading-[150%] transition-colors duration-300 ${
+              className={`text-center text-sm sm:text-base md:text-xl lg:text-2xl leading-[150%] transition-colors duration-300 ${
                 active === section ? "text-altermain" : "text-[#BDBDBD]"
               }`}
             >
@@ -48,7 +48,7 @@ const ServiceInner = ({ serviceData }) => {
         </div>
       </div>
 
-      <div className="mt-8 transition-opacity duration-500 opacity-100">
+      <div className="mt-3 md:mt-8 transition-opacity duration-500 opacity-100">
         {renderComponent()}
       </div>
     </section>

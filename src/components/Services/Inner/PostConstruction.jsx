@@ -7,7 +7,7 @@ import SectionThree from "./SectionThree";
 const PostConstruction = ({ serviceData }) => {
   return (
     <>
-      <section className=" containers pt-16 text-altermain">
+      <section className="  pt-6 lg:pt-16 text-altermain">
         <SectionOne serviceData={serviceData[0]?.list[0]} />
         <SectionTwo serviceData={serviceData[0]?.list[1]} layout={false} />
         <SectionWhatWeOffer serviceList={serviceData[1]?.list[0]} />
