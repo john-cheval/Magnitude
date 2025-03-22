@@ -11,14 +11,22 @@ export async function generateMetadata({ params }) {
 }
 const CarrerInnerPage = async ({ params }) => {
   const paramsID = (await params).id;
+
   const careersBannerData = await fetchData(
-    `https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/careers_categorye`
+    `https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/careers_category_detail?slug=${paramsID}`
   );
-  console.log(paramsID, "ihuihdfugug");
+
+  const careersList = await fetchData(
+    `https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/careers_list`
+  );
+
   return (
     <>
-      <CareersHero />
-      <CareersJobList />
+      <CareersHero
+        title={careersBannerData?.name}
+        bannerImage={careersBannerData?.banner}
+      />
+      <CareersJobList careersList={careersList} />
       <CareerForm />
     </>
   );

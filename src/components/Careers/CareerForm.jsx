@@ -133,6 +133,7 @@ const CareerForm = () => {
   return (
     <section
       ref={formRef}
+      id="career-form"
       className="bg-altermain pt-11 md:pt-16 pb-12 containers"
     >
       <div ref={titleRef} className="flex flex-col items-center">
