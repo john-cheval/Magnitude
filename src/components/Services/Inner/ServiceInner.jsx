@@ -1,13 +1,17 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import PreConstruction from "./PreConstruction";
 import DuringConstruction from "./DuringConstruction";
 import PostConstruction from "./PostConstruction";
+import { gsap } from "gsap";
 
 const ServiceInner = ({ serviceData }) => {
   const pathname = usePathname();
+  const sectionRef = useRef(null);
+  const navLinksRef = useRef([]);
+  const contentRef = useRef(null);
 
   const sectionMap = {
     "/services/pre-construction": "Pre-Construction",
@@ -30,15 +34,49 @@ const ServiceInner = ({ serviceData }) => {
     }
   };
 
+  useEffect(() => {
+    gsap.fromTo(
+      navLinksRef.current,
+      { opacity: 0, y: 20 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        stagger: 0.2,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
+      }
+    );
+
+    gsap.fromTo(
+      contentRef.current,
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
+      }
+    );
+  }, [active]);
+
   return (
-    <section className="pt-44 ">
+    <section ref={sectionRef} className="pt-28 md:pt-40 lg:pt-44 ">
       <div className="containers">
-        <div className="flex  justify-between px-36">
-          {Object.values(sectionMap).map((section) => (
+        <div className="flex  justify-between lg:px-16 xl:px-36">
+          {Object.values(sectionMap).map((section, index) => (
             <Link
               key={section}
+              ref={(el) => (navLinksRef.current[index] = el)}
               href={`/services/${section.toLowerCase().replace(" ", "-")}`}
-              className={`text-center text-2xl leading-[150%] transition-colors duration-300 ${
+              className={`text-center text-sm sm:text-base md:text-xl lg:text-2xl leading-[150%] transition-colors duration-300 ${
                 active === section ? "text-altermain" : "text-[#BDBDBD]"
               }`}
             >
@@ -48,7 +86,10 @@ const ServiceInner = ({ serviceData }) => {
         </div>
       </div>
 
-      <div className="mt-8 transition-opacity duration-500 opacity-100">
+      <div
+        ref={contentRef}
+        className="mt-3 md:mt-8 transition-opacity duration-500 opacity-100"
+      >
         {renderComponent()}
       </div>
     </section>

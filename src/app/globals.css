@@ -94,12 +94,12 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .containers {
-  padding-inline: 133px;
+  padding-inline: 110px;
 }
 
 @media (max-width: 1024px) {
   .containers {
-    padding-inline: 80px;
+    padding-inline: 60px;
   }
 }
 
@@ -112,7 +112,7 @@ input[type="number"]::-webkit-outer-spin-button {
   @apply text-xl sm:text-2xl md:text-4xl lg:text-5xl text-main leading-normal;
 }
 .main-heading2 {
-  @apply text-lg sm:text-2xl md:text-3xl lg:text-[40px] text-center md:text-left  leading-normal;
+  @apply text-lg sm:text-2xl  xl:text-[40px] text-center md:text-left  leading-normal;
 }
 
 .main-heading3 {
@@ -142,7 +142,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .description p:first-child {
-  @apply max-w-[432px] mb-5;
+  @apply md:max-w-[432px] mb-5;
 }
 
 .list ul li {
@@ -163,16 +163,21 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .serviceKey h4 {
-  @apply text-base font-helvatica font-medium leading-[186%] mb-6;
+  @apply text-sm md:text-base font-helvatica font-normal md:font-medium leading-[186%] -ml-9 md:-ml-0 mb-6 text-center md:text-left;
   background-image: url("/common/list.svg");
   background-repeat: no-repeat;
   background-position: left center;
   background-size: 21px;
   padding-left: 33px;
 }
+@media (max-width: 768px) {
+  .serviceKey h4 {
+    background-image: none;
+  }
+}
 
 .serviceKey p {
-  @apply description max-w-[413px] mb-2;
+  @apply description max-w-[413px] !text-center md:!text-justify mb-2;
 }
 
 .list2 ul li {
@@ -185,7 +190,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .list2 h4 {
-  @apply text-base font-helvatica font-medium leading-[186%];
+  @apply text-sm md:text-base font-helvatica font-medium leading-[186%];
 }
 
 .list2 p {
@@ -193,7 +198,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .why h4 {
-  @apply text-base font-helvatica font-medium leading-[186%] mb-2;
+  @apply text-base font-helvatica font-medium leading-[186%] mb-2 text-center md:text-left;
   background-image: url("/common/listTYpeWhite.svg");
   background-repeat: no-repeat;
   background-position: left center;
@@ -201,10 +206,18 @@ input[type="number"]::-webkit-outer-spin-button {
   padding-left: 33px;
 }
 
-.why p {
-  @apply text-base text-justify font-helvatica font-light leading-[186%] mb-2;
+.why p,
+.why p:nth-child(2) {
+  @apply text-sm  md:text-base !text-center md:!text-justify font-helvatica font-light leading-[186%] mb-2;
 }
 
 .why:has(h4) {
   display: block;
+}
+
+@media (max-width: 768px) {
+  .serviceKey h4,
+  .why h4 {
+    background-image: none;
+  }
 }
