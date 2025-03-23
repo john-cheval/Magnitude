@@ -38,6 +38,8 @@ module.exports = {
         aboutBgGrad: "linear-gradient(0deg, #000 0%, rgba(0, 0, 0, 0.00) 100%)",
         serviceHeroGrad:
           "linear-gradient(120deg, rgba(0, 0, 0, 0.93) 0.27%, rgba(0, 0, 0, 0.00) 75.73%)",
+        serviceHeroGrad2:
+          "linear-gradient(0deg, rgba(0, 0, 0, 0.93) 0.27%, rgba(0, 0, 0, 0.00) 99.73%)",
         contactTopGrad:
           "linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0.00) 100%)",
       },

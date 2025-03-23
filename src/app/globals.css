@@ -94,12 +94,12 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .containers {
-  padding-inline: 123px;
+  padding-inline: 110px;
 }
 
 @media (max-width: 1024px) {
   .containers {
-    padding-inline: 80px;
+    padding-inline: 60px;
   }
 }
 
@@ -142,7 +142,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .description p:first-child {
-  @apply max-w-[432px] mb-5;
+  @apply md:max-w-[432px] mb-5;
 }
 
 .list ul li {
