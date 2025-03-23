@@ -138,7 +138,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .description {
-  @apply text-base text-justify font-helvatica font-light leading-[186%];
+  @apply text-xs sm:text-sm md:text-base text-justify font-helvatica font-light leading-[186%];
 }
 
 .description p:first-child {
@@ -159,7 +159,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .description p:last-of-type {
-  @apply text-base text-justify font-helvatica font-light leading-[186%];
+  @apply text-xs sm:text-sm md:text-base text-justify font-helvatica font-light leading-[186%];
 }
 
 .serviceKey h4 {
@@ -190,7 +190,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .list2 h4 {
-  @apply text-sm md:text-base font-helvatica font-medium leading-[186%];
+  @apply text-xs sm:text-sm  md:text-base font-helvatica font-medium leading-[186%];
 }
 
 .list2 p {
@@ -208,7 +208,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .why p,
 .why p:nth-child(2) {
-  @apply text-sm  md:text-base !text-center md:!text-justify font-helvatica font-light leading-[186%] mb-2;
+  @apply text-xs sm:text-sm  md:text-base !text-center md:!text-justify font-helvatica font-light leading-[186%] mb-2;
 }
 
 .why:has(h4) {
@@ -219,5 +219,15 @@ input[type="number"]::-webkit-outer-spin-button {
   .serviceKey h4,
   .why h4 {
     background-image: none;
+  }
+}
+
+.about p {
+  @apply text-xs sm:text-sm md:text-base md:!text-justify font-helvatica font-light leading-[186%] !text-center;
+}
+
+@media (min-width: 900px) {
+  .whychoose {
+    padding-top: 70%;
   }
 }
