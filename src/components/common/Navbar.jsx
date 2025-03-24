@@ -7,7 +7,6 @@ import { RiMenu3Fill } from "react-icons/ri";
 import { IoMdClose } from "react-icons/io";
 import { usePathname } from "next/navigation";
 import MobileNav from "./MobileNav";
-import { gsap } from "gsap";
 
 const Navbar = ({ navLeft, navRight, mobileMenu }) => {
   const pathname = usePathname();
@@ -42,7 +41,7 @@ const Navbar = ({ navLeft, navRight, mobileMenu }) => {
       }`}
     >
       <nav className="flex justify-between items-center">
-        <ul className="md:flex items-center gap-x-10 hidden  ">
+        {/* <ul className="md:flex items-center gap-x-10 hidden  ">
           {navLeft &&
             navLeft?.map((link) => {
               const isActive =
@@ -59,6 +58,32 @@ const Navbar = ({ navLeft, navRight, mobileMenu }) => {
                         : ""
                     }`}
                     href={link.url}
+                  >
+                    {link.title}
+                  </Link>
+                </li>
+              );
+            })}
+        </ul> */}
+
+        <ul className="md:flex items-center gap-x-10 hidden">
+          {navLeft &&
+            navLeft.map((link) => {
+              const isActive =
+                link.url === "/"
+                  ? pathname === "/"
+                  : pathname.startsWith(link.url);
+
+              return (
+                <li key={link.id}>
+                  <Link
+                    href={link.url}
+                    className={`text-sm uppercase relative transition-all duration-300 
+              ${isActive ? "text-white" : ""} 
+              after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 
+              after:bottom-[-9px] after:w-[17px] after:h-[1px] after:bg-white 
+              after:opacity-0 after:transition-all after:duration-300 
+              ${isActive ? "after:opacity-100" : "hover:after:opacity-100"}`}
                   >
                     {link.title}
                   </Link>
@@ -89,11 +114,16 @@ const Navbar = ({ navLeft, navRight, mobileMenu }) => {
               return (
                 <li key={link.id}>
                   <Link
-                    className={`text-sm uppercase relative transition-all duration-300 ${
-                      isActive
-                        ? "text-white after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-[-9px] after:w-[17px] after:h-[1px] after:bg-white"
-                        : ""
-                    }`}
+                    className={`text-sm uppercase relative transition-all duration-300 
+                      ${isActive ? "text-white" : ""} 
+                      after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 
+                      after:bottom-[-9px] after:w-[17px] after:h-[1px] after:bg-white 
+                      after:opacity-0 after:transition-all after:duration-300 
+                      ${
+                        isActive
+                          ? "after:opacity-100"
+                          : "hover:after:opacity-100"
+                      }`}
                     href={link.url}
                   >
                     {link.title}

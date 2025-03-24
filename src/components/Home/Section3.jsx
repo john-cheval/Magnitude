@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 import Image from "next/image";
-import gsap from "gsap";
+import gsap, { Power3 } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 const Section3 = ({ title, serviceData }) => {
@@ -17,7 +17,8 @@ const Section3 = ({ title, serviceData }) => {
       scrollTrigger: {
         trigger: sectionRef.current,
         start: "top top",
-        end: "+=300%",
+        // end: "+=300%",
+        end: "bottom+=100% top",
         scrub: true,
         pin: true,
       },
@@ -27,41 +28,44 @@ const Section3 = ({ title, serviceData }) => {
       titleRef.current,
 
       {
-        scale: 8,
-        opacity: 0,
-        duration: 1.5,
-        ease: "power3.out",
+        scale: 1000,
+
+        ease: Power3.easeOut,
       }
     );
 
     cardsRef.current.forEach((card, index) => {
-      tl.fromTo(
+      gsap.fromTo(
         card,
-        { opacity: 0, y: 100 },
-        { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
-        `-=0.5`
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          ease: Power3.easeOut,
+          duration: 1,
+          delay: index * 0.3,
+          scrollTrigger: {
+            trigger: card,
+            start: "top 80%",
+            toggleActions: "play none none reverse",
+          },
+        }
       );
     });
   }, []);
   return (
-    <section
-      ref={sectionRef}
-      className="relative bg-altermain-- w-full min-h-screen flex flex-col items-center justify-center"
-    >
-      <div className="bg-altermain w-full h-[100vh]  h-[860px]-- h-screen--  flex items-center justify-center">
+    <section ref={sectionRef} className="relative w-full h-full  ">
+      <div className="bg-altermain-- w-full h-[100dvh]   flex items-center justify-center overflow-hidden">
         <h3
           ref={titleRef}
-          className="text-center text-[12vw]  lg:text-[110px] xl:text-[150px] font-bold uppercase"
+          className="text-center text-altermain text-[40px] sm:text-[80px] md:text-[100px]   xl:text-[150px] font-bold uppercase"
         >
           {title}
         </h3>
       </div>
 
-      <div
-        id="pinnedWorks"
-        className="relative pt-8-- md:pt-12-- xl:pt-14-- h-fit w-screen overflow-hidden"
-      >
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-6 containers pt-16 lg:pt-[120px] pb-[93px] relative">
+      <div className="relative  h-fit w-screen overflow-hidden">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-6 containers relative pb-20">
           {homeCardData?.map((cardData, index) => (
             <div
               ref={(el) => (cardsRef.current[index] = el)}

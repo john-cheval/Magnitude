@@ -47,7 +47,7 @@ const Section4 = ({ imageUrl, homeCardData }) => {
   return (
     <>
       <section
-        className=" h-screen--  relative pt-[80%] md:pt-[70%] lg:pt-[700px] pb-20 bg-altermain"
+        className=" h-screen--  relative pt-[80%] md:pt-[70%] lg:pt-[60%] pb-20 bg-altermain"
         style={{
           backgroundImage: `url(${imageUrl})`,
           backgroundSize: "100% auto",
