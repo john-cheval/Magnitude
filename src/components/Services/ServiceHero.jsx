@@ -83,7 +83,7 @@ const ServiceHero = ({ title, small_heading, description, bannerImage }) => {
           className="w-full h-[450px] md:h-auto md:max-h-[530px]-- object-cover mt-5 md:mt-8 lg:mt-10"
         />
 
-        <div className="absolute z-50 bottom-10 md:bottom-0 md:top-1/2 left-6 right-4 md:left-10 lg:left-20 md:-translate-y-1/2 space-y-5 flex flex-col items-center md:items-start">
+        <div className="absolute z-50 about-her md:top-1/2 left-6 right-4 md:left-10 lg:left-20 md:-translate-y-1/2 space-y-5 flex flex-col items-center md:items-start">
           <h2
             className="main-heading2 "
             ref={(el) => (textRefs.current[0] = el)}
@@ -95,7 +95,7 @@ const ServiceHero = ({ title, small_heading, description, bannerImage }) => {
             ref={(el) => (textRefs.current[1] = el)}
           ></span>
           <p
-            className="description max-w-[413px]"
+            className="description !text-center md:!textleft   max-w-[413px]"
             ref={(el) => (textRefs.current[2] = el)}
           >
             {description}

@@ -44,20 +44,20 @@ const SectionTwo = ({ serviceData, layout }) => {
   return (
     <div
       ref={sectionRef}
-      className={`grid grid-cols-1 md:grid-cols-2  ${
-        isMobile ? "" : "containers mt-9"
-      }`}
+      className={`grid grid-cols-12  ${isMobile ? "" : "containers mt-9"}`}
     >
       {layout && (
-        <Image
-          src={serviceData?.image}
-          alt={serviceData?.title}
-          ref={imageRef}
-          width={0}
-          height={0}
-          className="w-full h-full max-w-[553px]-- max-h-[404px]-- object-cover"
-          sizes="100vw"
-        />
+        <div className="col-span-12 md:col-span-6  lg:col-span-7">
+          <Image
+            src={serviceData?.image}
+            alt={serviceData?.title}
+            ref={imageRef}
+            width={0}
+            height={0}
+            className="w-full h-full max-w-[553px]-- max-h-[404px]-- object-cover"
+            sizes="100vw"
+          />
+        </div>
       )}
 
       {isMobile && !layout && (
@@ -72,7 +72,9 @@ const SectionTwo = ({ serviceData, layout }) => {
         />
       )}
       <div
-        className={` px-7 md:px-14 lg:px-20 py-12 bg-[#f5f5f5] flex flex-col items-center md:items-start justify-center`}
+        className={` px-7 md:px-14 lg:px-20 py-12 bg-[#f5f5f5] flex flex-col items-center md:items-start justify-center col-span-12 md:col-span-6  ${
+          layout ? "lg:col-span-5" : "lg:col-span-7"
+        }`}
       >
         <h2
           ref={(el) => (textRefs.current[0] = el)}
@@ -93,15 +95,17 @@ const SectionTwo = ({ serviceData, layout }) => {
       </div>
 
       {!isMobile && !layout && (
-        <Image
-          src={serviceData?.image}
-          alt={serviceData?.title}
-          width={0}
-          ref={imageRef}
-          height={0}
-          className="w-full h-full max-w-[553px]-- max-h-[404px]-- object-cover"
-          sizes="100vw"
-        />
+        <div className="col-span-12 md:col-span-6  lg:col-span-5">
+          <Image
+            src={serviceData?.image}
+            alt={serviceData?.title}
+            width={0}
+            ref={imageRef}
+            height={0}
+            className="w-full h-full max-w-[553px]-- hidden md:block max-h-[404px]-- object-cover"
+            sizes="100vw"
+          />
+        </div>
       )}
     </div>
   );

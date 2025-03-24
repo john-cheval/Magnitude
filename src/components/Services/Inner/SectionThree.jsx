@@ -50,7 +50,7 @@ const SectionThree = ({ data, layout = false }) => {
       }`}
     >
       <div
-        className={`grid grid-cols-1 md:grid-cols-2 containers ${
+        className={`grid grid-cols-1 md:grid-cols-2 containers-- ${
           layout ? "gap-x-32" : "gap-x-[72px]"
         } `}
       >

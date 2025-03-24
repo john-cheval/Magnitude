@@ -1,11 +1,13 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
-import gsap, { Power3 } from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const Section3 = ({ title, serviceData }) => {
   const homeCardData = Object?.values(serviceData);
+  const router = useRouter();
 
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
@@ -51,9 +53,15 @@ const Section3 = ({ title, serviceData }) => {
         className="relative  h-fit w-screen overflow-hidden"
         id="pinnedWorks"
       >
-        <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-x-4 gap-y-6 containers relative pt-8 md:pt-12 xl:pt-14 pb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-6 containers relative pt-8 md:pt-12 xl:pt-14 pb-20">
           {homeCardData?.map((cardData, index) => (
-            <div className="space-y-4 lg:space-y-6" key={cardData?.ID || index}>
+            <Link
+              href={`/services/${cardData?.post_name}`}
+              className="space-y-4 lg:space-y-6 cursor-pointer"
+              prefetch={true}
+              key={cardData?.ID || index}
+              onClick={() => router.push(`/services/${cardData?.post_name}`)}
+            >
               <Image
                 src={cardData?.home_page_image}
                 alt={cardData?.post_title}
@@ -67,7 +75,7 @@ const Section3 = ({ title, serviceData }) => {
                 {cardData?.post_title}
               </h5>
               <span className="seperator2Dark"></span>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

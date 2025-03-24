@@ -26,13 +26,13 @@ const HomeHero = ({ title, link, linkText, videoUrl }) => {
     );
   }, []);
   return (
-    <section ref={sectionRef} className=" h-screen overflow-hidden relative">
+    <section ref={sectionRef} className=" h-screen-- overflow-hidden relative">
       <video
         autoPlay
         loop
         muted
         preload="auto"
-        className="w-screen h-full object-cover"
+        className="w-screen h-[285px] md:h-full md:max-h-[288px]-- object-cover"
       >
         <source src={videoUrl} type="video/mp4" />
       </video>
@@ -40,7 +40,7 @@ const HomeHero = ({ title, link, linkText, videoUrl }) => {
       <div className="absolute bottom-7 md:bottom-[76px] left-1/2 -translate-x-1/2 space-y-4 md:space-y-6 lg:space-y-9 z-50">
         <h1
           ref={textRef}
-          className="text-lg sm:text-xl md:text-2xl lg:text-3xl"
+          className="text-lg  sm:text-xl md:text-2xl lg:text-3xl"
         >
           {" "}
           {title}
@@ -50,9 +50,9 @@ const HomeHero = ({ title, link, linkText, videoUrl }) => {
         </div>
       </div>
 
-      <div className="absolute w-full h-full max-h-[288px] bg-homeHero2 top-0 left-0 z-40" />
+      <div className="absolute w-full h-full hidden md:block max-h-[288px] bg-homeHero2 top-0 left-0 z-40" />
 
-      <div className="absolute w-full h-full max-h-[288px] bg-homeHero bottom-0 left-0 z-40" />
+      <div className="absolute w-full h-full max-h-[288px] bg-homeHero bottom-0 left-0 z-40 hidden md:block" />
     </section>
   );
 };
