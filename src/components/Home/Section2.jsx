@@ -1,21 +1,117 @@
-import React from "react";
+"use client";
+import React, { useEffect, useRef } from "react";
 import FillButton from "../common/FillButton";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import useIsMobile from "@/hooks/useIsMobile";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Section2 = ({ title, desc, imageUrl }) => {
-  return (
-    <section
-      className="h-screen--  bg-cover bg-center"
-      style={{ backgroundImage: `url(${imageUrl})` }}
-    >
-      <div className="flex flex-col pt-28 pb-24 items-center sm:items-start containers justify-center h-full gap-y-6">
-        <h2 className="main-heading">{title}</h2>
-        <span className="seperator"></span>
-        <div
-          dangerouslySetInnerHTML={{ __html: desc }}
-          className="description max-w-[467px]"
-        />
+  const isMobile = useIsMobile();
+  const sectionRef = useRef(null);
+  const desktopContentRefs = useRef([]);
+  const mobileContentRefs = useRef([]);
 
-        <FillButton link="/about" text="Read More" />
+  useEffect(() => {
+    const contentRefs = isMobile ? mobileContentRefs : desktopContentRefs;
+
+    if (!contentRefs.current.length) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        contentRefs.current,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.3,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 80%",
+          },
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, [isMobile]);
+
+  return (
+    <section ref={sectionRef} className="relative">
+      <div
+        className="hidden md:block absolute inset-0"
+        style={{
+          backgroundImage: `url(${imageUrl})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center bottom",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent" />
+      </div>
+
+      {isMobile && (
+        <div className="block md:hidden">
+          <div className="containers bg-altermain py-10 flex flex-col items-center gap-y-6">
+            <h2
+              ref={(el) => (mobileContentRefs.current[0] = el)}
+              className="main-heading"
+            >
+              {title}
+            </h2>
+            <span
+              ref={(el) => (mobileContentRefs.current[1] = el)}
+              className="seperator"
+            ></span>
+            <div
+              ref={(el) => (mobileContentRefs.current[2] = el)}
+              dangerouslySetInnerHTML={{ __html: desc }}
+              className="home"
+            />
+            <FillButton
+              ref={(el) => (mobileContentRefs.current[3] = el)}
+              link="/about"
+              text="Read More"
+            />
+          </div>
+          <div
+            className="h-64 bg-cover bg-center"
+            style={{
+              backgroundImage: `url(${imageUrl})`,
+              backgroundSize: "cover",
+              backgroundPosition: "right center",
+              backgroundRepeat: "no-repeat",
+            }}
+          ></div>
+        </div>
+      )}
+
+      <div className="hidden md:flex containers relative z-10 h-screen items-center">
+        <div className="flex flex-col gap-y-6 max-w-lg">
+          <h2
+            ref={(el) => (desktopContentRefs.current[0] = el)}
+            className="main-heading"
+          >
+            {title}
+          </h2>
+          <span
+            ref={(el) => (desktopContentRefs.current[1] = el)}
+            className="seperator"
+          ></span>
+          <div
+            ref={(el) => (desktopContentRefs.current[2] = el)}
+            dangerouslySetInnerHTML={{ __html: desc }}
+            className="description max-w-[467px]"
+          />
+          <FillButton
+            ref={(el) => (desktopContentRefs.current[3] = el)}
+            link="/about"
+            text="Read More"
+          />
+        </div>
       </div>
     </section>
   );

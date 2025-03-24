@@ -131,14 +131,14 @@ input[type="number"]::-webkit-outer-spin-button {
   @apply w-12 h-[2px]  block bg-main;
 }
 .description {
-  @apply text-xs sm:text-base text-justify font-helvatica font-light leading-[186%];
+  @apply text-sm sm:text-base text-justify font-helvatica font-light leading-[186%];
 }
 .input {
   @apply outline-none bg-transparent border border-main placeholder:text-main leading-[154%] font-medium placeholder:font-medium text-main py-5 md:py-6 px-5 md:px-7 w-full;
 }
 
 .description {
-  @apply text-xs sm:text-sm md:text-base text-justify font-helvatica font-light leading-[186%];
+  @apply text-sm md:text-base text-justify font-helvatica font-light leading-[186%];
 }
 
 .description p:first-child {
@@ -159,7 +159,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .description p:last-of-type {
-  @apply text-xs sm:text-sm md:text-base text-justify font-helvatica font-light leading-[186%];
+  @apply text-sm md:text-base text-justify font-helvatica font-light leading-[186%];
 }
 
 .serviceKey h4 {
@@ -190,7 +190,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .list2 h4 {
-  @apply text-xs sm:text-sm  md:text-base font-helvatica font-medium leading-[186%];
+  @apply text-sm  md:text-base font-helvatica font-medium leading-[186%];
 }
 
 .list2 p {
@@ -208,7 +208,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .why p,
 .why p:nth-child(2) {
-  @apply text-xs sm:text-sm  md:text-base !text-center md:!text-justify font-helvatica font-light leading-[186%] mb-2;
+  @apply text-sm  md:text-base !text-center md:!text-justify font-helvatica font-light leading-[186%] mb-2;
 }
 
 .why:has(h4) {
@@ -223,11 +223,18 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .about p {
-  @apply text-xs sm:text-sm md:text-base md:!text-justify font-helvatica font-light leading-[186%] !text-center;
+  @apply text-sm md:text-base md:!text-justify font-helvatica font-light leading-[186%] !text-center;
+}
+.home p {
+  @apply text-sm md:text-base md:!text-justify font-helvatica font-light leading-[186%] !text-center;
 }
 
 @media (min-width: 900px) {
   .whychoose {
     padding-top: 70%;
   }
+}
+
+.home2 p {
+  @apply text-sm md:text-base text-center md:text-justify font-helvatica font-light leading-[186%];
 }

@@ -50,7 +50,7 @@ function Section2({ emailAddress, address, phoneList, title }) {
         <div className="mt-3 md:mt-4 space-y-3 md:space-y-4">
           <Link
             href={`mailto:${emailAddress}`}
-            className="flex items-center justify-center font-helvatica gap-x-2 font-light leading-[186%] fade-item text-xs  sm:text-base"
+            className="flex items-center justify-center font-helvatica gap-x-2 font-light leading-[186%] fade-item text-sm  sm:text-base"
           >
             <IoMail color="#fff" /> {emailAddress}
           </Link>
@@ -58,7 +58,7 @@ function Section2({ emailAddress, address, phoneList, title }) {
           <div className="flex items-center gap-x-0 md:gap-x-3 fade-item">
             <Link
               href={`tel:${phoneList[0]?.phone_number}`}
-              className="flex items-center font-helvatica gap-x-1 md:gap-x-2 font-light leading-[186%] text-xs  sm:text-base"
+              className="flex items-center font-helvatica gap-x-1 md:gap-x-2 font-light leading-[186%] text-sm  sm:text-base"
             >
               <RiPhoneFill color="#fff" />
               {phoneList[0]?.title} {phoneList[0]?.phone_number}
@@ -66,7 +66,7 @@ function Section2({ emailAddress, address, phoneList, title }) {
             |
             <Link
               href={`tel:${phoneList[1]?.phone_number}`}
-              className="flex items-center font-helvatica gap-x-0 md:gap-x-2 font-light leading-[186%] text-xs  sm:text-base"
+              className="flex items-center font-helvatica gap-x-0 md:gap-x-2 font-light leading-[186%] text-sm  sm:text-base"
             >
               {phoneList[1]?.title} {phoneList[1]?.phone_number}
             </Link>
@@ -75,7 +75,7 @@ function Section2({ emailAddress, address, phoneList, title }) {
           <Link
             href={"#"}
             target="_blank"
-            className="flex items-center font-helvatica gap-x-2 font-light leading-[186%] justify-center fade-item text-xs  sm:text-base"
+            className="flex items-center font-helvatica gap-x-2 font-light leading-[186%] justify-center fade-item text-sm  sm:text-base"
           >
             <MdLocationPin color="#fff" />
             {address}

@@ -5,9 +5,11 @@ function OutlineButton({ link, text }) {
   return (
     <Link
       href={link}
-      className="text-xs uppercase py-4 px-11 border border-[#fff] inline-block text-center "
+      className="relative inline-block text-xs uppercase py-4 px-11 border border-white text-white text-center transition-all duration-300 ease-in-out 
+      before:absolute before:inset-0 before:bg-main before:scale-x-0 before:origin-left before:transition-transform before:duration-300 before:ease-in-out 
+      hover:text-altermain hover:before:scale-x-100"
     >
-      {text}
+      <span className="relative z-10">{text}</span>
     </Link>
   );
 }

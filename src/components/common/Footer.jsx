@@ -63,7 +63,7 @@ const Footer = () => {
       className="containers  bg-footerBG bg-cover bg-center h-full relative"
     >
       <div className="w-full h-[1px] bg-main relative z-50 hidden md:block overflow-hidden" />
-      <div className="flex flex-col items-center justify-center pt-20 pb-20 lg:pb-[150px] space-y-5 z-50 relative">
+      <div className="flex flex-col items-center justify-center py-20 space-y-5 z-50 relative">
         <Image
           ref={(el) => (fadeElementsRef.current[0] = el)}
           src={Logo}

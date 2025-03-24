@@ -1,30 +1,38 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Logo from "../../../public/common/Logo.svg";
-import { navLinks } from "@/data/navLinks";
 import Link from "next/link";
 import Image from "next/image";
 import { RiMenu3Fill } from "react-icons/ri";
+import { IoMdClose } from "react-icons/io";
 import { usePathname } from "next/navigation";
+import MobileNav from "./MobileNav";
 
-const Navbar = (/* { navLinks } */) => {
+const Navbar = ({ navLeft, navRight, mobileMenu }) => {
   const pathname = usePathname();
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > lastScrollY) {
-        setIsVisible(false);
-      } else {
-        setIsVisible(true);
+      if (!isMobileOpen) {
+        if (window.scrollY > lastScrollY) {
+          setIsVisible(false);
+        } else {
+          setIsVisible(true);
+        }
+        setLastScrollY(window.scrollY);
       }
-      setLastScrollY(window.scrollY);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  }, [lastScrollY, isMobileOpen]);
+
+  const toggleMobileNav = () => {
+    setIsMobileOpen(!isMobileOpen);
+  };
 
   return (
     <header
@@ -33,28 +41,55 @@ const Navbar = (/* { navLinks } */) => {
       }`}
     >
       <nav className="flex justify-between items-center">
-        <ul className="md:flex items-center gap-x-10 hidden  ">
-          {navLinks?.leftLink?.map((link) => {
-            const isActive =
-              link.url === "/"
-                ? pathname === "/"
-                : pathname.startsWith(link.url);
+        {/* <ul className="md:flex items-center gap-x-10 hidden  ">
+          {navLeft &&
+            navLeft?.map((link) => {
+              const isActive =
+                link.url === "/"
+                  ? pathname === "/"
+                  : pathname.startsWith(link.url);
 
-            return (
-              <li key={link.id}>
-                <Link
-                  className={`text-sm uppercase relative transition-all duration-300 ${
-                    isActive
-                      ? "text-white after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-[-9px] after:w-[17px] after:h-[1px] after:bg-white"
-                      : ""
-                  }`}
-                  href={link.url}
-                >
-                  {link.text}
-                </Link>
-              </li>
-            );
-          })}
+              return (
+                <li key={link.id}>
+                  <Link
+                    className={`text-sm uppercase relative transition-all duration-300 ${
+                      isActive
+                        ? "text-white after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-[-9px] after:w-[17px] after:h-[1px] after:bg-white"
+                        : ""
+                    }`}
+                    href={link.url}
+                  >
+                    {link.title}
+                  </Link>
+                </li>
+              );
+            })}
+        </ul> */}
+
+        <ul className="md:flex items-center gap-x-10 hidden">
+          {navLeft &&
+            navLeft.map((link) => {
+              const isActive =
+                link.url === "/"
+                  ? pathname === "/"
+                  : pathname.startsWith(link.url);
+
+              return (
+                <li key={link.id}>
+                  <Link
+                    href={link.url}
+                    className={`text-sm uppercase relative transition-all duration-300 
+              ${isActive ? "text-white" : ""} 
+              after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 
+              after:bottom-[-9px] after:w-[17px] after:h-[1px] after:bg-white 
+              after:opacity-0 after:transition-all after:duration-300 
+              ${isActive ? "after:opacity-100" : "hover:after:opacity-100"}`}
+                  >
+                    {link.title}
+                  </Link>
+                </li>
+              );
+            })}
         </ul>
 
         <Link href="/">
@@ -70,30 +105,53 @@ const Navbar = (/* { navLinks } */) => {
         </Link>
 
         <ul className="md:flex items-center gap-x-10 hidden ">
-          {navLinks?.rightLink?.map((link) => {
-            const isActive =
-              link.url === "/"
-                ? pathname === "/"
-                : pathname.startsWith(link.url);
-            return (
-              <li key={link.id}>
-                <Link
-                  className={`text-sm uppercase relative transition-all duration-300 ${
-                    isActive
-                      ? "text-white after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-[-9px] after:w-[17px] after:h-[1px] after:bg-white"
-                      : ""
-                  }`}
-                  href={link.url}
-                >
-                  {link.text}
-                </Link>
-              </li>
-            );
-          })}
+          {navRight &&
+            navRight?.map((link) => {
+              const isActive =
+                link.url === "/"
+                  ? pathname === "/"
+                  : pathname.startsWith(link.url);
+              return (
+                <li key={link.id}>
+                  <Link
+                    className={`text-sm uppercase relative transition-all duration-300 
+                      ${isActive ? "text-white" : ""} 
+                      after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 
+                      after:bottom-[-9px] after:w-[17px] after:h-[1px] after:bg-white 
+                      after:opacity-0 after:transition-all after:duration-300 
+                      ${
+                        isActive
+                          ? "after:opacity-100"
+                          : "hover:after:opacity-100"
+                      }`}
+                    href={link.url}
+                  >
+                    {link.title}
+                  </Link>
+                </li>
+              );
+            })}
         </ul>
 
-        <RiMenu3Fill className="md:hidden " size={30} />
+        {isMobileOpen ? (
+          <IoMdClose
+            className="md:hidden"
+            size={30}
+            onClick={toggleMobileNav}
+          />
+        ) : (
+          <RiMenu3Fill
+            className="md:hidden"
+            size={30}
+            onClick={toggleMobileNav}
+          />
+        )}
       </nav>
+      <MobileNav
+        MobileNavLinks={mobileMenu}
+        isOpen={isMobileOpen}
+        handleClose={toggleMobileNav}
+      />
     </header>
   );
 };

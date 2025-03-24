@@ -57,7 +57,7 @@ const WhyChooseUs = ({ whyChooseData, imageUrl }) => {
           ></span>
           <div
             ref={(el) => (contentRefs.current[index * 4 + 3] = el)}
-            className="mt-6 text-center text-xs sm:text-sm md:text-base font-light space-y-7 "
+            className="mt-6 text-center text-sm md:text-base font-light space-y-7 "
             dangerouslySetInnerHTML={{ __html: cardData?.description }}
           />
         </div>
