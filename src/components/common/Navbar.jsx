@@ -66,7 +66,7 @@ const Navbar = ({ navLeft, navRight, mobileMenu }) => {
             })}
         </ul>
 
-        <Link href="/">
+        <Link href="/" onClick={() => toggleMobileNav()}>
           <Image
             src={Logo}
             className="w-full h-full object-cover"

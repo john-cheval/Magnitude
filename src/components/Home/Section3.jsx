@@ -1,50 +1,15 @@
 "use client";
-import React, { useRef } from "react";
+import React from "react";
 import Image from "next/image";
-
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 const Section3 = ({ title, serviceData }) => {
   const homeCardData = Object?.values(serviceData);
-  const router = useRouter();
-
-  const sectionRef = useRef(null);
-  const titleRef = useRef(null);
-  const cardsRef = useRef([]);
-  // useEffect(() => {
-  //   gsap.registerPlugin(ScrollTrigger);
-
-  //   const tl = gsap.timeline({
-  //     scrollTrigger: {
-  //       trigger: sectionRef.current,
-  //       start: "top top",
-  //       // end: "+=300%",
-  //       end: "bottom+=100% top",
-  //       scrub: true,
-  //       pin: true,
-  //     },
-  //   });
-
-  //   tl.from(titleRef.current, {
-  //     scale: 1000,
-  //     ease: Power3.easeOut,
-  //   });
-  //   tl.to("#pinnedWorks", {
-  //     y: -window.innerHeight,
-  //   });
-  // }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative w-full h-full---  h-[500px]--  md:h-[500px]-- lg:h-[750px]-- "
-    >
+    <section className="relative w-full h-full---  h-[500px]--  md:h-[500px]-- lg:h-[750px]-- ">
       <div className="bg-altermain-- w-full min-h-[100dvh]   flex items-center justify-center overflow-hidden">
-        <h3
-          ref={titleRef}
-          className="text-center text-altermain text-[90px] sm:text-[100px] md:text-[100px] lg:text-[150px] font-bold uppercase"
-        >
+        <h3 className="text-center text-altermain text-[90px] sm:text-[100px] md:text-[100px] lg:text-[150px] font-bold uppercase">
           {title}
         </h3>
       </div>
@@ -60,7 +25,6 @@ const Section3 = ({ title, serviceData }) => {
               className="space-y-4 lg:space-y-6 cursor-pointer"
               prefetch={true}
               key={cardData?.ID || index}
-              onClick={() => router.push(`/services/${cardData?.post_name}`)}
             >
               <Image
                 src={cardData?.home_page_image}
