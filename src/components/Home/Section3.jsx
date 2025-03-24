@@ -25,8 +25,7 @@ const Section3 = ({ title, serviceData }) => {
 
     tl.from(
       titleRef.current,
-      // { scale: 8, opacity: 0 },
-      // { scale: 1, opacity: 1, duration: 1.5, ease: "power3.out" }
+
       {
         scale: 8,
         opacity: 0,

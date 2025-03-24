@@ -10,10 +10,16 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  const navData = await fetchData(
+  const navDataLeft = await fetchData(
     "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/menu/primary"
   );
+  const navDataRight = await fetchData(
+    "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/menu/primaryright"
+  );
 
+  const mobileMenu = await fetchData(
+    "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/menu/mobilemenu"
+  );
   return (
     <html
       lang="en"
@@ -22,7 +28,11 @@ export default async function RootLayout({ children }) {
       translate="no"
     >
       <body className={` antialiased flex flex-col min-h-screen`}>
-        <Navbar navLinks={navData.menu_tree} />
+        <Navbar
+          navLeft={navDataLeft?.menu_tree}
+          navRight={navDataRight?.menu_tree}
+          mobileMenu={mobileMenu?.menu_tree}
+        />
         <main className="flex-grow">
           {children}
           <ToastContainer />
