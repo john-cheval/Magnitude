@@ -37,10 +37,10 @@ export default async function Home() {
         title={homeData?.what_we_do_heading}
         serviceData={serviceData}
       />
-      {/* <Section4
+      <Section4
         imageUrl={homeData?.ship_image}
         homeCardData={homeData?.ship_detail_list}
-      /> */}
+      />
     </>
   );
 }
