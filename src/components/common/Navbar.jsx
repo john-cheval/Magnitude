@@ -13,7 +13,6 @@ const Navbar = ({ navLeft, navRight, mobileMenu }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
-  console.log(pathname, "this is the pathname");
   useEffect(() => {
     const handleScroll = () => {
       if (!isMobileOpen) {
