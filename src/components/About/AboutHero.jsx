@@ -125,7 +125,7 @@ const AboutHero = ({ banner, heading, list }) => {
         <Image
           src={banner}
           alt="hero"
-          ref={imageBannerRefs}
+          // ref={imageBannerRefs}
           width={0}
           height={0}
           sizes="100vw"

@@ -50,9 +50,9 @@ const HomeHero = ({ title, link, linkText, videoUrl }) => {
         </div>
       </div>
 
-      <div className="absolute w-full h-full max-h-[288px] bg-homeHero bottom-0 left-0 z-40" />
-
       <div className="absolute w-full h-full max-h-[288px] bg-homeHero2 top-0 left-0 z-40" />
+
+      <div className="absolute w-full h-full max-h-[288px] bg-homeHero bottom-0 left-0 z-40" />
     </section>
   );
 };

@@ -84,10 +84,11 @@ const Footer = () => {
           </Link>
           <Link
             ref={(el) => (fadeElementsRef.current[2] = el)}
-            href={"mailto:+971 56 5048488"}
+            href={"mailto:contact@magnitudeyachts.com"}
             className="description flex items-center gap-x-2 fade-footer"
           >
-            <span className="text-center font-bold ">E :</span>+971 56 5048488
+            <span className="text-center font-bold ">E :</span>
+            contact@magnitudeyachts.com
           </Link>
         </div>
 
@@ -106,7 +107,7 @@ const Footer = () => {
         >
           <span>Designed & Developed by Cheval</span>{" "}
           <span className="mx-1 hidden sm:block">|</span>{" "}
-          <span>© 2024 Magnitude . All rights reserved</span>
+          <span>© 2025 Magnitude . All rights reserved</span>
         </p>
       </div>
 
