@@ -10,32 +10,33 @@ const Section3 = ({ title, serviceData }) => {
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
   const cardsRef = useRef([]);
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+  // useEffect(() => {
+  //   gsap.registerPlugin(ScrollTrigger);
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top top",
-        // end: "+=300%",
-        end: "bottom+=100% top",
-        scrub: true,
-        pin: true,
-      },
-    });
+  //   const tl = gsap.timeline({
+  //     scrollTrigger: {
+  //       trigger: sectionRef.current,
+  //       start: "top top",
+  //       // end: "+=300%",
+  //       end: "bottom+=100% top",
+  //       scrub: true,
+  //       pin: true,
+  //     },
+  //   });
 
-    tl.from(titleRef.current, {
-      scale: 1000,
-      ease: Power3.easeOut,
-    });
-    tl.to("#pinnedWorks", {
-      y: -window.innerHeight,
-    });
-  }, []);
+  //   tl.from(titleRef.current, {
+  //     scale: 1000,
+  //     ease: Power3.easeOut,
+  //   });
+  //   tl.to("#pinnedWorks", {
+  //     y: -window.innerHeight,
+  //   });
+  // }, []);
+
   return (
     <section
       ref={sectionRef}
-      className="relative w-full h-full---  h-[500px]  md:h-[500px] lg:h-[750px] "
+      className="relative w-full h-full---  h-[500px]--  md:h-[500px]-- lg:h-[750px]-- "
     >
       <div className="bg-altermain-- w-full min-h-[100dvh]   flex items-center justify-center overflow-hidden">
         <h3
@@ -50,7 +51,7 @@ const Section3 = ({ title, serviceData }) => {
         className="relative  h-fit w-screen overflow-hidden"
         id="pinnedWorks"
       >
-        <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-x-4 gap-y-6 containers relative pt-8 md:pt-12 xl:pt-14 pb-20--">
+        <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-x-4 gap-y-6 containers relative pt-8 md:pt-12 xl:pt-14 pb-20">
           {homeCardData?.map((cardData, index) => (
             <div className="space-y-4 lg:space-y-6" key={cardData?.ID || index}>
               <Image

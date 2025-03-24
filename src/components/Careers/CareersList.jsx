@@ -93,7 +93,7 @@ const CareersList = ({ careersCategory }) => {
           ref={card1ImageRef}
         />
         <div
-          className="content px-7 md:px-14 lg:px-20 py-12 bg-[#f5f5f5] flex flex-col items-center md:items-start"
+          className="content px-7 md:px-14 lg:px-20 py-12 bg-[#f5f5f5] flex flex-col items-center md:items-start justify-center"
           ref={card1ContentRef}
         >
           <h2 className="main-heading2 mb-4 md:mb-6">
@@ -132,7 +132,7 @@ const CareersList = ({ careersCategory }) => {
         )}
 
         <div
-          className="content px-7 md:px-14 lg:px-20 py-12 bg-[#f5f5f5] flex flex-col items-center md:items-start"
+          className="content px-7 md:px-14 lg:px-20 py-12 bg-[#f5f5f5] flex flex-col items-center md:items-start justify-center"
           ref={card2ContentRef}
         >
           <h2 className="main-heading2 mb-4 md:mb-6">

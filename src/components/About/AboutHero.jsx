@@ -171,7 +171,7 @@ const AboutHero = ({ banner, heading, list }) => {
                   </div>
                   <div
                     ref={(el) => (contentRefs.current[index * 3] = el)}
-                    className="bg-[#1D2025] md:bg-altermain lg:pl-[59px] lg:pr-20 px-7 md:px-14 py-16 space-y-6 flex flex-col items-center md:items-start"
+                    className="bg-[#1D2025] md:bg-altermain lg:pl-[59px] lg:pr-20 px-7 md:px-14 py-16 space-y-6 flex flex-col items-center md:items-start justify-center"
                   >
                     <h2
                       ref={(el) => (contentRefs.current[index * 3 + 1] = el)}
@@ -204,7 +204,7 @@ const AboutHero = ({ banner, heading, list }) => {
                     />
                   )}
                   <div
-                    className="bg-altermain md:bg-[#1D2025] lg:pl-[59px] lg:pr-20 px-7 md:px-14 py-16 space-y-6 flex flex-col items-center md:items-start"
+                    className="bg-altermain md:bg-[#1D2025] lg:pl-[59px] lg:pr-20 px-7 md:px-14 py-16 space-y-6 flex flex-col items-center md:items-start justify-center"
                     ref={(el) => (contentRefs.current[index * 3] = el)}
                   >
                     <h2

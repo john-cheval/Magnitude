@@ -46,7 +46,7 @@ const SectionThree = ({ data, layout = false }) => {
     <section
       ref={sectionRef}
       className={`bg-altermain   text-main  containers ${
-        isMobile ? "" : "containers  mt-16 py-20"
+        isMobile ? "pb-10" : "containers  mt-16 py-20"
       }`}
     >
       <div

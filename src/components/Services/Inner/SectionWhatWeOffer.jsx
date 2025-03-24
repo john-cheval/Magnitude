@@ -58,7 +58,9 @@ const SectionWhatWeOffer = ({ serviceList }) => {
         className={`w-full h-full max-w-[553px]-- max-h-[404px]-- object-cover`}
         sizes="100vw"
       />
-      <div className={` px-7 md:px-14 lg:px-20 py-12  bg-altermain text-main `}>
+      <div
+        className={` px-7 md:px-14 lg:px-20 py-12  bg-altermain text-main  flex flex-col justify-center`}
+      >
         <h2
           ref={(el) => (textRefs.current[0] = el)}
           className=" text-lg md:text-xl lg:text-2xl mb-4 md:mb-6"

@@ -14,9 +14,9 @@ const ServiceInner = ({ serviceData }) => {
   const contentRef = useRef(null);
 
   const sectionMap = {
-    "/services/pre-construction": "Pre-Construction",
-    "/services/during-construction": "During Construction",
-    "/services/post-construction": "Post Construction",
+    "/services/pre-construction/": "Pre-Construction",
+    "/services/during-construction/": "During Construction",
+    "/services/post-construction/": "Post Construction",
   };
 
   const active = sectionMap[pathname] || "Pre-Construction";

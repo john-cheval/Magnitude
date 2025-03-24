@@ -42,7 +42,7 @@ function Section2({ emailAddress, address, phoneList, title }) {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-altermain py-9 containers">
+    <section ref={sectionRef} className="bg-altermain pt-9 md:py-9 containers">
       <div className="flex items-center flex-col">
         <h1 className="main-heading2 mb-4 md:mb-6 fade-item">{title}</h1>
         <span className="seperator fade-item"></span>
@@ -55,7 +55,7 @@ function Section2({ emailAddress, address, phoneList, title }) {
             <IoMail color="#fff" /> {emailAddress}
           </Link>
 
-          <div className="flex items-center gap-x-0 md:gap-x-3 fade-item">
+          <div className="flex phone items-center gap-x-0 md:gap-x-3 fade-item">
             <Link
               href={`tel:${phoneList[0]?.phone_number}`}
               className="flex items-center font-helvatica gap-x-1 md:gap-x-2 font-light leading-[186%] text-sm  sm:text-base"
@@ -63,7 +63,7 @@ function Section2({ emailAddress, address, phoneList, title }) {
               <RiPhoneFill color="#fff" />
               {phoneList[0]?.title} {phoneList[0]?.phone_number}
             </Link>
-            |
+            <span className="sep">|</span>
             <Link
               href={`tel:${phoneList[1]?.phone_number}`}
               className="flex items-center font-helvatica gap-x-0 md:gap-x-2 font-light leading-[186%] text-sm  sm:text-base"

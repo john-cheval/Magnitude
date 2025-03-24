@@ -59,7 +59,7 @@ const SectionOne = ({ serviceData }) => {
       />
 
       <div
-        className={` px-7 md:px-14 lg:px-16 py-12  bg-[#f5f5f5] flex flex-col items-center md:items-start`}
+        className={` px-7 md:px-14 lg:px-16 py-12  bg-[#f5f5f5] flex flex-col items-center md:items-start justify-center`}
       >
         <h2
           ref={(el) => (textRefs.current[0] = el)}
@@ -82,7 +82,7 @@ const SectionOne = ({ serviceData }) => {
           dangerouslySetInnerHTML={{
             __html: serviceData?.description,
           }}
-          className="description  !text-center md:!text-justify"
+          className="serviceIn1"
         ></div>
       </div>
     </div>
