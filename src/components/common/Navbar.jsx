@@ -121,11 +121,7 @@ const Navbar = ({ navLeft, navRight, mobileMenu }) => {
           />
         )}
       </nav>
-      <MobileNav
-        MobileNavLinks={mobileMenu}
-        isOpen={isMobileOpen}
-        handleClose={toggleMobileNav}
-      />
+      {isMobileOpen && <MobileNav MobileNavLinks={mobileMenu} />}
     </header>
   );
 };
