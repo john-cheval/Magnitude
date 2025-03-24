@@ -12,7 +12,7 @@ const DuringConstruction = ({ serviceData }) => {
         <SectionTwo serviceData={serviceData[0]?.list[1]} layout={true} />
         <SectionWhatWeOffer serviceList={serviceData[1]?.list[0]} />
       </section>
-      <SectionThree data={serviceData[2]?.list[0]} />
+      <SectionThree data={serviceData[2]?.list[0]} layout={true} />
     </>
   );
 };

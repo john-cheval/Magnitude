@@ -44,22 +44,22 @@ const SectionOne = ({ serviceData }) => {
   return (
     <div
       ref={sectionRef}
-      className={`grid grid-cols-1 md:grid-cols-2 ${
-        isMobile ? "" : "containers"
-      }`}
+      className={`grid  md:grid-cols-12 ${isMobile ? "" : "containers"}`}
     >
-      <Image
-        ref={imageRef}
-        src={serviceData?.image}
-        alt={serviceData?.title}
-        width={0}
-        height={0}
-        className="w-full h-full max-w-[553px]-- max-h-[404px]-- object-cover"
-        sizes="100vw"
-      />
+      <div className="col-span-12 md:col-span-6  lg:col-span-7">
+        <Image
+          ref={imageRef}
+          src={serviceData?.image}
+          alt={serviceData?.title}
+          width={0}
+          height={0}
+          className="w-full h-full max-w-[553px]-- max-h-[404px]-- object-cover"
+          sizes="100vw"
+        />
+      </div>
 
       <div
-        className={` px-7 md:px-14 lg:px-16 py-12  bg-[#f5f5f5] flex flex-col items-center md:items-start justify-center`}
+        className={` px-7 md:px-10 lg:px-14  py-12  bg-[#f5f5f5] flex flex-col items-center md:items-start justify-center col-span-12 md:col-span-6  lg:col-span-5`}
       >
         <h2
           ref={(el) => (textRefs.current[0] = el)}

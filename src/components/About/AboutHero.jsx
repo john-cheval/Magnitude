@@ -153,25 +153,25 @@ const AboutHero = ({ banner, heading, list }) => {
           {heading}
         </h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-2">
+        <div className="grid grid-cols-12">
           {list?.map((item, index) => (
             <React.Fragment key={index}>
               {index % 2 === 0 ? (
                 <>
-                  <div>
+                  <div className="col-span-12 md:col-span-6  lg:col-span-5">
                     <Image
                       ref={(el) => (imageRefs.current[index] = el)}
                       src={item.image}
                       alt={`about-${index}`}
                       width={0}
                       height={0}
-                      className="w-full h-full max-w-[553px]-- object-cover"
+                      className="w-full h-full max-w-[553px]-- object-cover "
                       sizes="100vw"
                     />
                   </div>
                   <div
                     ref={(el) => (contentRefs.current[index * 3] = el)}
-                    className="bg-[#1D2025] md:bg-altermain lg:pl-[59px] lg:pr-20 px-7 md:px-14 py-16 space-y-6 flex flex-col items-center md:items-start justify-center"
+                    className="bg-[#1D2025] md:bg-altermain lg:pl-[59px] lg:pr-20 px-7 md:px-14 py-16 space-y-6 flex flex-col items-center md:items-start justify-center col-span-12 md:col-span-6  lg:col-span-7"
                   >
                     <h2
                       ref={(el) => (contentRefs.current[index * 3 + 1] = el)}
@@ -193,18 +193,20 @@ const AboutHero = ({ banner, heading, list }) => {
               ) : (
                 <>
                   {isMobile && (
-                    <Image
-                      ref={(el) => (imageRefs.current[index] = el)}
-                      src={item.image}
-                      alt={`about-${index}`}
-                      width={0}
-                      height={0}
-                      className="w-full h-full max-w-[553px]-- object-cover"
-                      sizes="100vw"
-                    />
+                    <div className="col-span-12 md:col-span-6  lg:col-span-7 md:hidden">
+                      <Image
+                        ref={(el) => (imageRefs.current[index] = el)}
+                        src={item.image}
+                        alt={`about-${index}`}
+                        width={0}
+                        height={0}
+                        className="w-full h-full max-w-[553px]-- object-cover "
+                        sizes="100vw col-span-12 "
+                      />
+                    </div>
                   )}
                   <div
-                    className="bg-altermain md:bg-[#1D2025] lg:pl-[59px] lg:pr-20 px-7 md:px-14 py-16 space-y-6 flex flex-col items-center md:items-start justify-center"
+                    className="bg-altermain col-span-12 md:col-span-6  lg:col-span-5 md:bg-[#1D2025] lg:pl-[59px] lg:pr-20 px-7 md:px-14 py-16 space-y-6 flex flex-col items-center md:items-start justify-center"
                     ref={(el) => (contentRefs.current[index * 3] = el)}
                   >
                     <h2
@@ -223,14 +225,14 @@ const AboutHero = ({ banner, heading, list }) => {
                       dangerouslySetInnerHTML={{ __html: item.description }}
                     />
                   </div>
-                  <div>
+                  <div className="col-span-12 md:col-span-6  lg:col-span-7">
                     <Image
                       ref={(el) => (imageRefs.current[index] = el)}
                       src={item.image}
                       alt={`about-${index}`}
                       width={0}
                       height={0}
-                      className="w-full h-full max-w-[553px]-- object-cover hidden md:block"
+                      className="w-full h-full max-w-[553px]-- object-cover hidden md:block "
                       sizes="100vw"
                     />
                   </div>

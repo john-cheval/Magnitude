@@ -105,7 +105,12 @@ const Footer = () => {
           ref={(el) => (fadeElementsRef.current[4] = el)}
           className="text-center text-sm font-light leading-[170%] capitalize max-w-[515px] fade-footer flex flex-col sm:flex-row gap-y-3 "
         >
-          <span>Designed & Developed by Cheval</span>{" "}
+          <span>
+            Designed & Developed by{" "}
+            <Link href={"https://chevalme.com/"} target="_blank">
+              Cheval
+            </Link>
+          </span>{" "}
           <span className="mx-1 hidden sm:block">|</span>{" "}
           <span>© 2025 Magnitude . All rights reserved</span>
         </p>

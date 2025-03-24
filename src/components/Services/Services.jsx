@@ -69,25 +69,27 @@ const Services = ({ servicesList }) => {
           <div
             key={service?.id || index}
             ref={(el) => (serviceRefs.current[index] = el)}
-            className="grid grid-cols-1 md:grid-cols-2"
+            className="grid grid-cols-12"
           >
             {isEven ? (
               <>
                 {isMobile && (
-                  <Image
-                    ref={(el) => (imageRefs.current[index] = el)}
-                    src={service?.image}
-                    alt={service?.post_title}
-                    width={0}
-                    height={0}
-                    className="w-full h-full max-w-[553px]-- max-h-[536px]-- object-cover"
-                    sizes="100vw"
-                  />
+                  <div className="col-span-12 md:col-span-6  lg:col-span-7">
+                    <Image
+                      ref={(el) => (imageRefs.current[index] = el)}
+                      src={service?.image}
+                      alt={service?.post_title}
+                      width={0}
+                      height={0}
+                      className="w-full h-full max-w-[553px]-- md:hidden max-h-[536px]-- object-cover"
+                      sizes="100vw"
+                    />
+                  </div>
                 )}
                 <div
                   className={`lg:pl-[59px] lg:pr-20 ${
                     isMobile ? "containers" : "px-10"
-                  } py-12 md:py-16 space-y-6 ${bgColor} flex flex-col items-center md:items-start`}
+                  } py-12 md:py-16 space-y-6 ${bgColor} flex flex-col items-center md:items-start justify-center col-span-12 md:col-span-6  lg:col-span-5`}
                 >
                   <h2
                     ref={(el) => (textRefs.current[index * 4] = el)}
@@ -118,22 +120,24 @@ const Services = ({ servicesList }) => {
                 </div>
               </>
             ) : (
-              <Image
-                src={service?.image}
-                ref={(el) => (imageRefs.current[index] = el)}
-                alt={service?.post_title}
-                width={0}
-                height={0}
-                className="w-full h-full max-w-[553px]-- max-h-[536px]-- object-cover"
-                sizes="100vw"
-              />
+              <div className="col-span-12 md:col-span-6  lg:col-span-5">
+                <Image
+                  src={service?.image}
+                  ref={(el) => (imageRefs.current[index] = el)}
+                  alt={service?.post_title}
+                  width={0}
+                  height={0}
+                  className="w-full h-full max-w-[553px]-- max-h-[536px]-- object-cover"
+                  sizes="100vw"
+                />
+              </div>
             )}
 
             {!isEven ? (
               <div
                 className={`lg:pl-[59px] lg:pr-20  ${
                   isMobile ? "containers" : "px-10"
-                } py-12 md:py-16 space-y-6 flex flex-col items-center md:items-start ${bgColor}`}
+                } py-12 md:py-16 space-y-6 flex flex-col items-center md:items-start ${bgColor} col-span-12 md:col-span-6 justify-center  lg:col-span-7 `}
               >
                 <h2
                   ref={(el) => (textRefs.current[index * 4] = el)}
@@ -162,15 +166,17 @@ const Services = ({ servicesList }) => {
                 />
               </div>
             ) : (
-              <Image
-                ref={(el) => (imageRefs.current[index] = el)}
-                src={service?.image}
-                alt={service?.post_title}
-                width={0}
-                height={0}
-                className="w-full hidden md:block h-full max-w-[553px]-- max-h-[536px]-- object-cover"
-                sizes="100vw"
-              />
+              <div className="col-span-12 md:col-span-6  lg:col-span-7">
+                <Image
+                  ref={(el) => (imageRefs.current[index] = el)}
+                  src={service?.image}
+                  alt={service?.post_title}
+                  width={0}
+                  height={0}
+                  className="w-full hidden md:block h-full max-w-[553px]-- max-h-[536px]-- object-cover"
+                  sizes="100vw"
+                />
+              </div>
             )}
           </div>
         );
