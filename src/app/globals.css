@@ -190,7 +190,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .list2 h4 {
-  @apply text-sm  md:text-base font-helvatica font-medium leading-[186%];
+  @apply text-sm  md:text-base font-helvatica font-medium leading-[186%] mb-3 sm:mb-4;
 }
 
 .list2 p {
@@ -237,4 +237,24 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .home2 p {
   @apply text-sm md:text-base text-center md:text-justify font-helvatica font-light leading-[186%];
+}
+
+.serviceIn1 p {
+  @apply text-sm md:text-base text-center md:text-justify font-helvatica font-light leading-[186%];
+}
+.homeHero {
+  background: linear-gradient(
+    178deg,
+    #001221 -15.39%,
+    rgba(0, 18, 30, 0) 98.61%
+  );
+}
+
+@media (max-width: 450px) {
+  .phone {
+    flex-direction: column !important;
+  }
+  .sep {
+    display: none;
+  }
 }

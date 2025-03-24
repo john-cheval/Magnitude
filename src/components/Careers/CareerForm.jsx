@@ -125,9 +125,8 @@ const CareerForm = () => {
         email: "",
       });
     } catch (e) {
-      console.log("Error submitting form:", e.message);
+      toast.error("Error submitting form");
     }
-    console.log("Form Submitted:", formData);
   };
 
   return (

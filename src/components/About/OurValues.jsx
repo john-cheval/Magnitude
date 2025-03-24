@@ -61,7 +61,7 @@ const OurValues = ({ ourValuesData }) => {
             className="w-full h-full object-cover"
           />
 
-          <div className="px-7 md:px-14 lg:pl-14 space-y-5 pt-8 md:pt-11 flex flex-col items-start">
+          <div className="px-7 md:px-14 lg:pl-14 space-y-5 pt-8 md:pt-11 flex flex-col items-start justify-center">
             <h3
               ref={(el) => (contentRefs.current[index * 3] = el)}
               className="main-heading2"

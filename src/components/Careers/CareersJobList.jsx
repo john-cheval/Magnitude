@@ -96,7 +96,7 @@ const CareersJobList = ({ careersList }) => {
           <button
             ref={(el) => (jobContentRefs.current[index * 4 + 3] = el)}
             onClick={handleScroll}
-            className="text-sm uppercase px-9 py-4 text-center inline-block bg-altermain text-main w-fit mt-4 md:mt-2"
+            className="text-sm uppercase px-9 py-4 text-center inline-block bg-altermain text-main w-fit mt-4 md:mt-2 hover:bg-main hover:text-altermain hover:border hover:border-altermain transition-all duration-300 ease-in-out"
           >
             Apply Now
           </button>

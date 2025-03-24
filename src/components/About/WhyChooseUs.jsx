@@ -26,7 +26,7 @@ const WhyChooseUs = ({ whyChooseData, imageUrl }) => {
   return (
     <section
       ref={sectionRef}
-      className="bg-altermain  pt-[280px] sm:pt-[300px] md:pt-[400px] whychoose  sm:pb-20  mt-10 md:mt-14  lg:mt-[86px] relative"
+      className="bg-altermain  pt-[280px] sm:pt-[300px] md:pt-[400px] whychoose pb-10 sm:pb-20  mt-10 md:mt-14  lg:mt-[86px] relative"
       style={{
         backgroundImage: `url(${imageUrl})`,
         backgroundSize: "100% auto",

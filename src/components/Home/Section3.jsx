@@ -10,72 +10,54 @@ const Section3 = ({ title, serviceData }) => {
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
   const cardsRef = useRef([]);
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+  // useEffect(() => {
+  //   gsap.registerPlugin(ScrollTrigger);
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top top",
-        // end: "+=300%",
-        end: "bottom+=100% top",
-        scrub: true,
-        pin: true,
-      },
-    });
+  //   const tl = gsap.timeline({
+  //     scrollTrigger: {
+  //       trigger: sectionRef.current,
+  //       start: "top top",
+  //       // end: "+=300%",
+  //       end: "bottom+=100% top",
+  //       scrub: true,
+  //       pin: true,
+  //     },
+  //   });
 
-    tl.from(
-      titleRef.current,
+  //   tl.from(titleRef.current, {
+  //     scale: 1000,
+  //     ease: Power3.easeOut,
+  //   });
+  //   tl.to("#pinnedWorks", {
+  //     y: -window.innerHeight,
+  //   });
+  // }, []);
 
-      {
-        scale: 1000,
-
-        ease: Power3.easeOut,
-      }
-    );
-
-    cardsRef.current.forEach((card, index) => {
-      gsap.fromTo(
-        card,
-        { opacity: 0, y: 50 },
-        {
-          opacity: 1,
-          y: 0,
-          ease: Power3.easeOut,
-          duration: 1,
-          delay: index * 0.3,
-          scrollTrigger: {
-            trigger: card,
-            start: "top 80%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-    });
-  }, []);
   return (
-    <section ref={sectionRef} className="relative w-full h-full  ">
-      <div className="bg-altermain-- w-full h-[100dvh]   flex items-center justify-center overflow-hidden">
+    <section
+      ref={sectionRef}
+      className="relative w-full h-full---  h-[500px]--  md:h-[500px]-- lg:h-[750px]-- "
+    >
+      <div className="bg-altermain-- w-full min-h-[100dvh]   flex items-center justify-center overflow-hidden">
         <h3
           ref={titleRef}
-          className="text-center text-altermain text-[40px] sm:text-[80px] md:text-[100px]   xl:text-[150px] font-bold uppercase"
+          className="text-center text-altermain text-[90px] sm:text-[100px] md:text-[100px] lg:text-[150px] font-bold uppercase"
         >
           {title}
         </h3>
       </div>
 
-      <div className="relative  h-fit w-screen overflow-hidden">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-6 containers relative pb-20">
+      <div
+        className="relative  h-fit w-screen overflow-hidden"
+        id="pinnedWorks"
+      >
+        <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-x-4 gap-y-6 containers relative pt-8 md:pt-12 xl:pt-14 pb-20">
           {homeCardData?.map((cardData, index) => (
-            <div
-              ref={(el) => (cardsRef.current[index] = el)}
-              className="space-y-4 lg:space-y-6"
-              key={cardData?.ID || index}
-            >
+            <div className="space-y-4 lg:space-y-6" key={cardData?.ID || index}>
               <Image
                 src={cardData?.home_page_image}
                 alt={cardData?.post_title}
-                className="w-full h-auto object-cover max-h-[470px]--"
+                className="w-full md:h-auto object-cover h-[350px] max-h-[470px]--"
                 width={0}
                 height={0}
                 sizes="100vw"

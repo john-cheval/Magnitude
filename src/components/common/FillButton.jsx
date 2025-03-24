@@ -7,7 +7,7 @@ const FillButton = ({ link, text, dark = false }) => {
       href={link}
       className={`text-sm uppercase px-9 py-4 transition-all duration-300 ease-in-out ${
         dark
-          ? "bg-altermain text-main hover:bg-transparent hover:border hover:border-white"
+          ? "bg-altermain text-main hover:bg-transparent hover:border hover:border-altermain hover:text-altermain"
           : "bg-main text-altermain hover:text-main hover:bg-transparent hover:border hover:border-white"
       } text-center inline-block w-fit mt-2`}
     >

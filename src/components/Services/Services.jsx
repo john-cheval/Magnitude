@@ -158,7 +158,7 @@ const Services = ({ servicesList }) => {
                   ref={(el) => (textRefs.current[index * 4 + 3] = el)}
                   link={`/services/${service?.post_name}`}
                   text={"Read more"}
-                  dark={index === 2 && isMobile && true}
+                  dark={index === 2 && true}
                 />
               </div>
             ) : (

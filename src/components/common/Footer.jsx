@@ -60,10 +60,10 @@ const Footer = () => {
   return (
     <footer
       ref={footerRef}
-      className="containers  bg-footerBG bg-cover bg-center h-full relative"
+      className="containers  bg-footerBG bg-cover bg-center h-full relative pb-14 md:pb-16"
     >
-      <div className="w-full h-[1px] bg-main relative z-50 hidden md:block overflow-hidden" />
-      <div className="flex flex-col items-center justify-center py-20 space-y-5 z-50 relative">
+      <div className="w-full h-[1px] bg-main relative z-50 hidden-- md:block-- overflow-hidden" />
+      <div className="flex flex-col items-center justify-center  space-y-5 z-50 relative pt-10">
         <Image
           ref={(el) => (fadeElementsRef.current[0] = el)}
           src={Logo}
@@ -78,16 +78,17 @@ const Footer = () => {
           <Link
             ref={(el) => (fadeElementsRef.current[1] = el)}
             href={"tel:+971 56 5048488"}
-            className="description flex items-center gap-x-2 fade-footer"
+            className="description flex items-center justify-center gap-x-2 fade-footer"
           >
             <span className="text-center font-bold  ">T :</span>+971 56 5048488
           </Link>
           <Link
             ref={(el) => (fadeElementsRef.current[2] = el)}
-            href={"mailto:+971 56 5048488"}
+            href={"mailto:contact@magnitudeyachts.com"}
             className="description flex items-center gap-x-2 fade-footer"
           >
-            <span className="text-center font-bold ">E :</span>+971 56 5048488
+            <span className="text-center font-bold ">E :</span>
+            contact@magnitudeyachts.com
           </Link>
         </div>
 
@@ -102,11 +103,11 @@ const Footer = () => {
 
         <p
           ref={(el) => (fadeElementsRef.current[4] = el)}
-          className="text-center text-sm font-light leading-[170%] capitalize max-w-[515px] fade-footer flex flex-col sm:flex-row "
+          className="text-center text-sm font-light leading-[170%] capitalize max-w-[515px] fade-footer flex flex-col sm:flex-row gap-y-3 "
         >
           <span>Designed & Developed by Cheval</span>{" "}
           <span className="mx-1 hidden sm:block">|</span>{" "}
-          <span>© 2024 Magnitude . All rights reserved</span>
+          <span>© 2025 Magnitude . All rights reserved</span>
         </p>
       </div>
 

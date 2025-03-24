@@ -27,8 +27,10 @@ module.exports = {
         century: ["Century Gothic"],
       },
       backgroundImage: {
-        homeHero: "url('/Home/bottomgrad.svg')",
-        homeHero2: "url('/Home/topGrad.svg')",
+        homeHero:
+          "linear-gradient(0deg, #001221 -15.39%, rgba(0, 18, 30, 0.00) 98.61%)",
+        homeHero2:
+          "linear-gradient(180deg, #001221 -15.39%, rgba(0, 18, 30, 0.00) 98.61%)",
         homeBottomGrad:
           "linear-gradient(360deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%)",
         footerBG: "url('/Home/footer.png')",
