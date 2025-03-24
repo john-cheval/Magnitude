@@ -1,6 +1,6 @@
 "use client";
 import dynamic from "next/dynamic";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Section2 from "@/components/Home/Section2";
 import Section3 from "@/components/Home/Section3";
 // import Section4 from "@/components/Home/Section4";
@@ -12,6 +12,21 @@ const Section4 = dynamic(() => import("@/components/Home/Section4"), {
 });
 
 const HomePage = ({ homeData, serviceData }) => {
+  // const [loading, setLoading] = useState(true);
+
+  // useEffect(() => {
+  //   if (homeData) {
+  //     setLoading(false);
+  //   }
+  // }, [homeData]);
+
+  // if (loading || !homeData || !serviceData) {
+  //   return (
+  //     <div className="min-h-screen flex items-center justify-center">
+  //       <p className="text-altermain text-xl ">Loading...</p>
+  //     </div>
+  //   );
+  // }
   return (
     <>
       <HomeHero
