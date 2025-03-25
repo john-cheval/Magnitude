@@ -32,7 +32,6 @@ const Navbar = ({ navLeft, navRight, mobileMenu }) => {
 
   useEffect(() => {
     let ticking = false;
-
     const handleScroll = () => {
       if (!ticking && !isMobileOpen) {
         const currentScrollY =
