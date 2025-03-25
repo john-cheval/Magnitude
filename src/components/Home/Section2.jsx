@@ -25,12 +25,12 @@ const Section2 = ({ title, desc, imageUrl }) => {
         {
           opacity: 1,
           y: 0,
-          duration: 0.6,
+          duration: 0.8,
           stagger: 0.3,
           ease: "power2.out",
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: "top 80%",
+            start: "top 50%",
           },
         }
       );
@@ -71,11 +71,12 @@ const Section2 = ({ title, desc, imageUrl }) => {
               dangerouslySetInnerHTML={{ __html: desc }}
               className="home"
             />
-            <FillButton
+
+            {/* <FillButton
               ref={(el) => (mobileContentRefs.current[3] = el)}
               link="/about"
               text="Read More"
-            />
+            /> */}
           </div>
           <div
             className="h-64 bg-cover bg-center"
@@ -106,11 +107,10 @@ const Section2 = ({ title, desc, imageUrl }) => {
             dangerouslySetInnerHTML={{ __html: desc }}
             className="description max-w-[467px]"
           />
-          <FillButton
-            ref={(el) => (desktopContentRefs.current[3] = el)}
-            link="/about"
-            text="Read More"
-          />
+
+          <div ref={(el) => (desktopContentRefs.current[3] = el)}>
+            <FillButton link="/about" text="Read More" />
+          </div>
         </div>
       </div>
     </section>

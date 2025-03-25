@@ -2,15 +2,20 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import OutlineButton from "../common/OutlineButton";
+import useIsMobile from "@/hooks/useIsMobile";
+import Link from "next/link";
 
 const HomeHero = ({ title, link, linkText, videoUrl }) => {
   const textRef = useRef(null);
   const buttonRef = useRef(null);
   const sectionRef = useRef(null);
+  const mobileLinkRef = useRef(null);
+
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     gsap.fromTo(
-      [textRef.current, buttonRef.current],
+      [textRef.current, buttonRef.current, mobileLinkRef.current],
       { opacity: 0, y: 20 },
       {
         opacity: 1,
@@ -26,18 +31,26 @@ const HomeHero = ({ title, link, linkText, videoUrl }) => {
     );
   }, []);
   return (
-    <section ref={sectionRef} className=" h-screen-- overflow-hidden relative">
+    <section
+      ref={sectionRef}
+      className="overflow-hidden md:h-screen relative pt-16 md:pt-0--"
+    >
       <video
         autoPlay
         loop
         muted
         preload="auto"
-        className="w-screen h-[285px] md:h-full md:max-h-[288px]-- object-cover"
+        poster={"/Magnitude.png"}
+        className="w-screen h-[300px] md:h-full md:max-h-[288px]-- object-cover"
       >
         <source src={videoUrl} type="video/mp4" />
       </video>
 
-      <div className="absolute bottom-7 md:bottom-[76px] left-1/2 -translate-x-1/2 space-y-4 md:space-y-6 lg:space-y-9 z-50">
+      <div
+        className={` ${
+          isMobile ? "containers" : ""
+        } absolute flex md:flex-col justify-between md:justify-start items-center md:items-start bottom-7 md:bottom-[76px] md:left-1/2 md:-translate-x-1/2  md:space-y-6 lg:space-y-9 z-50 w-full md:w-fit`}
+      >
         <h1
           ref={textRef}
           className="text-lg  sm:text-xl md:text-2xl lg:text-3xl"
@@ -45,7 +58,18 @@ const HomeHero = ({ title, link, linkText, videoUrl }) => {
           {" "}
           {title}
         </h1>
-        <div ref={buttonRef} className="flex items-center justify-center">
+        <div ref={mobileLinkRef}>
+          <Link
+            href={link}
+            className="underline text-sm md:hidden uppercase hover:no-underline transition-all duration-300"
+          >
+            {linkText}
+          </Link>
+        </div>
+        <div
+          ref={buttonRef}
+          className="md:flex items-center justify-center hidden w-full "
+        >
           <OutlineButton link={link} text={linkText} />
         </div>
       </div>
