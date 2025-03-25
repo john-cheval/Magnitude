@@ -12,7 +12,8 @@ const CareersList = ({ careersCategory }) => {
 
   const firstCardInView = useInView(firstCardRef, {
     once: true,
-    margin: "-100px",
+    margin: "-10% 0px",
+    amount: 0.5,
   });
   const secondCardInView = useInView(secondCardRef, {
     once: true,
@@ -27,7 +28,8 @@ const CareersList = ({ careersCategory }) => {
         <motion.div
           className="col-span-12 md:col-span-6 lg:col-span-7"
           initial={{ opacity: 0, scale: 0.9 }}
-          animate={firstCardInView ? { opacity: 1, scale: 1 } : {}}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <Image
