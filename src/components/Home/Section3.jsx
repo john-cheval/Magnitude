@@ -88,7 +88,7 @@ const Section3 = ({ title, serviceData }) => {
                 <h5 className="text-altermain text-xl lg:text-2xl leading-[150%]">
                   {cardData?.post_title}
                 </h5>
-                <span className="seperator2Dark"></span>
+                <span className="seperator2Dark md:!h-[22px]"></span>
               </Link>
             ))}
           </div>
