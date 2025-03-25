@@ -14,12 +14,6 @@ const HomeHero = ({ title, link, linkText, videoUrl }) => {
   const mobileLinkRef = useRef(null);
   const videoRef = useRef(null);
   const isMobile = useIsMobile();
-  const [videoSrc, setVideoSrc] = useState(null);
-  useEffect(() => {
-    setTimeout(() => {
-      setVideoSrc(videoUrl);
-    }, 1000);
-  }, []);
 
   const handleVideoLoad = () => {
     setVideoLoaded(true);
@@ -74,23 +68,22 @@ const HomeHero = ({ title, link, linkText, videoUrl }) => {
           />
         </div>
       )}
-      {videoSrc && (
-        <video
-          autoPlay
-          loop
-          ref={videoRef}
-          onLoadedData={handleVideoLoad}
-          webkitPlaysInline
-          muted
-          playsInline
-          preload="metadata"
-          width="100%"
-          height="100%"
-          poster={"/Magnitude.jpg"}
-          className="w-screen h-[300px] md:h-full md:max-h-[288px]-- object-cover"
-          src={videoUrl}
-        />
-      )}
+
+      <video
+        autoPlay
+        loop
+        ref={videoRef}
+        onLoadedData={handleVideoLoad}
+        webkitPlaysInline
+        muted
+        playsInline
+        preload="metadata"
+        width="100%"
+        height="100%"
+        poster={"/Magnitude.jpg"}
+        className="w-screen h-[300px] md:h-full md:max-h-[288px]-- object-cover"
+        src={videoUrl}
+      />
 
       <div
         className={` ${
