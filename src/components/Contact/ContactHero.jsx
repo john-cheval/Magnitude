@@ -2,7 +2,7 @@ import React from "react";
 
 function ContactHero({ bannerVideo }) {
   return (
-    <section className=" overflow-hidden relative pt-16 md:pt-0--">
+    <section className=" overflow-hidden relative pt-16 md:pt-0">
       <video
         autoPlay
         loop
