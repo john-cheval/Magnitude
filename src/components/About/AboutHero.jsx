@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import useIsMobile from "@/hooks/useIsMobile";
 import { gsap } from "gsap";
@@ -15,70 +15,49 @@ const AboutHero = ({ banner, heading, list }) => {
   const imageRefs = useRef([]);
   const contentRefs = useRef([]);
 
-  useGSAP(() => {
-    list.forEach((_, index) => {
-      gsap.fromTo(
-        imageRefs.current[index],
-        { scale: 0.8, opacity: 0 },
-        {
-          scale: 1,
-          opacity: 1,
-          duration: 1,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: imageRefs.current[index],
-            start: "top 80%",
-          },
-        }
-      );
+  useEffect(() => {
+    if (!list.length) return;
 
-      gsap.fromTo(
-        contentRefs.current[index * 3],
-        { opacity: 0, y: 20 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: contentRefs.current[index * 3],
-            start: "top 80%",
-          },
-        }
-      );
+    const ctx = gsap.context(() => {
+      list.forEach((_, index) => {
+        gsap.fromTo(
+          imageRefs.current[index],
+          { scale: 0.8, opacity: 0 },
+          {
+            scale: 1,
+            opacity: 1,
+            duration: 1,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: imageRefs.current[index],
+              start: "top 80%",
+            },
+          }
+        );
 
-      gsap.fromTo(
-        contentRefs.current[index * 3 + 1],
-        { opacity: 0, scaleX: 0 },
-        {
-          opacity: 1,
-          scaleX: 1,
-          duration: 0.4,
-          delay: 0.3,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: contentRefs.current[index * 3 + 1],
-            start: "top 80%",
-          },
-        }
-      );
+        gsap.fromTo(
+          [
+            contentRefs.current[index * 3], // Title
+            contentRefs.current[index * 3 + 1], // Separator
+            contentRefs.current[index * 3 + 2], // Description
+          ],
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            stagger: 0.3, // Smooth stagger effect
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: contentRefs.current[index * 3],
+              start: "top 80%",
+            },
+          }
+        );
+      });
+    }, sectionRef);
 
-      gsap.fromTo(
-        contentRefs.current[index * 3 + 2],
-        { opacity: 0, y: 20 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          delay: 0.5,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: contentRefs.current[index * 3 + 2],
-            start: "top 80%",
-          },
-        }
-      );
-    });
+    return () => ctx.revert();
   }, [list]);
 
   return (
