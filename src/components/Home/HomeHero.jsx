@@ -39,6 +39,7 @@ const HomeHero = ({ title, link, linkText, videoUrl }) => {
         autoPlay
         loop
         muted
+        playsinline
         preload="auto"
         poster={"/Magnitude.png"}
         className="w-screen h-[300px] md:h-full md:max-h-[288px]-- object-cover"
