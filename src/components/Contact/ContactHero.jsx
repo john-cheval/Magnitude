@@ -7,7 +7,7 @@ function ContactHero({ bannerVideo }) {
         autoPlay
         loop
         muted
-        playsinline 
+        playsInline 
         preload="auto"
         poster={"/Contact.png"}
         className="w-full md:h-full object-cover h-[275px] md:max-h-[288px]--"
