@@ -1,17 +1,32 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import OutlineButton from "../common/OutlineButton";
 import useIsMobile from "@/hooks/useIsMobile";
 import Link from "next/link";
+import Image from "next/image";
 
 const HomeHero = ({ title, link, linkText, videoUrl }) => {
   const textRef = useRef(null);
   const buttonRef = useRef(null);
   const sectionRef = useRef(null);
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const [showFallback, setShowFallback] = useState(false);
   const mobileLinkRef = useRef(null);
-
+  const videoRef = useRef(null);
   const isMobile = useIsMobile();
+
+  const handleVideoLoad = () => {
+    setVideoLoaded(true);
+
+    if (
+      typeof window !== "undefined" &&
+      window.performance &&
+      window.performance.mark
+    ) {
+      window.performance.mark("video-loaded");
+    }
+  };
 
   useEffect(() => {
     gsap.fromTo(
@@ -30,21 +45,46 @@ const HomeHero = ({ title, link, linkText, videoUrl }) => {
       }
     );
   }, []);
+
   return (
     <section
       ref={sectionRef}
       className="overflow-hidden md:h-screen relative pt-16-- md:pt-0"
     >
+      <Link
+        rel="preload"
+        href="/Magnitude.png"
+        as="image"
+        fetchPriority="high"
+      />
+
+      {!videoLoaded && (
+        <div className="absolute inset-0 z-10">
+          <Image
+            src="/Magnitude.png"
+            alt="Hero Fallback"
+            layout="fill"
+            objectFit="cover"
+            priority
+          />
+        </div>
+      )}
       <video
         autoPlay
         loop
+        ref={videoRef}
+        onLoadedData={handleVideoLoad}
+        webkitPlaysInline
         muted
         playsInline
-        preload="auto"
+        preload="metadata"
+        width="100%"
+        height="100%"
         poster={"/Magnitude.png"}
         className="w-screen h-[300px] md:h-full md:max-h-[288px]-- object-cover"
+        src={videoUrl}
       >
-        <source src={videoUrl} type="video/mp4" />
+        {/* <source src={videoUrl} type="video/mp4" /> */}
       </video>
 
       <div

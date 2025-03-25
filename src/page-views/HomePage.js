@@ -2,9 +2,11 @@
 import React from "react";
 import Section2 from "@/components/Home/Section2";
 import dynamic from "next/dynamic";
-const HomeHero = dynamic(() => import("@/components/Home/HomeHero"), {
+const HomeHero = dynamic(
+  () => import("@/components/Home/HomeHero") /*  {
   ssr: false,
-});
+} */
+);
 const Section4 = dynamic(() => import("@/components/Home/Section4"), {
   ssr: false,
 });
