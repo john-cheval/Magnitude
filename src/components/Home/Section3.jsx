@@ -46,7 +46,7 @@ const Section3 = ({ title, serviceData }) => {
   return (
     <>
       <section
-        className="relative hidden md:block w-full h-full min-h-[100dvh]-- md:h-[580px] lg:h-[750px]"
+        className="relative hidden md:block w-full h-full  md:h-[580px] lg:h-[650px] xl:h-[850px]"
         id="pinnedWorkSection"
       >
         <div className="w-full flex items-center justify-center overflow-hidden h-[100dvh]">

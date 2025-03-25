@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-import Logo from "../../../public/Home/Logo.svg";
+import Logo from "../../../public/common/Logo2.svg";
 import Image from "next/image";
 import Link from "next/link";
 import { LiaLinkedinIn } from "react-icons/lia";

@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 import Image from "next/image";
-import heroImage from "../../../public/Careers/hero.png";
 import { gsap } from "gsap";
 
 const CareersHero = ({ title, bannerImage }) => {
@@ -50,7 +49,7 @@ const CareersHero = ({ title, bannerImage }) => {
       </h1>
       <Image
         ref={imageRef}
-        src={bannerImage || heroImage}
+        src={bannerImage}
         alt={title}
         width={0}
         height={0}

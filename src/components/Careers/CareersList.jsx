@@ -82,18 +82,20 @@ const CareersList = ({ careersCategory }) => {
       } text-altermain mt-5 sm:mt-10 lg:mt-20`}
     >
       {/* First Card */}
-      <div className="grid grid-cols-1 md:grid-cols-2">
-        <Image
-          src={careersCategory[1]?.list_image}
-          alt={careersCategory[1]?.name}
-          width={0}
-          height={0}
-          className="image w-full h-full max-w-[553px]-- object-cover"
-          sizes="100vw"
-          ref={card1ImageRef}
-        />
+      <div className="grid grid-cols-12">
+        <div className="col-span-12 md:col-span-6 lg:col-span-7">
+          <Image
+            src={careersCategory[1]?.list_image}
+            alt={careersCategory[1]?.name}
+            width={0}
+            height={0}
+            className="image w-full h-full max-w-[553px]-- object-cover"
+            sizes="100vw"
+            ref={card1ImageRef}
+          />
+        </div>
         <div
-          className="content px-7 md:px-14 lg:px-20 py-12 bg-[#f5f5f5] flex flex-col items-center md:items-start justify-center"
+          className="content px-7 md:px-14 lg:px-20 py-12 bg-[#f5f5f5] flex flex-col items-center md:items-start justify-center col-span-12 md:col-span-6 lg:col-span-5"
           ref={card1ContentRef}
         >
           <h2 className="main-heading2 mb-4 md:mb-6">
@@ -103,7 +105,7 @@ const CareersList = ({ careersCategory }) => {
           <h3 className="description text-sm sm:!text-lg mb-1">
             {careersCategory[1]?.short_heading}
           </h3>
-          <p className="description !text-center md:!text-justify max-w-[348px] mb-5 md:mb-2">
+          <p className="description !text-center md:!text-justify max-w-[348px]-- mb-5">
             {careersCategory[1]?.short_description}
           </p>
           <FillButton
@@ -115,24 +117,23 @@ const CareersList = ({ careersCategory }) => {
       </div>
 
       {/* Second Card */}
-      <div
-        className="grid grid-cols-1 md:grid-cols-2 md:mt-9 mb-12"
-        ref={section2Ref}
-      >
+      <div className="grid grid-cols-12 md:mt-9 mb-12" ref={section2Ref}>
         {isMobile && (
-          <Image
-            src={careersCategory[0]?.list_image}
-            alt={careersCategory[0]?.name}
-            width={0}
-            height={0}
-            className="image w-full h-full max-w-[553px]-- object-cover md:hidden"
-            sizes="100vw"
-            ref={card2ImageRef}
-          />
+          <div className="col-span-12">
+            <Image
+              src={careersCategory[0]?.list_image}
+              alt={careersCategory[0]?.name}
+              width={0}
+              height={0}
+              className="image w-full h-full max-w-[553px]-- object-cover md:hidden"
+              sizes="100vw"
+              ref={card2ImageRef}
+            />
+          </div>
         )}
 
         <div
-          className="content px-7 md:px-14 lg:px-20 py-12 bg-[#f5f5f5] flex flex-col items-center md:items-start justify-center"
+          className="content px-7 md:px-14 lg:px-20 py-12 bg-[#f5f5f5] flex flex-col items-center md:items-start justify-center col-span-12 md:col-span-6 lg:col-span-7"
           ref={card2ContentRef}
         >
           <h2 className="main-heading2 mb-4 md:mb-6">
@@ -142,7 +143,7 @@ const CareersList = ({ careersCategory }) => {
           <h3 className="description text-sm sm:!text-lg mb-1">
             {careersCategory[0]?.short_heading}
           </h3>
-          <p className="description !text-center md:!text-justify max-w-[348px] mb-5 md:mb-2">
+          <p className="description !text-center md:!text-justify max-w-[348px]-- mb-5">
             {careersCategory[0]?.short_description}
           </p>
           <FillButton
@@ -152,15 +153,17 @@ const CareersList = ({ careersCategory }) => {
           />
         </div>
 
-        <Image
-          src={careersCategory[0]?.list_image}
-          alt={careersCategory[0]?.name}
-          width={0}
-          height={0}
-          className="image w-full h-full max-w-[553px]-- object-cover hidden md:block"
-          sizes="100vw"
-          ref={card2ImageRef}
-        />
+        <div className="col-span-12 md:col-span-6 lg:col-span-5">
+          <Image
+            src={careersCategory[0]?.list_image}
+            alt={careersCategory[0]?.name}
+            width={0}
+            height={0}
+            className="image w-full h-full max-w-[553px]-- object-cover hidden md:block"
+            sizes="100vw"
+            ref={card2ImageRef}
+          />
+        </div>
       </div>
     </section>
   );
