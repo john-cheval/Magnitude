@@ -87,7 +87,7 @@ const HomeHero = ({ title, link, linkText, videoUrl }) => {
           preload={isMobile ? "none" : "metadata"}
           width="100%"
           height="100%"
-          poster={"/Magnitude.png"}
+          poster={"/Magnitude.jpg"}
           className="w-screen h-[300px] md:h-full md:max-h-[288px]-- object-cover"
           src={videoSrc}
         />
