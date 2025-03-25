@@ -13,6 +13,7 @@ const Navbar = ({ navLeft, navRight, mobileMenu }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+
   useEffect(() => {
     const handleScroll = () => {
       if (!isMobileOpen) {
