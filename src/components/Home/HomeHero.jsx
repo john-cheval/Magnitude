@@ -88,7 +88,7 @@ const HomeHero = ({ title, link, linkText, videoUrl }) => {
           height="100%"
           poster={"/Magnitude.jpg"}
           className="w-screen h-[300px] md:h-full md:max-h-[288px]-- object-cover"
-          src={videoSrc}
+          src={videoUrl}
         />
       )}
 
