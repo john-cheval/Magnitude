@@ -1,61 +1,52 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { gsap } from "gsap";
+import { motion } from "framer-motion";
 
 const CareersHero = ({ title, bannerImage }) => {
-  const headingRef = useRef(null);
-  const sectionRef = useRef(null);
-  const imageRef = useRef(null);
+  const [imageLoaded, setImageLoaded] = useState(false);
+  console.log(bannerImage, "jjjj");
 
   useEffect(() => {
-    gsap.fromTo(
-      headingRef.current,
-      { opacity: 0, y: -50 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-        },
-      }
-    );
-
-    gsap.fromTo(
-      imageRef.current,
-      { opacity: 0, y: -30 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        delay: 0.2,
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-        },
-      }
-    );
-  }, []);
+    if (bannerImage) {
+      setImageLoaded(true);
+    }
+  }, [bannerImage]);
 
   return (
-    <section ref={sectionRef} className="containers pt-28 md:pt-40 lg:pt-44">
-      <h1
-        ref={headingRef}
-        className="main-heading !text-altermain capitalize text-center md:text-left "
+    <section className="containers pt-28 md:pt-40 lg:pt-44">
+      {/* Animated Heading */}
+      <motion.h1
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="main-heading !text-altermain capitalize text-center md:text-left"
       >
         {title}
-      </h1>
-      <Image
-        ref={imageRef}
-        src={bannerImage}
-        alt={title}
-        width={0}
-        height={0}
-        sizes="100vw"
-        className="w-full h-auto max-h-[530px]-- object-cover mt-5 md:mt-8 lg:mt-10 "
-      />
+      </motion.h1>
+
+      {/* Skeleton Loader
+      {!imageLoaded && (
+        <div className="w-full h-[300px] bg-gray-200 animate-pulse rounded-lg mt-5 md:mt-8 lg:mt-10" />
+      )} */}
+
+      {/* Animated Image */}
+      <motion.div
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
+        className="mt-5 md:mt-8 lg:mt-10 overflow-hidden"
+      >
+        <Image
+          src={bannerImage}
+          alt={title}
+          width={1200}
+          height={530}
+          priority
+          className={`w-full h-auto max-h-[530px] object-cover transition-opacity duration-500 `}
+          onLoad={() => setImageLoaded(true)}
+        />
+      </motion.div>
     </section>
   );
 };
