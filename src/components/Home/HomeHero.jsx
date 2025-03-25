@@ -50,12 +50,7 @@ const HomeHero = ({ title, link, linkText, videoUrl }) => {
       ref={sectionRef}
       className="overflow-hidden md:h-screen relative pt-16-- md:pt-0"
     >
-      <Link
-        rel="preload"
-        href="/Magnitude.jpg"
-        as="image"
-        fetchPriority="high"
-      />
+      <Link rel="preload" href="/" as="image" fetchPriority="high" />
 
       {!videoLoaded && (
         <div className="absolute inset-0 z-10">
