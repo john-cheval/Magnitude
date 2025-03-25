@@ -1,6 +1,8 @@
 import ServiceInner from "@/components/Services/Inner/ServiceInner";
 import { fetchData } from "@/utils/fetchData";
 import generateMetadataData from "@/utils/generateMetaData";
+import dynamic from "next/dynamic";
+const Footer = dynamic(() => import("@/components/common/Footer"));
 import React from "react";
 
 export async function generateMetadata({ params }) {
@@ -17,6 +19,7 @@ const ServiceInnerPage = async ({ params }) => {
   return (
     <>
       <ServiceInner serviceData={serviceData} />
+      <Footer />
     </>
   );
 };

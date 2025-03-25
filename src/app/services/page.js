@@ -3,6 +3,8 @@ import Services from "@/components/Services/Services";
 import React from "react";
 import generateMetadataData from "@/utils/generateMetaData";
 import { fetchData } from "@/utils/fetchData";
+import dynamic from "next/dynamic";
+const Footer = dynamic(() => import("@/components/common/Footer"));
 
 export async function generateMetadata() {
   return await generateMetadataData(17, "services", false);
@@ -23,6 +25,7 @@ const ServicePage = async () => {
         bannerImage={servicesData?.top_banner}
       />
       <Services servicesList={servicesList} />
+      <Footer />
     </>
   );
 };

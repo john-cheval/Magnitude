@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
 import React from "react";
 const ContactHero = dynamic(() => import("@/components/Contact/ContactHero"));
 // const Locations = dynamic(() => import("@/components/Contact/Locations"));
+const Footer = dynamic(() => import("@/components/common/Footer"));
 
 export async function generateMetadata() {
   return await generateMetadataData(23, "contact", false);
@@ -26,6 +27,7 @@ const ContactPage = async () => {
       />
       {/* <Locations /> */}
       <ContactForm />
+      <Footer />
     </>
   );
 };
