@@ -14,20 +14,41 @@ const Navbar = ({ navLeft, navRight, mobileMenu }) => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     if (!isMobileOpen) {
+  //       if (window.scrollY > lastScrollY) {
+  //         setIsVisible(false);
+  //       } else {
+  //         setIsVisible(true);
+  //       }
+  //       setLastScrollY(window.scrollY);
+  //     }
+  //   };
+
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, [lastScrollY, isMobileOpen]);
+
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      if (!isMobileOpen) {
-        if (window.scrollY > lastScrollY) {
-          setIsVisible(false);
-        } else {
-          setIsVisible(true);
-        }
-        setLastScrollY(window.scrollY);
+      if (!ticking && !isMobileOpen) {
+        const currentScrollY =
+          document.documentElement.scrollTop || window.scrollY;
+        window.requestAnimationFrame(() => {
+          setIsVisible(currentScrollY < lastScrollY);
+          setLastScrollY(currentScrollY);
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () =>
+      window.removeEventListener("scroll", handleScroll, { passive: true });
   }, [lastScrollY, isMobileOpen]);
 
   const toggleMobileNav = () => {
@@ -39,6 +60,9 @@ const Navbar = ({ navLeft, navRight, mobileMenu }) => {
       className={`bg-navBg py-7 md:py-12 md:pb-8-- px-6   md:px-16 lg:px-[52px] fixed left-0 top-0  w-full z-[999] transition-transform duration-300 ${
         isVisible ? "translate-y-0" : "-translate-y-full"
       }`}
+      style={{
+        willChange: "transform",
+      }}
     >
       <nav className="flex justify-between items-center">
         <ul className="md:flex items-center gap-x-10 hidden">
