@@ -14,6 +14,51 @@ const AboutHero = ({ banner, heading, list }) => {
   const imageRefs = useRef([]);
   const contentRefs = useRef([]);
 
+  useEffect(() => {
+    if (!list.length) return;
+
+    const ctx = gsap.context(() => {
+      list.forEach((_, index) => {
+        gsap.fromTo(
+          imageRefs.current[index],
+          { scale: 0.8, opacity: 0 },
+          {
+            scale: 1,
+            opacity: 1,
+            duration: 1,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: imageRefs.current[index],
+              start: "top 80%",
+            },
+          }
+        );
+
+        gsap.fromTo(
+          [
+            contentRefs.current[index * 3],
+            contentRefs.current[index * 3 + 1],
+            contentRefs.current[index * 3 + 2],
+          ],
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            stagger: 0.3,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: contentRefs.current[index * 3],
+              start: "top 60%",
+            },
+          }
+        );
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, [list]);
+
   return (
     <section className="relative mt-20" ref={sectionRef}>
       <div className="relative md:static">

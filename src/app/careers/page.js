@@ -16,12 +16,6 @@ const Careers = async () => {
   );
   return (
     <>
-      {/* <CareersHero
-        title={careersData?.post_title}
-        bannerImage={careersData?.top_banner}
-      />
-      <CareersList careersCategory={careersCategory} />
-      <CareerForm /> */}
       <CarrersPage
         careersData={careersData}
         careersCategory={careersCategory}
