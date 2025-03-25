@@ -27,14 +27,15 @@ const itemVariants = {
 
 const Footer = () => {
   const footerRef = useRef(null);
-  const isInView = useInView(footerRef, { once: true, margin: "-100px" });
+  const isInView = useInView(footerRef, { once: false, amount: 0.5 });
 
-  const pathname = usePathname(); // Detect page changes
+  const pathname = usePathname();
   const [animationKey, setAnimationKey] = useState(0);
 
   useEffect(() => {
-    setAnimationKey((prev) => prev + 1); // Update key to force animation restart
-  }, [pathname]); // Runs on every route change
+    setAnimationKey((prev) => prev + 1);
+    // restart;
+  }, [pathname]);
 
   return (
     <footer
@@ -43,15 +44,13 @@ const Footer = () => {
     >
       <div className="w-full h-[1px] bg-main relative z-50 hidden md:block overflow-hidden" />
 
-      {/* Key changes on navigation to restart animation */}
       <motion.div
-        key={animationKey} // This forces animation to restart on navigation
+        key={animationKey}
         className="flex flex-col items-center justify-center space-y-5 z-50 relative pt-10"
         variants={containerVariants}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
       >
-        {/* Logo */}
         <motion.div variants={itemVariants}>
           <Image
             src={Logo}
@@ -63,7 +62,6 @@ const Footer = () => {
           />
         </motion.div>
 
-        {/* Contact Links */}
         <motion.div variants={itemVariants}>
           <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:gap-x-3">
             <Link
@@ -82,7 +80,6 @@ const Footer = () => {
           </div>
         </motion.div>
 
-        {/* Social Icon */}
         <motion.div variants={itemVariants}>
           <Link
             href={"/"}
@@ -93,7 +90,6 @@ const Footer = () => {
           </Link>
         </motion.div>
 
-        {/* Footer Text */}
         <motion.div variants={itemVariants}>
           <p className="text-center text-sm font-light leading-[170%] capitalize max-w-[515px] flex flex-col sm:flex-row gap-y-3">
             <span>
@@ -108,7 +104,6 @@ const Footer = () => {
         </motion.div>
       </motion.div>
 
-      {/* Background Overlay */}
       <div className="absolute w-full h-full max-h-[345px] bg-footerGrad2 md:bg-footerGrad top-0 left-0" />
     </footer>
   );
