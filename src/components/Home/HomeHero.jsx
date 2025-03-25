@@ -83,8 +83,7 @@ const HomeHero = ({ title, link, linkText, videoUrl }) => {
           webkitPlaysInline
           muted
           playsInline
-          // preload="metadata"
-          preload={isMobile ? "none" : "metadata"}
+          preload="metadata"
           width="100%"
           height="100%"
           poster={"/Magnitude.jpg"}
