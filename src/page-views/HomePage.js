@@ -2,6 +2,7 @@
 import React from "react";
 import Section2 from "@/components/Home/Section2";
 import dynamic from "next/dynamic";
+// import Footer from "@/components/common/Footer";
 const HomeHero = dynamic(
   () => import("@/components/Home/HomeHero") /*  {
   ssr: false,
@@ -11,6 +12,10 @@ const Section4 = dynamic(() => import("@/components/Home/Section4"), {
   ssr: false,
 });
 const Section3 = dynamic(() => import("@/components/Home/Section3"), {
+  ssr: false,
+});
+
+const Footer = dynamic(() => import("@/components/common/Footer"), {
   ssr: false,
 });
 const HomePage = ({ homeData, serviceData }) => {
@@ -36,6 +41,7 @@ const HomePage = ({ homeData, serviceData }) => {
         imageUrl={homeData?.ship_image}
         homeCardData={homeData?.ship_detail_list}
       />
+      <Footer />
     </>
   );
 };

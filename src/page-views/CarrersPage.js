@@ -11,6 +11,10 @@ const CareersList = dynamic(() => import("@/components/Careers/CareersList"), {
 const CareerForm = dynamic(() => import("@/components/Careers/CareerForm"), {
   ssr: false,
 });
+const Footer = dynamic(() => import("@/components/common/Footer"), {
+  ssr: false,
+});
+
 const CarrersPage = ({ careersData, careersCategory }) => {
   return (
     <>
@@ -20,6 +24,7 @@ const CarrersPage = ({ careersData, careersCategory }) => {
       />
       <CareersList careersCategory={careersCategory} />
       <CareerForm />
+      <Footer />
     </>
   );
 };

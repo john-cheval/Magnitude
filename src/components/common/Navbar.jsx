@@ -14,21 +14,7 @@ const Navbar = ({ navLeft, navRight, mobileMenu }) => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     if (!isMobileOpen) {
-  //       if (window.scrollY > lastScrollY) {
-  //         setIsVisible(false);
-  //       } else {
-  //         setIsVisible(true);
-  //       }
-  //       setLastScrollY(window.scrollY);
-  //     }
-  //   };
-
-  //   window.addEventListener("scroll", handleScroll);
-  //   return () => window.removeEventListener("scroll", handleScroll);
-  // }, [lastScrollY, isMobileOpen]);
+  // console.log(pathname, "this pahtname");
 
   useEffect(() => {
     let ticking = false;

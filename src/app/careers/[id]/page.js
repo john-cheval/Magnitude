@@ -3,6 +3,9 @@ import CareersHero from "@/components/Careers/CareersHero";
 import CareersJobList from "@/components/Careers/CareersJobList";
 import { fetchData } from "@/utils/fetchData";
 import generateMetadataData from "@/utils/generateMetaData";
+import dynamic from "next/dynamic";
+const Footer = dynamic(() => import("@/components/common/Footer"));
+
 import React from "react";
 
 export async function generateMetadata({ params }) {
@@ -28,6 +31,7 @@ const CarrerInnerPage = async ({ params }) => {
       />
       <CareersJobList careersList={careersList} />
       <CareerForm />
+      <Footer />
     </>
   );
 };

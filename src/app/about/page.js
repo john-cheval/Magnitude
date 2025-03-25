@@ -7,8 +7,7 @@ const AboutHero = dynamic(() => import("@/components/About/AboutHero"));
 
 const OurValues = dynamic(() => import("@/components/About/OurValues"));
 const WhyChooseUs = dynamic(() => import("@/components/About/WhyChooseUs"));
-// import OurValues from "@/components/About/OurValues";
-// import WhyChooseUs from "@/components/About/WhyChooseUs";
+const Footer = dynamic(() => import("@/components/common/Footer"));
 
 export async function generateMetadata() {
   return await generateMetadataData(14, "about", false);
@@ -30,6 +29,7 @@ const About = async () => {
           whyChooseData={aboutData?.section_list[2]?.list}
           imageUrl={aboutData?.section_list[2]?.list[0]?.image}
         />
+        <Footer />
       </>
     </>
   );
