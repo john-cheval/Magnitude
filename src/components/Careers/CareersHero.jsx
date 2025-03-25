@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 
 const CareersHero = ({ title, bannerImage }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
-  console.log(bannerImage, "jjjj");
 
   useEffect(() => {
     if (bannerImage) {
