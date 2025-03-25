@@ -11,10 +11,15 @@ const HomeHero = ({ title, link, linkText, videoUrl }) => {
   const buttonRef = useRef(null);
   const sectionRef = useRef(null);
   const [videoLoaded, setVideoLoaded] = useState(false);
-  const [showFallback, setShowFallback] = useState(false);
   const mobileLinkRef = useRef(null);
   const videoRef = useRef(null);
   const isMobile = useIsMobile();
+  const [videoSrc, setVideoSrc] = useState(null);
+  useEffect(() => {
+    setTimeout(() => {
+      setVideoSrc(videoUrl);
+    }, 1000);
+  }, []);
 
   const handleVideoLoad = () => {
     setVideoLoaded(true);
@@ -69,23 +74,24 @@ const HomeHero = ({ title, link, linkText, videoUrl }) => {
           />
         </div>
       )}
-      <video
-        autoPlay
-        loop
-        ref={videoRef}
-        onLoadedData={handleVideoLoad}
-        webkitPlaysInline
-        muted
-        playsInline
-        preload="metadata"
-        width="100%"
-        height="100%"
-        poster={"/Magnitude.png"}
-        className="w-screen h-[300px] md:h-full md:max-h-[288px]-- object-cover"
-        src={videoUrl}
-      >
-        {/* <source src={videoUrl} type="video/mp4" /> */}
-      </video>
+      {videoSrc && (
+        <video
+          autoPlay
+          loop
+          ref={videoRef}
+          onLoadedData={handleVideoLoad}
+          webkitPlaysInline
+          muted
+          playsInline
+          // preload="metadata"
+          preload={isMobile ? "none" : "metadata"}
+          width="100%"
+          height="100%"
+          poster={"/Magnitude.jpg"}
+          className="w-screen h-[300px] md:h-full md:max-h-[288px] object-cover"
+          src={videoSrc}
+        />
+      )}
 
       <div
         className={` ${
