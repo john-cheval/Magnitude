@@ -29,7 +29,8 @@ const Services = ({ servicesList }) => {
         const cardRef = useRef(null);
         const isInView = useInView(cardRef, {
           once: true,
-          margin: "-100px 0px",
+          // margin: "-100px 0px",
+          amount: 0.3,
         });
         return (
           <div
@@ -169,11 +170,13 @@ const Services = ({ servicesList }) => {
                 </motion.div>
               </motion.div>
             ) : (
-              <motion.div className="col-span-12 md:col-span-6 lg:col-span-7">
+              <motion.div
+                className="col-span-12 md:col-span-6 lg:col-span-7"
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={isInView ? { scale: 1, opacity: 1 } : {}}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+              >
                 <Image
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  animate={isInView ? { scale: 1, opacity: 1 } : {}}
-                  transition={{ duration: 0.8, ease: "easeOut" }}
                   src={service?.image}
                   alt={service?.post_title}
                   width={0}

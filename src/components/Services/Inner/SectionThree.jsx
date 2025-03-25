@@ -32,7 +32,24 @@ const SectionThree = ({ data, layout = false }) => {
               width={0}
               height={0}
               sizes="100vw"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover hidden md:block"
+            />
+          </motion.div>
+        )}
+
+        {isMobile && (
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={isInView ? { scale: 1, opacity: 1 } : {}}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <Image
+              src={data?.image}
+              alt={data?.title}
+              width={0}
+              height={0}
+              sizes="100vw"
+              className="w-full h-full object-cover md:hidden"
             />
           </motion.div>
         )}
@@ -78,7 +95,7 @@ const SectionThree = ({ data, layout = false }) => {
               width={0}
               height={0}
               sizes="100vw"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover hidden md:block"
             />
           </motion.div>
         )}
