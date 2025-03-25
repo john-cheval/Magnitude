@@ -33,7 +33,7 @@ const HomeHero = ({ title, link, linkText, videoUrl }) => {
   return (
     <section
       ref={sectionRef}
-      className="overflow-hidden md:h-screen relative pt-16 md:pt-0--"
+      className="overflow-hidden md:h-screen relative pt-16 md:pt-0"
     >
       <video
         autoPlay

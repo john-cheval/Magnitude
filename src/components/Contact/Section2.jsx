@@ -6,20 +6,19 @@ import { IoMail } from "react-icons/io5";
 import { RiPhoneFill } from "react-icons/ri";
 import { MdLocationPin } from "react-icons/md";
 import Link from "next/link";
+import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 function Section2({ emailAddress, address, phoneList, title }) {
   const sectionRef = useRef(null);
 
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
+  useGSAP(() => {
     const ctx = gsap.context(() => {
       const elements = gsap.utils.toArray(".fade-item");
 
-      ScrollTrigger.clearMatchMedia();
-      ScrollTrigger.refresh();
+      // ScrollTrigger.clearMatchMedia();
+      // ScrollTrigger.refresh();
 
       gsap.from(elements, {
         opacity: 0,
@@ -37,7 +36,7 @@ function Section2({ emailAddress, address, phoneList, title }) {
 
     return () => {
       ctx.revert();
-      ScrollTrigger.clearMatchMedia();
+      // ScrollTrigger.clearMatchMedia();
     };
   }, []);
 
