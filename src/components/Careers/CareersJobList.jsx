@@ -60,7 +60,7 @@ const CareersJobList = ({ careersList }) => {
           key={index + 1}
           ref={(el) => (jobItemRefs.current[index] = el)}
           className={`flex flex-col md:flex-row md:justify-between gap-x-5 border-t md:items-center border-altermain pt-5 pb-9 ${
-            index === jobList.length - 1 ? "border-b md:border-b-0" : ""
+            index === jobList.length - 1 ? "border-b " : ""
           }`}
         >
           <div className="space-y-4">

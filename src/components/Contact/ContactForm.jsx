@@ -191,7 +191,7 @@ const ContactForm = () => {
           <button
             ref={buttonRef}
             type="submit"
-            className="text-sm uppercase  px-9 py-4 text-center inline-block w-fit bg-main text-altermain mx-auto"
+            className="text-sm uppercase  px-9 py-4 text-center inline-block w-fit bg-main border text-altermain mx-auto hover:bg-transparent hover:text-main hover:border-main transition-all duration-300"
           >
             Submit
           </button>

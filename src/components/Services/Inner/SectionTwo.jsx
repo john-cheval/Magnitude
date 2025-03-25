@@ -61,15 +61,17 @@ const SectionTwo = ({ serviceData, layout }) => {
       )}
 
       {isMobile && !layout && (
-        <Image
-          src={serviceData?.image}
-          alt={serviceData?.title}
-          width={0}
-          ref={imageRef}
-          height={0}
-          className="w-full h-full max-w-[553px]-- max-h-[404px]-- object-cover"
-          sizes="100vw"
-        />
+        <div className="col-span-12 md:col-span-6 lg:col-span-12">
+          <Image
+            src={serviceData?.image}
+            alt={serviceData?.title}
+            width={0}
+            ref={imageRef}
+            height={0}
+            className="w-full h-full max-w-[553px]-- max-h-[404px]-- object-cover"
+            sizes="100vw"
+          />
+        </div>
       )}
       <div
         className={` px-7 md:px-14 lg:px-20 py-12 bg-[#f5f5f5] flex flex-col items-center md:items-start justify-center col-span-12 md:col-span-6  ${

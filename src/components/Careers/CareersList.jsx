@@ -79,7 +79,7 @@ const CareersList = ({ careersCategory }) => {
       ref={sectionRef}
       className={`${
         isMobile ? "" : "containers"
-      } text-altermain mt-5 sm:mt-10 lg:mt-20`}
+      } text-altermain mt-5 sm:mt-10 `}
     >
       {/* First Card */}
       <div className="grid grid-cols-12">
