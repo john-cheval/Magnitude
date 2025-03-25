@@ -95,7 +95,7 @@ const ServiceHero = ({ title, small_heading, description, bannerImage }) => {
             ref={(el) => (textRefs.current[1] = el)}
           ></span>
           <p
-            className="description !text-center md:!textleft   max-w-[413px]"
+            className="description !text-center md:!text-left   max-w-[413px]"
             ref={(el) => (textRefs.current[2] = el)}
           >
             {description}

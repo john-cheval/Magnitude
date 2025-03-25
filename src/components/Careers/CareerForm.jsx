@@ -3,8 +3,10 @@ import React, { useEffect, useRef, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { toast } from "react-toastify";
 import { gsap } from "gsap";
+import useIsMobile from "@/hooks/useIsMobile";
 
 const CareerForm = () => {
+  const isMobile = useIsMobile();
   const formRef = useRef(null);
   const titleRef = useRef(null);
   const titleChildrenRef = useRef([]);
@@ -201,7 +203,7 @@ const CareerForm = () => {
               onChange={handleChange}
               className="input appearance-none pr-14"
             >
-              <option className="text-altermain" value="" disabled>
+              <option className="!text-gray-500 " value="" disabled>
                 Select Job Type
               </option>
               <option className="text-altermain" value="full-time">
@@ -220,7 +222,7 @@ const CareerForm = () => {
 
             <IoIosArrowDown
               size={20}
-              className="absolute right-5 top-1/2 transform -translate-y-1/2 text-main pointer-events-none"
+              className="absolute right-5 top-1/2 transform -translate-y-1/2 text-[#9D9D9D] pointer-events-none"
             />
           </div>
 
@@ -252,7 +254,7 @@ const CareerForm = () => {
           />
 
           <div className="input flex items-center gap-x-5 justify-between pr-[10px] cursor-pointer">
-            <p className="font-helvatica text-sm md:text-base font-medium leading-[154%]">
+            <p className="font-helvatica text-sm md:text-base text-[#9D9D9D] font-medium leading-[154%]">
               {formData.resume || "Upload Resume/CV"}{" "}
               <span className="text-[#979797] text-xs md:text-sm">
                 ( PDF, DOC, DOCX. File size limit: 2MB )
@@ -287,9 +289,9 @@ const CareerForm = () => {
         >
           <button
             type="submit"
-            className="text-sm uppercase px-9 py-4 text-center inline-block w-fit bg-main text-altermain mx-auto"
+            className="text-sm uppercase px-9 py-4 border text-center inline-block w-fit bg-main text-altermain mx-auto hover:bg-altermain hover:text-main transition-all duration-300 ease-in-out hover:border-main"
           >
-            Submit Your Application
+            {isMobile ? "Submit" : " Submit Your Application"}
           </button>
         </div>
       </form>

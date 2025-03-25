@@ -2,13 +2,14 @@ import React from "react";
 
 function ContactHero({ bannerVideo }) {
   return (
-    <section className="h-screen-- overflow-hidden relative">
+    <section className=" overflow-hidden relative pt-16 md:pt-0--">
       <video
         autoPlay
         loop
         muted
         preload="auto"
-        className="w-full h-full object-cover"
+        poster={"/Contact.png"}
+        className="w-full md:h-full object-cover h-[275px] md:max-h-[288px]--"
       >
         <source src={bannerVideo} type="video/mp4" />
       </video>

@@ -2,6 +2,7 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Section4Mobile from "./Section4Mobile";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -55,7 +56,7 @@ const Section4 = ({ imageUrl, homeCardData }) => {
           backgroundPosition: "top center",
         }}
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-9 gap-y-12  z-10 containers  relative  ">
+        <div className="md:grid hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-9 gap-y-12  z-10 containers  relative  ">
           {homeCardData?.map((cardData, index) => (
             <div
               key={cardData?.id || index}
@@ -73,6 +74,8 @@ const Section4 = ({ imageUrl, homeCardData }) => {
             </div>
           ))}
         </div>
+
+        <Section4Mobile homeCardData={homeCardData} />
 
         <div className="bg-homeBottomGrad w-full h-full max-h-[50%] absolute bottom-0 left-0 z-0" />
       </section>

@@ -46,46 +46,26 @@ const SectionThree = ({ data, layout = false }) => {
     <section
       ref={sectionRef}
       className={`bg-altermain   text-main  containers ${
-        isMobile ? "pb-10" : "containers  mt-16 py-20"
+        isMobile ? "py-10" : "containers  mt-16 py-20"
       }`}
     >
       <div
-        className={`grid grid-cols-1 md:grid-cols-12 containers-- ${
-          layout ? "md:gap-x-12" : "gap-x-[32px]"
+        className={`grid grid-cols-1 md:grid-cols-2 containers-- ${
+          layout ? "gap-x-32" : "gap-x-[72px]"
         } `}
       >
         {layout && (
-          <div className="col-span-12 md:col-span-6  lg:col-span-7">
-            <Image
-              src={data?.image}
-              alt={data?.title}
-              width={0}
-              ref={imageRef}
-              height={0}
-              sizes="100vw"
-              className="w-full h-full object-cover"
-            />
-          </div>
+          <Image
+            src={data?.image}
+            alt={data?.title}
+            width={0}
+            ref={imageRef}
+            height={0}
+            sizes="100vw"
+            className="w-full h-full object-cover"
+          />
         )}
-
-        {isMobile && !layout && (
-          <div className="col-span-12 md:col-span-6 lg:col-span-5">
-            <Image
-              src={data?.image}
-              alt={data?.title}
-              width={0}
-              height={0}
-              ref={imageRef}
-              sizes="100vw"
-              className="w-full h-full object-cover"
-            />
-          </div>
-        )}
-        <div
-          className={`space-y-7 pt-12 flex flex-col items-center md:items-start  col-span-12 md:col-span-6 ${
-            layout ? "lg:col-span-5" : "lg:col-span-7"
-          }`}
-        >
+        <div className="space-y-7 pt-12 flex flex-col items-center md:items-start ">
           <h2
             ref={(el) => (textRefs.current[0] = el)}
             className="text-lg md:text-xl lg:text-2xl "
@@ -99,23 +79,21 @@ const SectionThree = ({ data, layout = false }) => {
 
           <div
             ref={(el) => (textRefs.current[2] = el)}
-            className="description why max-w-[517px]-- space-y-6"
+            className="description why max-w-[517px] space-y-6"
             dangerouslySetInnerHTML={{ __html: data?.description }}
           ></div>
         </div>
 
         {!layout && (
-          <div className="col-span-12 md:col-span-6 lg:col-span-5">
-            <Image
-              src={data?.image}
-              alt={data?.title}
-              width={0}
-              height={0}
-              ref={imageRef}
-              sizes="100vw"
-              className="w-full h-full object-cover hidden md:block"
-            />
-          </div>
+          <Image
+            src={data?.image}
+            alt={data?.title}
+            width={0}
+            height={0}
+            ref={imageRef}
+            sizes="100vw"
+            className="w-full h-full object-cover"
+          />
         )}
       </div>
     </section>

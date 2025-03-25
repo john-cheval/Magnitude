@@ -12,8 +12,6 @@ const Section3 = ({ title, serviceData }) => {
   const homeCardData = Object?.values(serviceData);
 
   useGSAP(() => {
-    const pinnedWorksItems = document.getElementById("pinnedWorksItems");
-    const workInnerHeight = pinnedWorksItems.children[0].clientHeight;
     const timeline = gsap.timeline({
       scrollTrigger: {
         trigger: "#pinnedWorkSection",
@@ -34,6 +32,12 @@ const Section3 = ({ title, serviceData }) => {
         y: -window.innerHeight,
         smoothOrigin: true,
       });
+
+    timeline.to("#worksText", {
+      opacity: 0,
+      scale: 0,
+      ease: "power2.out",
+    });
 
     timeline.fromTo(
       ".work-card",
