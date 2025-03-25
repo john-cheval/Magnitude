@@ -18,7 +18,7 @@ const WhyChooseUs = ({ whyChooseData, imageUrl }) => {
         ease: "power2.out",
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top 80%",
+          start: "top 60%",
         },
       }
     );

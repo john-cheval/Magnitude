@@ -22,7 +22,7 @@ const OurValues = ({ ourValuesData }) => {
         ease: "power2.out",
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top 80%",
+          start: "top 60%",
         },
       }
     );
@@ -38,7 +38,7 @@ const OurValues = ({ ourValuesData }) => {
         ease: "power2.out",
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top 80%",
+          start: "top 60%",
         },
       }
     );

@@ -4,7 +4,6 @@ import Image from "next/image";
 import useIsMobile from "@/hooks/useIsMobile";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -37,20 +36,20 @@ const AboutHero = ({ banner, heading, list }) => {
 
         gsap.fromTo(
           [
-            contentRefs.current[index * 3], // Title
-            contentRefs.current[index * 3 + 1], // Separator
-            contentRefs.current[index * 3 + 2], // Description
+            contentRefs.current[index * 3],
+            contentRefs.current[index * 3 + 1],
+            contentRefs.current[index * 3 + 2],
           ],
           { opacity: 0, y: 20 },
           {
             opacity: 1,
             y: 0,
             duration: 0.6,
-            stagger: 0.3, // Smooth stagger effect
+            stagger: 0.3,
             ease: "power2.out",
             scrollTrigger: {
               trigger: contentRefs.current[index * 3],
-              start: "top 80%",
+              start: "top 60%",
             },
           }
         );
