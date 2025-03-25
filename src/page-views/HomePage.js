@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-// import Section2 from "@/components/Home/Section2";
+import Section2 from "@/components/Home/Section2";
 import dynamic from "next/dynamic";
 const HomeHero = dynamic(() => import("@/components/Home/HomeHero"), {
   ssr: false,
@@ -9,9 +9,6 @@ const Section4 = dynamic(() => import("@/components/Home/Section4"), {
   ssr: false,
 });
 const Section3 = dynamic(() => import("@/components/Home/Section3"), {
-  ssr: false,
-});
-const Section2 = dynamic(() => import("@/components/Home/Section2"), {
   ssr: false,
 });
 const HomePage = ({ homeData, serviceData }) => {
