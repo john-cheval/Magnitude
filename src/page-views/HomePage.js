@@ -2,7 +2,6 @@
 import React from "react";
 import Section2 from "@/components/Home/Section2";
 import dynamic from "next/dynamic";
-// import Footer from "@/components/common/Footer";
 const HomeHero = dynamic(
   () => import("@/components/Home/HomeHero") /*  {
   ssr: false,

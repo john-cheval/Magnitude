@@ -55,7 +55,7 @@ const HomeHero = ({ title, link, linkText, videoUrl }) => {
       {!videoLoaded && (
         <div className="absolute inset-0 z-10">
           <Image
-            src="/Magnitude.jpg"
+            src={isMobile ? "/MagnitudeMobile.jpg" : "/Magnitude.jpg"}
             alt="Hero Fallback"
             layout="fill"
             objectFit="cover"
@@ -70,7 +70,7 @@ const HomeHero = ({ title, link, linkText, videoUrl }) => {
         ref={videoRef}
         onLoadedData={handleVideoLoad}
         webkitplaysinline={"true"}
-        poster={"/Magnitude.jpg"}
+        poster={isMobile ? "/MagnitudeMobile.jpg" : "/Magnitude.jpg"}
         muted
         playsInline
         preload="metadata"
@@ -83,7 +83,7 @@ const HomeHero = ({ title, link, linkText, videoUrl }) => {
       <div
         className={` ${
           isMobile ? "containers" : ""
-        } absolute flex md:flex-col justify-between md:justify-start items-center md:items-start bottom-7 md:bottom-[76px] md:left-1/2 md:-translate-x-1/2  md:space-y-6 lg:space-y-9 z-50 w-full md:w-fit`}
+        } absolute flex md:flex-col justify-between md:justify-start items-center md:items-start bottom-7 md:bottom-[76px] md:left-1/2 md:-translate-x-1/2  md:space-y-6 lg:space-y-9-- z-50 w-full md:w-fit`}
       >
         <h1
           ref={textRef}

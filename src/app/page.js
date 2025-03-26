@@ -1,12 +1,7 @@
 import { fetchData } from "@/utils/fetchData";
 import generateMetadataData from "@/utils/generateMetaData";
-// import dynamic from "next/dynamic";
 import React from "react";
-// import Section2 from "@/components/Home/Section2";
 import HomePage from "@/page-views/HomePage";
-// const HomeHero = dynamic(() => import("@/components/Home/HomeHero"));
-// const Section4 = dynamic(() => import("@/components/Home/Section4"));
-// const Section3 = dynamic(() => import("@/components/Home/Section3"));
 
 export async function generateMetadata() {
   return await generateMetadataData(10, "", false);
