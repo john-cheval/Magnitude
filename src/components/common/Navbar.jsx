@@ -16,25 +16,41 @@ const Navbar = ({ navLeft, navRight, mobileMenu }) => {
 
   // console.log(pathname, "this pahtname");
 
+  // useEffect(() => {
+  //   let ticking = false;
+  //   const handleScroll = () => {
+  //     if (!ticking && !isMobileOpen) {
+  //       const currentScrollY =
+  //         document.documentElement.scrollTop || window.scrollY;
+  //       window.requestAnimationFrame(() => {
+  //         setIsVisible(currentScrollY < lastScrollY);
+  //         setLastScrollY(currentScrollY);
+  //         ticking = false;
+  //       });
+  //       ticking = true;
+  //     }
+  //   };
+
+  //   window.addEventListener("scroll", handleScroll, { passive: true });
+  //   return () =>
+  //     window.removeEventListener("scroll", handleScroll, { passive: true });
+  // }, [lastScrollY, isMobileOpen]);
+
   useEffect(() => {
-    let ticking = false;
     const handleScroll = () => {
-      if (!ticking && !isMobileOpen) {
-        const currentScrollY =
-          document.documentElement.scrollTop || window.scrollY;
-        window.requestAnimationFrame(() => {
-          setIsVisible(currentScrollY < lastScrollY);
-          setLastScrollY(currentScrollY);
-          ticking = false;
-        });
-        ticking = true;
+      if (window.scrollY > lastScrollY && window.scrollY > 150) {
+        setIsVisible(false);
+        console.log("added scroll");
+      } else {
+        setIsVisible(true);
+        console.log("removed scroll");
       }
+      setLastScrollY(window.scrollY);
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () =>
-      window.removeEventListener("scroll", handleScroll, { passive: true });
-  }, [lastScrollY, isMobileOpen]);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
 
   const toggleMobileNav = () => {
     setIsMobileOpen(!isMobileOpen);
@@ -42,7 +58,7 @@ const Navbar = ({ navLeft, navRight, mobileMenu }) => {
 
   return (
     <header
-      className={`bg-navBg py-7 md:py-12 md:pb-8-- px-6   md:px-16 lg:px-[52px] fixed left-0 top-0  w-full z-[999] transition-transform duration-300 ${
+      className={`bg-navBg py-7 md:py-12 md:pb-8-- px-6   md:px-16 lg:px-[52px] fixed left-0-- top-0  w-full z-[999955] transition-transform duration-300 ${
         isVisible ? "translate-y-0" : "-translate-y-full"
       }`}
       style={{

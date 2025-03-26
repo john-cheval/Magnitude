@@ -6,7 +6,7 @@ import React, { useRef } from "react";
 const SectionOne = ({ serviceData }) => {
   const isMobile = useIsMobile();
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px 0px" });
+  const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
   return (
     <div
       ref={sectionRef}
@@ -23,6 +23,7 @@ const SectionOne = ({ serviceData }) => {
           alt={serviceData?.title}
           width={0}
           height={0}
+          priority
           className="w-full h-full max-w-[553px]-- max-h-[404px]-- object-cover"
           sizes="100vw"
         />
