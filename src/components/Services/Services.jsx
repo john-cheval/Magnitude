@@ -14,7 +14,9 @@ const Services = ({ servicesList }) => {
   return (
     <section
       ref={sectionRef}
-      className={`bg-altermain md:pt-12 pb-20 ${isMobile ? "" : "containers"}`}
+      className={`bg-altermain md:pt-12 md:pb-20 ${
+        isMobile ? "" : "containers"
+      }`}
     >
       {serviceData.map((service, index) => {
         const isEven = index % 2 === 1;

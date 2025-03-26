@@ -73,7 +73,7 @@ const CareersList = ({ careersCategory }) => {
       </div>
 
       {/* Second Card */}
-      <div ref={secondCardRef} className="grid grid-cols-12 md:mt-9 mb-12">
+      <div ref={secondCardRef} className="grid grid-cols-12 md:mt-9 mb-5">
         {/* Mobile Image */}
         {isMobile && (
           <motion.div
