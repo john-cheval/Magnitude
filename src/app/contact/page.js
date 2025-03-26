@@ -1,11 +1,11 @@
-import ContactForm from "@/components/Contact/ContactForm";
-import Section2 from "@/components/Contact/Section2";
 import { fetchData } from "@/utils/fetchData";
 import generateMetadataData from "@/utils/generateMetaData";
 import dynamic from "next/dynamic";
 import React from "react";
 const ContactHero = dynamic(() => import("@/components/Contact/ContactHero"));
-// const Locations = dynamic(() => import("@/components/Contact/Locations"));
+const ContactForm = dynamic(() => import("@/components/Contact/ContactForm"));
+const Section2 = dynamic(() => import("@/components/Contact/Section2"));
+
 const Footer = dynamic(() => import("@/components/common/Footer"));
 
 export async function generateMetadata() {

@@ -18,19 +18,17 @@ const About = async () => {
   );
   return (
     <>
-      <>
-        <AboutHero
-          banner={aboutData?.top_banner}
-          heading={aboutData?.small_heading}
-          list={aboutData?.section_list[0]?.list}
-        />
-        <OurValues ourValuesData={aboutData?.section_list[1]?.list} />
-        <WhyChooseUs
-          whyChooseData={aboutData?.section_list[2]?.list}
-          imageUrl={aboutData?.section_list[2]?.list[0]?.image}
-        />
-        <Footer />
-      </>
+      <AboutHero
+        banner={aboutData?.top_banner}
+        heading={aboutData?.small_heading}
+        list={aboutData?.section_list[0]?.list}
+      />
+      <OurValues ourValuesData={aboutData?.section_list[1]?.list} />
+      <WhyChooseUs
+        whyChooseData={aboutData?.section_list[2]?.list}
+        imageUrl={aboutData?.section_list[2]?.list[0]?.image}
+      />
+      <Footer />
     </>
   );
 };

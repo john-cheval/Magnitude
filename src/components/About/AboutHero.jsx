@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import useIsMobile from "@/hooks/useIsMobile";
 import { motion, useInView } from "framer-motion";
@@ -16,6 +16,12 @@ const textVariants = {
 const AboutHero = ({ banner, heading, list }) => {
   const isMobile = useIsMobile();
   const sectionRef = useRef(null);
+  const [imageLoaded, setImageLoaded] = useState(false);
+  useEffect(() => {
+    if (banner) {
+      setImageLoaded(true);
+    }
+  }, [banner]);
 
   return (
     <section className="relative mt-20" ref={sectionRef}>
@@ -23,9 +29,13 @@ const AboutHero = ({ banner, heading, list }) => {
         <Image
           src={banner}
           alt="hero"
-          width={0}
-          height={0}
+          // width={0}
+          // height={0}
           sizes="100vw"
+          priority
+          width={1200}
+          height={530}
+          onLoad={() => setImageLoaded(true)}
           className="w-full h-auto object-cover max-h-[400px] hidden md:block"
         />
 

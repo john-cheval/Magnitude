@@ -1,9 +1,9 @@
-import ServiceHero from "@/components/Services/ServiceHero";
 import Services from "@/components/Services/Services";
 import React from "react";
 import generateMetadataData from "@/utils/generateMetaData";
 import { fetchData } from "@/utils/fetchData";
 import dynamic from "next/dynamic";
+const ServiceHero = dynamic(() => import("@/components/Services/ServiceHero"));
 const Footer = dynamic(() => import("@/components/common/Footer"));
 
 export async function generateMetadata() {

@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import useIsMobile from "@/hooks/useIsMobile";
 import { motion, useInView } from "framer-motion";
@@ -13,6 +13,12 @@ const ServiceHero = ({ title, small_heading, description, bannerImage }) => {
 
   const isInView = useInView(sectionRef, { once: true, margin: "-100px 0px" });
   const [imageLoaded, setImageLoaded] = useState(false);
+
+  useEffect(() => {
+    if (bannerImage) {
+      setImageLoaded(true);
+    }
+  }, [bannerImage]);
   return (
     <section
       ref={sectionRef}
@@ -41,9 +47,11 @@ const ServiceHero = ({ title, small_heading, description, bannerImage }) => {
             src={bannerImage}
             priority
             alt={title}
-            width={0}
+            // width={0}
+            // height={0}
+            width={1200}
+            height={530}
             onLoad={() => setImageLoaded(true)}
-            height={0}
             sizes="100vw"
             className="w-full h-[450px] md:h-auto md:max-h-[530px] object-cover mt-5 md:mt-8 lg:mt-10"
           />
