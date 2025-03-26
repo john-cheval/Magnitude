@@ -16,6 +16,14 @@ const ContactPage = async () => {
     "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/full_details?ID=23"
   );
 
+  if (!contactData) {
+    return (
+      <div className="h-screen flex items-center justify-center">
+        Loading...
+      </div>
+    );
+  }
+
   return (
     <>
       <ContactHero bannerVideo={contactData?.top_video?.url} />

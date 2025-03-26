@@ -24,7 +24,7 @@ function ContactHero({ bannerVideo }) {
         <div className="absolute inset-0 z-10">
           <Image
             src={isMobile ? "/contactMobile.jpg" : "/contactDesk.jpg"}
-            alt="Hero Fallback"
+            alt="Contact Fallback"
             layout="fill"
             objectFit="cover"
             priority
