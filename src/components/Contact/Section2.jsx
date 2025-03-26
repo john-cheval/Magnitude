@@ -31,7 +31,7 @@ function Section2({ emailAddress, address, phoneList, title }) {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: `top ${isMobile ? "70%" : "50%"}`,
-          markers: true,
+          // markers: true,
           toggleActions: "play none none none",
         },
       });
