@@ -48,7 +48,7 @@ const HomeHero = ({ title, link, linkText, videoUrl }) => {
   return (
     <section
       ref={sectionRef}
-      className="overflow-hidden md:h-screen relative pt-16-- md:pt-0"
+      className="overflow-hidden md:h-screen relative pt-20 md:pt-10"
     >
       <Link rel="preload" href="/" as="image" fetchPriority="high" />
 
