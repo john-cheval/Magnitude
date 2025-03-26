@@ -14,11 +14,16 @@ const Careers = async () => {
   const careersCategory = await fetchData(
     "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/careers_category"
   );
+  const { email_address, phone_number } = await fetchData(
+    "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/full_details?ID=23"
+  );
   return (
     <>
       <CarrersPage
         careersData={careersData}
         careersCategory={careersCategory}
+        email_address={email_address}
+        phone_number={phone_number}
       />
     </>
   );

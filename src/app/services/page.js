@@ -16,6 +16,9 @@ const ServicePage = async () => {
   const servicesList = await fetchData(
     "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/services"
   );
+  const { email_address, phone_number } = await fetchData(
+    "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/full_details?ID=23"
+  );
   return (
     <>
       <ServiceHero
@@ -25,7 +28,7 @@ const ServicePage = async () => {
         bannerImage={servicesData?.top_banner}
       />
       <Services servicesList={servicesList} />
-      <Footer />
+      <Footer email_address={email_address} phone_number={phone_number} />
     </>
   );
 };

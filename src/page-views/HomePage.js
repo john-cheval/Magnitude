@@ -17,7 +17,7 @@ const Section3 = dynamic(() => import("@/components/Home/Section3"), {
 const Footer = dynamic(() => import("@/components/common/Footer"), {
   ssr: false,
 });
-const HomePage = ({ homeData, serviceData }) => {
+const HomePage = ({ homeData, serviceData, email_address, phone_number }) => {
   return (
     <>
       <HomeHero
@@ -40,7 +40,7 @@ const HomePage = ({ homeData, serviceData }) => {
         imageUrl={homeData?.ship_image}
         homeCardData={homeData?.ship_detail_list}
       />
-      <Footer />
+      <Footer email_address={email_address} phone_number={phone_number} />
     </>
   );
 };

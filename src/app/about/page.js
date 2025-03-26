@@ -16,6 +16,9 @@ const About = async () => {
   const aboutData = await fetchData(
     "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/full_details?ID=14"
   );
+  const { email_address, phone_number } = await fetchData(
+    "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/full_details?ID=23"
+  );
   return (
     <>
       <AboutHero
@@ -28,7 +31,7 @@ const About = async () => {
         whyChooseData={aboutData?.section_list[2]?.list}
         imageUrl={aboutData?.section_list[2]?.list[0]?.image}
       />
-      <Footer />
+      <Footer email_address={email_address} phone_number={phone_number} />
     </>
   );
 };

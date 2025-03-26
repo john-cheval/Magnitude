@@ -15,7 +15,9 @@ const ContactPage = async () => {
   const contactData = await fetchData(
     "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/full_details?ID=23"
   );
-
+  const { email_address, phone_number } = await fetchData(
+    "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/full_details?ID=23"
+  );
   if (!contactData) {
     return (
       <div className="h-screen flex items-center justify-center">
@@ -35,7 +37,7 @@ const ContactPage = async () => {
       />
       {/* <Locations /> */}
       <ContactForm />
-      <Footer />
+      <Footer email_address={email_address} phone_number={phone_number} />
     </>
   );
 };
