@@ -10,7 +10,7 @@ const OurValues = ({ ourValuesData }) => {
 
   return (
     <section
-      className={`${isMobile ? "-mt-0" : "containers mt-12"} text-altermain`}
+      className={`${isMobile ? "-mt-0" : "containers mt-12--"} text-altermain`}
       ref={sectionRef}
     >
       {ourValuesData?.map((data, index) => {
@@ -21,7 +21,7 @@ const OurValues = ({ ourValuesData }) => {
           <motion.div
             key={index + 1}
             ref={itemRef}
-            className="grid grid-cols-1 md:grid-cols-2 items-center gap-8 md:py-10"
+            className="grid grid-cols-1 md:grid-cols-2 items-center gap-8-- md:py-10"
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             variants={{
@@ -51,7 +51,7 @@ const OurValues = ({ ourValuesData }) => {
             </motion.div>
 
             <motion.div
-              className="px-7 md:px-14 lg:pl-14 space-y-5 pt-8 md:pt-11 flex flex-col items-start justify-center"
+              className="px-7 md:px-12 lg:pl-14 space-y-5 pt-8 md:pt-11 flex flex-col items-start justify-center"
               variants={{
                 hidden: {},
                 visible: { transition: { staggerChildren: 0.3 } },
