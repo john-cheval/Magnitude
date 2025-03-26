@@ -18,14 +18,14 @@ const Careers = async () => {
     "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/full_details?ID=23"
   );
   return (
-    <>
+    <div className="bg-white">
       <CarrersPage
         careersData={careersData}
         careersCategory={careersCategory}
         email_address={email_address}
         phone_number={phone_number}
       />
-    </>
+    </div>
   );
 };
 

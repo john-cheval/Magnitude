@@ -65,6 +65,7 @@ body {
   overflow-x: hidden;
   font-family: "Century Gothic";
   line-height: normal;
+  background-color: #000;
 }
 a {
   text-decoration: none;

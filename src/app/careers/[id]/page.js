@@ -26,7 +26,7 @@ const CarrerInnerPage = async ({ params }) => {
     "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/full_details?ID=23"
   );
   return (
-    <>
+    <div className="bg-white">
       <CareersHero
         title={careersBannerData?.name}
         bannerImage={careersBannerData?.banner}
@@ -34,7 +34,7 @@ const CarrerInnerPage = async ({ params }) => {
       <CareersJobList careersList={careersList} />
       <CareerForm />
       <Footer email_address={email_address} phone_number={phone_number} />
-    </>
+    </div>
   );
 };
 
