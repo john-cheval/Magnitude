@@ -43,7 +43,7 @@ const Footer = ({ email_address, phone_number }) => {
       className="containers bg-footerBG bg-cover bg-center h-full relative pb-14 md:pb-16"
       ref={footerRef}
     >
-      <div className="w-full h-[1px] bg-main relative z-50 hidden md:block overflow-hidden" />
+      <div className="w-full h-[1px] bg-main relative z-50 hidden-- md:block-- overflow-hidden" />
 
       <motion.div
         key={animationKey}
