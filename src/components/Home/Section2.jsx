@@ -30,7 +30,8 @@ const Section2 = ({ title, desc, imageUrl }) => {
           ease: "power2.out",
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: "top 50%",
+            // markers: true,
+            start: `top ${isMobile ? "70%" : "50%"}`,
           },
         }
       );

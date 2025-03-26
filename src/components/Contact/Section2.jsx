@@ -7,11 +7,13 @@ import { RiPhoneFill } from "react-icons/ri";
 import { MdLocationPin } from "react-icons/md";
 import Link from "next/link";
 import { useGSAP } from "@gsap/react";
+import useIsMobile from "@/hooks/useIsMobile";
 
 gsap.registerPlugin(ScrollTrigger);
 
 function Section2({ emailAddress, address, phoneList, title }) {
   const sectionRef = useRef(null);
+  const isMobile = useIsMobile();
 
   useGSAP(() => {
     const ctx = gsap.context(() => {
@@ -28,7 +30,8 @@ function Section2({ emailAddress, address, phoneList, title }) {
         stagger: 0.05,
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top 50%",
+          start: `top ${isMobile ? "70%" : "50%"}`,
+          // markers: true,
           toggleActions: "play none none none",
         },
       });
@@ -60,14 +63,14 @@ function Section2({ emailAddress, address, phoneList, title }) {
               className="flex items-center font-helvatica gap-x-1 md:gap-x-2 font-light leading-[186%] text-sm  sm:text-base"
             >
               <RiPhoneFill color="#fff" />
-              {phoneList[0]?.title} {phoneList[0]?.phone_number}
+              {phoneList[0]?.title}: {phoneList[0]?.phone_number}
             </Link>
             <span className="sep">|</span>
             <Link
               href={`tel:${phoneList[1]?.phone_number}`}
               className="flex items-center font-helvatica gap-x-0 md:gap-x-2 font-light leading-[186%] text-sm  sm:text-base"
             >
-              {phoneList[1]?.title} {phoneList[1]?.phone_number}
+              {phoneList[1]?.title}: {phoneList[1]?.phone_number}
             </Link>
           </div>
 
