@@ -31,7 +31,7 @@ const CareersList = ({ careersCategory }) => {
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.5 }}
         >
           <Image
             src={careersCategory[1]?.list_image}
