@@ -55,7 +55,7 @@ const HomeHero = ({ title, link, linkText, videoUrl }) => {
       {!videoLoaded && (
         <div className="absolute inset-0 z-10">
           <Image
-            src="/Magnitude.jpg"
+            src={isMobile ? "/MagnitudeMobile.jpg" : "/Magnitude.jpg"}
             alt="Hero Fallback"
             layout="fill"
             objectFit="cover"
@@ -70,7 +70,7 @@ const HomeHero = ({ title, link, linkText, videoUrl }) => {
         ref={videoRef}
         onLoadedData={handleVideoLoad}
         webkitplaysinline={"true"}
-        poster={"/Magnitude.jpg"}
+        poster={isMobile ? "/MagnitudeMobile.jpg" : "/Magnitude.jpg"}
         muted
         playsInline
         preload="metadata"
