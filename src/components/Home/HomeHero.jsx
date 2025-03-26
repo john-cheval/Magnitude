@@ -5,6 +5,8 @@ import OutlineButton from "../common/OutlineButton";
 import useIsMobile from "@/hooks/useIsMobile";
 import Link from "next/link";
 import Image from "next/image";
+import { GoMute } from "react-icons/go";
+import { LuVolume } from "react-icons/lu";
 
 const HomeHero = ({ title, link, linkText, videoUrl }) => {
   const textRef = useRef(null);
@@ -14,6 +16,7 @@ const HomeHero = ({ title, link, linkText, videoUrl }) => {
   const mobileLinkRef = useRef(null);
   const videoRef = useRef(null);
   const isMobile = useIsMobile();
+  const [isMuted, setIsMuted] = useState(true);
 
   const handleVideoLoad = () => {
     setVideoLoaded(true);
@@ -45,6 +48,13 @@ const HomeHero = ({ title, link, linkText, videoUrl }) => {
     );
   }, []);
 
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !videoRef.current.muted;
+      setIsMuted(videoRef.current.muted);
+    }
+  };
+
   return (
     <section
       ref={sectionRef}
@@ -71,7 +81,7 @@ const HomeHero = ({ title, link, linkText, videoUrl }) => {
         onLoadedData={handleVideoLoad}
         webkitplaysinline={"true"}
         poster={isMobile ? "/MagnitudeMobile.jpg" : "/Magnitude.jpg"}
-        muted
+        muted={isMuted}
         playsInline
         preload="metadata"
         width="100%"
@@ -100,6 +110,19 @@ const HomeHero = ({ title, link, linkText, videoUrl }) => {
             {linkText}
           </Link>
         </div>
+
+        {videoLoaded && (
+          <div
+            className=" w-fit  cursor-pointer z-50 md:hidden"
+            onClick={toggleMute}
+          >
+            {isMuted ? (
+              <GoMute className="text-main text-lg" />
+            ) : (
+              <LuVolume className="text-main text-lg" />
+            )}
+          </div>
+        )}
         <div
           ref={buttonRef}
           className="md:flex items-center justify-center hidden w-full "
@@ -107,6 +130,19 @@ const HomeHero = ({ title, link, linkText, videoUrl }) => {
           <OutlineButton link={link} text={linkText} />
         </div>
       </div>
+
+      {videoLoaded && (
+        <div
+          className="absolute w-fit h-full-- right-10 top-[80%] cursor-pointer z-50 hidden md:block"
+          onClick={toggleMute}
+        >
+          {isMuted ? (
+            <GoMute className="text-main text-xl" />
+          ) : (
+            <LuVolume className="text-main text-xl" />
+          )}
+        </div>
+      )}
 
       <div className="absolute w-full h-full hidden md:block max-h-[288px] bg-homeHero2 top-0 left-0 z-40" />
 
