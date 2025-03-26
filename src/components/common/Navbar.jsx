@@ -14,30 +14,9 @@ const Navbar = ({ navLeft, navRight, mobileMenu }) => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
-  // console.log(pathname, "this pahtname");
-
-  // useEffect(() => {
-  //   let ticking = false;
-  //   const handleScroll = () => {
-  //     if (!ticking && !isMobileOpen) {
-  //       const currentScrollY =
-  //         document.documentElement.scrollTop || window.scrollY;
-  //       window.requestAnimationFrame(() => {
-  //         setIsVisible(currentScrollY < lastScrollY);
-  //         setLastScrollY(currentScrollY);
-  //         ticking = false;
-  //       });
-  //       ticking = true;
-  //     }
-  //   };
-
-  //   window.addEventListener("scroll", handleScroll, { passive: true });
-  //   return () =>
-  //     window.removeEventListener("scroll", handleScroll, { passive: true });
-  // }, [lastScrollY, isMobileOpen]);
-
   useEffect(() => {
     const handleScroll = () => {
+      if (isMobileOpen) return;
       if (window.scrollY > lastScrollY && window.scrollY > 150) {
         setIsVisible(false);
         console.log("added scroll");
@@ -50,7 +29,7 @@ const Navbar = ({ navLeft, navRight, mobileMenu }) => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  }, [lastScrollY, isMobileOpen]);
 
   const toggleMobileNav = () => {
     setIsMobileOpen(!isMobileOpen);

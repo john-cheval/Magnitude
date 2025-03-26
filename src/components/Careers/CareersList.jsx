@@ -17,7 +17,8 @@ const CareersList = ({ careersCategory }) => {
   });
   const secondCardInView = useInView(secondCardRef, {
     once: true,
-    margin: "-100px",
+    // margin: "-100px",
+    amount: 0.3,
   });
 
   return (
