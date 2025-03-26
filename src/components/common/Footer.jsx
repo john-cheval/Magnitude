@@ -1,6 +1,7 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
-import { usePathname } from "next/navigation"; // Detect page changes
+import { usePathname } from "next/navigation";
+
 import Logo from "../../../public/common/Logo2.svg";
 import Image from "next/image";
 import Link from "next/link";
@@ -25,7 +26,7 @@ const itemVariants = {
   },
 };
 
-const Footer = () => {
+const Footer = ({ email_address, phone_number }) => {
   const footerRef = useRef(null);
   const isInView = useInView(footerRef, { once: false, amount: 0.5 });
 
@@ -65,17 +66,18 @@ const Footer = () => {
         <motion.div variants={itemVariants}>
           <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:gap-x-3">
             <Link
-              href={"tel:+971 56 5048488"}
+              href={`tel:${phone_number}`}
               className="description flex items-center justify-center gap-x-2"
             >
-              <span className="text-center font-bold">T :</span>+971 56 5048488
+              <span className="text-center font-bold">T :</span>
+              {phone_number}
             </Link>
             <Link
-              href={"mailto:contact@magnitudeyachts.com"}
+              href={`mailto:${email_address}`}
               className="description flex items-center gap-x-2"
             >
               <span className="text-center font-bold">E :</span>
-              contact@magnitudeyachts.com
+              {email_address}
             </Link>
           </div>
         </motion.div>

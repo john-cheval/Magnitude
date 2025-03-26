@@ -15,11 +15,13 @@ const ServiceInnerPage = async ({ params }) => {
   const serviceData = await fetchData(
     `https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/full_details?slug=${paramsID}&meta_type=service`
   );
-
+  const { email_address, phone_number } = await fetchData(
+    "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/full_details?ID=23"
+  );
   return (
     <>
       <ServiceInner serviceData={serviceData} />
-      <Footer />
+      <Footer email_address={email_address} phone_number={phone_number} />
     </>
   );
 };

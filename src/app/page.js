@@ -14,6 +14,16 @@ export default async function Home() {
   const serviceData = await fetchData(
     "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/services"
   );
+  const { email_address, phone_number } = await fetchData(
+    "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/full_details?ID=23"
+  );
 
-  return <HomePage homeData={homeData} serviceData={serviceData} />;
+  return (
+    <HomePage
+      homeData={homeData}
+      serviceData={serviceData}
+      email_address={email_address}
+      phone_number={phone_number}
+    />
+  );
 }

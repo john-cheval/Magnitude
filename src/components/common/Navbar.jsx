@@ -19,10 +19,8 @@ const Navbar = ({ navLeft, navRight, mobileMenu }) => {
       if (isMobileOpen) return;
       if (window.scrollY > lastScrollY && window.scrollY > 150) {
         setIsVisible(false);
-        console.log("added scroll");
       } else {
         setIsVisible(true);
-        console.log("removed scroll");
       }
       setLastScrollY(window.scrollY);
     };

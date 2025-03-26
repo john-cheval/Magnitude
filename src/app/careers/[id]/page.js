@@ -22,7 +22,9 @@ const CarrerInnerPage = async ({ params }) => {
   const careersList = await fetchData(
     `https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/careers_list`
   );
-
+  const { email_address, phone_number } = await fetchData(
+    "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/full_details?ID=23"
+  );
   return (
     <>
       <CareersHero
@@ -31,7 +33,7 @@ const CarrerInnerPage = async ({ params }) => {
       />
       <CareersJobList careersList={careersList} />
       <CareerForm />
-      <Footer />
+      <Footer email_address={email_address} phone_number={phone_number} />
     </>
   );
 };

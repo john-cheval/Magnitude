@@ -9,7 +9,12 @@ const Footer = dynamic(() => import("@/components/common/Footer"), {
   ssr: false,
 });
 
-const CarrersPage = ({ careersData, careersCategory }) => {
+const CarrersPage = ({
+  careersData,
+  careersCategory,
+  email_address,
+  phone_number,
+}) => {
   return (
     <>
       <CareersHero
@@ -18,7 +23,7 @@ const CarrersPage = ({ careersData, careersCategory }) => {
       />
       <CareersList careersCategory={careersCategory} />
       <CareerForm />
-      <Footer />
+      <Footer email_address={email_address} phone_number={phone_number} />
     </>
   );
 };
