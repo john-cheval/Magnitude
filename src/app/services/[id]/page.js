@@ -19,10 +19,10 @@ const ServiceInnerPage = async ({ params }) => {
     "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/full_details?ID=23"
   );
   return (
-    <>
+    <div className="bg-white">
       <ServiceInner serviceData={serviceData} />
       <Footer email_address={email_address} phone_number={phone_number} />
-    </>
+    </div>
   );
 };
 

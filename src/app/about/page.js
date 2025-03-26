@@ -20,7 +20,7 @@ const About = async () => {
     "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/full_details?ID=23"
   );
   return (
-    <>
+    <div className="bg-white">
       <AboutHero
         banner={aboutData?.top_banner}
         heading={aboutData?.small_heading}
@@ -32,7 +32,7 @@ const About = async () => {
         imageUrl={aboutData?.section_list[2]?.list[0]?.image}
       />
       <Footer email_address={email_address} phone_number={phone_number} />
-    </>
+    </div>
   );
 };
 

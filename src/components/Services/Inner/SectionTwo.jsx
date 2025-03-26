@@ -11,7 +11,9 @@ const SectionTwo = ({ serviceData, layout }) => {
   return (
     <div
       ref={sectionRef}
-      className={`grid grid-cols-12  ${isMobile ? "" : "containers mt-9"}`}
+      className={`grid grid-cols-12 bg-white  ${
+        isMobile ? "" : "containers mt-9"
+      }`}
     >
       {layout && (
         <motion.div

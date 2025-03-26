@@ -10,7 +10,7 @@ const ServiceMobile = ({ title, serviceData }) => {
   const titleInView = useInView(titleRef, { amount: 0.2, once: true });
 
   return (
-    <div className="containers py-10">
+    <div className="containers py-10 bg-white">
       <motion.h3
         ref={titleRef}
         initial={{ opacity: 0, y: 20 }}
