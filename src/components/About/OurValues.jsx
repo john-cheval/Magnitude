@@ -21,7 +21,7 @@ const OurValues = ({ ourValuesData }) => {
           <motion.div
             key={index + 1}
             ref={itemRef}
-            className="grid grid-cols-1 md:grid-cols-2 items-center gap-8 py-10"
+            className="grid grid-cols-1 md:grid-cols-2 items-center gap-8 md:py-10"
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             variants={{

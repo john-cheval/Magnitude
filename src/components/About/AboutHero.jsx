@@ -92,6 +92,12 @@ const AboutHero = ({ banner, heading, list }) => {
                         className="w-full h-full max-w-[553px]-- object-cover"
                         sizes="100vw"
                       />
+
+                      {isMobile && (
+                        <h1 className="main-heading mb-8 text-left  md:hidden absolute top-6 left-1/2 -translate-x-1/2">
+                          {heading}
+                        </h1>
+                      )}
                     </motion.div>
                     <motion.div
                       className="bg-[#1D2025] md:bg-altermain lg:pl-[59px] lg:pr-20 px-7 md:px-14 py-16 space-y-6 flex flex-col items-center md:items-start justify-center col-span-12 md:col-span-6 lg:col-span-7"
@@ -212,10 +218,5 @@ const AboutHero = ({ banner, heading, list }) => {
     </section>
   );
 };
-
-// const textVariants = {
-//   hidden: { opacity: 0, y: 20 },
-//   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-// };
 
 export default AboutHero;
