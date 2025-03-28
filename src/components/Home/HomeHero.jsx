@@ -93,7 +93,7 @@ const HomeHero = ({ title, link, linkText, videoUrl }) => {
       <div
         className={` ${
           isMobile ? "containers" : ""
-        } absolute flex md:flex-col justify-between md:justify-start items-center md:items-start bottom-7 md:bottom-[76px] md:left-1/2 md:-translate-x-1/2  md:space-y-6 lg:space-y-9-- z-50 w-full md:w-fit`}
+        } absolute flex flex-col gap-y-4 md:gap-y-0 justify-center md:justify-start items-center md:items-start bottom-7 md:bottom-[76px] md:left-1/2 md:-translate-x-1/2  md:space-y-6 lg:space-y-9-- z-50 w-full md:w-fit`}
       >
         <h1
           ref={textRef}
@@ -102,14 +102,14 @@ const HomeHero = ({ title, link, linkText, videoUrl }) => {
           {" "}
           {title}
         </h1>
-        <div ref={mobileLinkRef}>
+        {/* <div ref={mobileLinkRef}>
           <Link
             href={link}
             className="underline text-sm md:hidden uppercase hover:no-underline transition-all duration-300"
           >
             {linkText}
           </Link>
-        </div>
+        </div> */}
 
         {videoLoaded && (
           <div
@@ -123,17 +123,17 @@ const HomeHero = ({ title, link, linkText, videoUrl }) => {
             )}
           </div>
         )}
-        <div
+        {/* <div
           ref={buttonRef}
           className="md:flex items-center justify-center hidden w-full "
         >
           <OutlineButton link={link} text={linkText} />
-        </div>
+        </div> */}
       </div>
 
       {videoLoaded && (
         <div
-          className="absolute w-fit h-full-- right-10 top-[80%] cursor-pointer z-50 hidden md:block"
+          className="absolute w-fit h-full-- right-10 md:top-[87%] lg:top-[86%] xl:top-[88%] cursor-pointer z-50 hidden md:block"
           onClick={toggleMute}
         >
           {isMuted ? (
