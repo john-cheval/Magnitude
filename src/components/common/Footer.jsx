@@ -93,7 +93,7 @@ const Footer = ({ email_address, phone_number }) => {
         </motion.div>
 
         <motion.div variants={itemVariants}>
-          <p className="text-center text-sm font-light leading-[170%] capitalize max-w-[515px] flex flex-col sm:flex-row gap-y-3">
+          <p className="text-center text-sm font-light leading-[170%] capitalize max-w-[515px]-- flex flex-col sm:flex-row gap-y-3">
             <span>
               Designed & Developed by{" "}
               <Link href={"https://chevalme.com/"} target="_blank">

@@ -89,7 +89,7 @@ const CareersJobList = ({ careersList }) => {
             <div
               ref={(el) => (jobContentRefs.current[index * 4 + 2] = el)}
               dangerouslySetInnerHTML={{ __html: job?.post_content }}
-              className="description !text-sm max-w-[823px]"
+              className="description !text-sm "
             ></div>
           </div>
 

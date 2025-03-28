@@ -75,7 +75,7 @@ const SectionThree = ({ data, layout = false }) => {
           ></motion.span>
 
           <motion.div
-            className="description why max-w-[517px] space-y-6"
+            className="description why max-w-[517px]-- space-y-6"
             dangerouslySetInnerHTML={{ __html: data?.description }}
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}

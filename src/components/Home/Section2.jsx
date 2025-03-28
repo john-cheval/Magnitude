@@ -106,7 +106,7 @@ const Section2 = ({ title, desc, imageUrl }) => {
           <div
             ref={(el) => (desktopContentRefs.current[2] = el)}
             dangerouslySetInnerHTML={{ __html: desc }}
-            className="description max-w-[467px]"
+            className="description max-w-[467px]--"
           />
 
           <div ref={(el) => (desktopContentRefs.current[3] = el)}>
