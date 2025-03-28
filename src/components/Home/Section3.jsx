@@ -17,7 +17,8 @@ const Section3 = ({ title, serviceData }) => {
         trigger: "#pinnedWorkSection",
         start: "top top",
         end: "bottom ",
-        scrub: 0.9,
+        // scrub: 0.6,
+        scrub: true,
         pin: true,
         // markers: true,
       },
@@ -27,7 +28,7 @@ const Section3 = ({ title, serviceData }) => {
       .from("#worksText", {
         ease: Power3.easeOut,
         scale: 800,
-        smoothOrigin: true,
+        // smoothOrigin: true,
       })
       .to("#pinnedWorks", {
         y: -window.innerHeight,

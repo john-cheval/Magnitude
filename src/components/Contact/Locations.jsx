@@ -17,6 +17,15 @@ const Locations = () => {
       referrerPolicy="no-referrer-when-downgrade"
       className=" max-w-[350px]-- xl:w-full-- w-full h-[400px]     border-none  "
     ></iframe>
+    // <iframe
+    //   src="https://snazzymaps.com/embed/696038"
+    //   title="Magnitude"
+    //   allowFullScreen
+    //   width="100%"
+    //   loading="lazy"
+    //   referrerPolicy="no-referrer-when-downgrade"
+    //   className=" max-w-[350px]-- xl:w-full-- w-full h-[400px]     border-none  "
+    // ></iframe>
   ));
   useEffect(() => {
     gsap.fromTo(
