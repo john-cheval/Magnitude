@@ -4,16 +4,16 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import FillButton from "../common/FillButton";
 import { usePathname } from "next/navigation";
+import { IoIosArrowRoundForward } from "react-icons/io";
+import Link from "next/link";
 
 const CareersHero = ({ title, bannerImage }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const pathname = usePathname();
   const [inner, setInner] = useState("");
-  console.log(pathname.split("/").filter(Boolean)[1], "jj");
 
+  const secondPathSegment = pathname.split("/").filter(Boolean)[1];
   useEffect(() => {
-    const secondPathSegment = pathname.split("/").filter(Boolean)[1];
-
     if (secondPathSegment === "crew") {
       setInner("corporate");
     }
@@ -42,11 +42,22 @@ const CareersHero = ({ title, bannerImage }) => {
           {title}
         </motion.h1>
 
-        <FillButton
-          link={`/careers/${inner}`}
-          text={`Go to ${inner}`}
-          dark={true}
-        />
+        {secondPathSegment === "crew" || secondPathSegment === "corporate" ? (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+          >
+            <Link
+              href={`/careers/${inner}`}
+              prefetch={true}
+              className="text-xs sm:text-sm uppercase px-7 md:px-9 py-3 md:py-4 transition-all duration-300 border ease-in-out bg-altermain text-main hover:bg-transparent hover:border-altermain hover:text-altermain text-center w-fit mt-2 flex items-center gap-3 group"
+            >
+              {`Go to ${inner}`}
+              <IoIosArrowRoundForward className="text-main text-2xl transition-transform duration-300 ease-in-out group-hover:text-altermain group-hover:translate-x-2" />
+            </Link>
+          </motion.div>
+        ) : null}
       </div>
 
       {/* Skeleton Loader
