@@ -16,7 +16,7 @@ const Section3 = ({ title, serviceData }) => {
       scrollTrigger: {
         trigger: "#pinnedWorkSection",
         start: "top top",
-        end: "bottom ",
+        end: "bottom+=100% ",
         // scrub: 0.6,
         scrub: true,
         pin: true,
