@@ -1,17 +1,22 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import PreConstruction from "./PreConstruction";
 import DuringConstruction from "./DuringConstruction";
 import PostConstruction from "./PostConstruction";
 import { gsap } from "gsap";
+import useIsMobile from "@/hooks/useIsMobile";
 
 const ServiceInner = ({ serviceData }) => {
+  const isMobile = useIsMobile();
   const pathname = usePathname();
   const sectionRef = useRef(null);
   const navLinksRef = useRef([]);
   const contentRef = useRef(null);
+  const navHeight = 80;
+  const [isNavVisible, setIsNavVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   const sectionMap = {
     "/services/pre-construction/": "Pre-Construction",
@@ -20,6 +25,20 @@ const ServiceInner = ({ serviceData }) => {
   };
 
   const active = sectionMap[pathname] || "Pre-Construction";
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > lastScrollY && window.scrollY > 150) {
+        setIsNavVisible(false);
+      } else {
+        setIsNavVisible(true);
+      }
+      setLastScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
 
   const renderComponent = () => {
     switch (active) {
@@ -68,8 +87,17 @@ const ServiceInner = ({ serviceData }) => {
   }, [active]);
 
   return (
-    <section ref={sectionRef} className="pt-28 md:pt-40 lg:pt-44 ">
-      <div className="containers">
+    <section ref={sectionRef} className="pt-24 md:pt-32 lg:pt-36  ">
+      <div
+        className={`containers ${
+          isNavVisible && "sticky"
+        } bg-white transition-all duration-300 z-50 ${
+          isNavVisible ? "py-8 " : "py-8 shadow-md"
+        }`}
+        style={{
+          top: isNavVisible ? `${isMobile ? "85px" : "100px"}` : "0px",
+        }}
+      >
         <div className="flex  justify-between lg:px-16 xl:px-36">
           {Object.values(sectionMap).map((section, index) => (
             <Link

@@ -35,7 +35,7 @@ const Navbar = ({ navLeft, navRight, mobileMenu }) => {
 
   return (
     <header
-      className={`bg-navBg py-7 md:py-12 md:pb-8-- px-6   md:px-16 lg:px-[52px] fixed left-0-- top-0  w-full z-[999955] transition-transform duration-300 ${
+      className={`bg-navBg py-7 md:py-10 md:pb-8-- px-6   md:px-16 lg:px-[52px] fixed left-0-- top-0  w-full z-[999955] transition-transform duration-300 ${
         isVisible ? "translate-y-0" : "-translate-y-full"
       }`}
       style={{

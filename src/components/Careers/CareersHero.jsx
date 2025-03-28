@@ -2,9 +2,25 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import FillButton from "../common/FillButton";
+import { usePathname } from "next/navigation";
 
 const CareersHero = ({ title, bannerImage }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
+  const pathname = usePathname();
+  const [inner, setInner] = useState("");
+  console.log(pathname.split("/").filter(Boolean)[1], "jj");
+
+  useEffect(() => {
+    const secondPathSegment = pathname.split("/").filter(Boolean)[1];
+
+    if (secondPathSegment === "crew") {
+      setInner("corporate");
+    }
+    if (secondPathSegment === "corporate") {
+      setInner("crew");
+    }
+  }, [pathname]);
 
   useEffect(() => {
     if (bannerImage) {
@@ -15,14 +31,23 @@ const CareersHero = ({ title, bannerImage }) => {
   return (
     <section className="containers pt-28 md:pt-40 lg:pt-44">
       {/* Animated Heading */}
-      <motion.h1
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="main-heading !text-altermain capitalize text-center md:text-left"
-      >
-        {title}
-      </motion.h1>
+
+      <div className="flex justify-between items-center">
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="main-heading !text-altermain capitalize text-center md:text-left"
+        >
+          {title}
+        </motion.h1>
+
+        <FillButton
+          link={`/careers/${inner}`}
+          text={`Go to ${inner}`}
+          dark={true}
+        />
+      </div>
 
       {/* Skeleton Loader
       {!imageLoaded && (

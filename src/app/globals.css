@@ -178,7 +178,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .serviceKey p {
-  @apply description max-w-[413px] !text-center md:!text-justify mb-2;
+  @apply description  !text-center md:!text-justify mb-2;
 }
 
 .list2 ul li {
