@@ -16,9 +16,10 @@ const Section3 = ({ title, serviceData }) => {
       scrollTrigger: {
         trigger: "#pinnedWorkSection",
         start: "top top",
-        end: "bottom+=100% top",
+        end: "bottom ",
         scrub: 0.9,
         pin: true,
+        // markers: true,
       },
     });
 
@@ -50,7 +51,7 @@ const Section3 = ({ title, serviceData }) => {
   return (
     <>
       <section
-        className="relative !bg-white hidden md:block w-full h-full  md:h-[580px] lg:h-[650px] xl:h-[850px]"
+        className="relative !bg-white hidden md:block w-full h-[100dvh]  md:h-[580px]-- lg:h-[650px]-- xl:h-[850px]--"
         id="pinnedWorkSection"
       >
         <div className="w-full flex items-center justify-center overflow-hidden h-[100dvh]">
@@ -63,7 +64,7 @@ const Section3 = ({ title, serviceData }) => {
         </div>
 
         <div
-          className="relative pt-8 md:pt-12 xl:pt-14 h-fit w-screen overflow-hidden"
+          className="relative pt-8-- md:pt-12-- xl:pt-14-- h-fit-- w-screen overflow-hidden"
           id="pinnedWorks"
         >
           <div
