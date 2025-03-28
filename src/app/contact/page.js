@@ -1,3 +1,4 @@
+import Locations from "@/components/Contact/Locations";
 import { fetchData } from "@/utils/fetchData";
 import generateMetadataData from "@/utils/generateMetaData";
 import dynamic from "next/dynamic";
@@ -35,7 +36,7 @@ const ContactPage = async () => {
         phoneList={contactData?.address_list}
         title={contactData?.post_title}
       />
-      {/* <Locations /> */}
+      <Locations />
       <ContactForm />
       <Footer email_address={email_address} phone_number={phone_number} />
     </>
