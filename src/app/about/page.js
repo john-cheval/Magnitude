@@ -20,7 +20,7 @@ const About = async () => {
     "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/full_details?ID=23"
   );
   return (
-    <div className="bg-white">
+    <div>
       <AboutHero
         banner={aboutData?.top_banner}
         heading={aboutData?.small_heading}

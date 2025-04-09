@@ -10,7 +10,7 @@ const OurValues = ({ ourValuesData }) => {
 
   return (
     <section
-      className={`${isMobile ? "-mt-0" : "containers mt-12--"} text-altermain`}
+      className={`${isMobile ? "-mt-0" : "containers mt-12--"} text-main`}
       ref={sectionRef}
     >
       {ourValuesData?.map((data, index) => {
