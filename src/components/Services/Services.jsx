@@ -9,7 +9,7 @@ import useIsMobile from "@/hooks/useIsMobile";
 const Services = ({ servicesList }) => {
   const serviceData = Object.values(servicesList);
 
-  console.log(serviceData, "this is the serviceDAta");
+  // console.log(serviceData, "this is the serviceDAta");
 
   const isMobile = useIsMobile();
   const sectionRef = useRef(null);

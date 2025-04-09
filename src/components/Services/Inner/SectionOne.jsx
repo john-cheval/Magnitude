@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import React, { useRef } from "react";
 const SectionOne = ({ serviceData }) => {
+  console.log(serviceData?.image?.endsWith(".mp4"), "sectionOne video check");
   const isMobile = useIsMobile();
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
