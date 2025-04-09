@@ -8,7 +8,7 @@ import PostConstruction from "./PostConstruction";
 import { gsap } from "gsap";
 import useIsMobile from "@/hooks/useIsMobile";
 
-const ServiceInner = ({ serviceData }) => {
+const ServiceInner = ({ serviceData, services }) => {
   const isMobile = useIsMobile();
   const pathname = usePathname();
   const sectionRef = useRef(null);
@@ -17,6 +17,8 @@ const ServiceInner = ({ serviceData }) => {
   const navHeight = 80;
   const [isNavVisible, setIsNavVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+
+  const servicesList = Object.values(services);
 
   const sectionMap = {
     "/services/pre-construction/": "Pre-Construction",

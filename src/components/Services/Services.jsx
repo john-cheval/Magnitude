@@ -8,6 +8,9 @@ import useIsMobile from "@/hooks/useIsMobile";
 
 const Services = ({ servicesList }) => {
   const serviceData = Object.values(servicesList);
+
+  console.log(serviceData, "this is the serviceDAta");
+
   const isMobile = useIsMobile();
   const sectionRef = useRef(null);
 
@@ -18,7 +21,7 @@ const Services = ({ servicesList }) => {
         isMobile ? "" : "containers"
       }`}
     >
-      {serviceData.map((service, index) => {
+      {serviceData?.map((service, index) => {
         const isEven = index % 2 === 1;
 
         const bgColors = [
