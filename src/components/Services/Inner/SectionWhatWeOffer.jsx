@@ -19,14 +19,35 @@ const SectionWhatWeOffer = ({ serviceList }) => {
         animate={isInView ? { scale: 1, opacity: 1 } : {}}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <Image
+        {serviceList?.image?.endsWith(".mp4") ? (
+          <video
+            src={serviceList?.image}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <Image
+            src={serviceList?.image}
+            alt={serviceList?.title}
+            width={0}
+            height={0}
+            priority
+            className="w-full h-auto max-w-[553px]-- max-h-[404px]-- object-cover"
+            sizes="100vw"
+          />
+        )}
+        {/* <Image
           src={serviceList?.image}
           alt={serviceList?.title}
           width={0}
           height={0}
           className={`w-full h-full max-w-[553px]-- max-h-[404px]-- object-cover`}
           sizes="100vw"
-        />
+        /> */}
       </motion.div>
       <motion.div
         className={` px-7 md:px-12 lg:px-16 py-12  bg-altermain text-main  flex flex-col justify-center col-span-12 md:col-span-6  lg:col-span-5`}

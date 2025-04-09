@@ -22,14 +22,35 @@ const SectionTwo = ({ serviceData, layout }) => {
           animate={isInView ? { scale: 1, opacity: 1 } : {}}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <Image
+          {serviceData?.image?.endsWith(".mp4") ? (
+            <video
+              src={serviceData?.image}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <Image
+              src={serviceData?.image}
+              alt={serviceData?.title}
+              width={0}
+              height={0}
+              priority
+              className="w-full h-auto max-w-[553px]-- max-h-[404px]-- object-cover"
+              sizes="100vw"
+            />
+          )}
+          {/* <Image
             src={serviceData?.image}
             alt={serviceData?.title}
             width={0}
             height={0}
             className="w-full h-full max-w-[553px]-- max-h-[404px]-- object-cover"
             sizes="100vw"
-          />
+          /> */}
         </motion.div>
       )}
 
