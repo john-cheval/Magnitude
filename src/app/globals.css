@@ -147,7 +147,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .list ul li {
-  background-image: url("/common/list.svg");
+  background-image: url("/common/listTYpeWhite.svg");
   background-repeat: no-repeat;
   background-position: left 7px;
   background-size: 19px;
