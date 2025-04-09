@@ -37,7 +37,7 @@ const CareersHero = ({ title, bannerImage }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="main-heading !text-altermain capitalize text-center md:text-left"
+          className="main-heading !text-main capitalize text-center md:text-left"
         >
           {title}
         </motion.h1>
