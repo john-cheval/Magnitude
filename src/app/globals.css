@@ -262,3 +262,27 @@ input[type="number"]::-webkit-outer-spin-button {
     display: none;
   }
 }
+
+@media (min-width: 1300px) {
+  .homeSection3 {
+    height: 150dvh;
+  }
+}
+
+@media (min-width: 1500px) {
+  .homeSection3 {
+    height: 190dvh;
+  }
+}
+
+@media (min-width: 991px) and (max-width: 1299px) {
+  .homeSection3 {
+    height: 130dvh;
+  }
+}
+
+@media (max-width: 990px) {
+  .homeSection3 {
+    height: 100dvh;
+  }
+}

@@ -20,13 +20,25 @@ const ServiceInner = ({ serviceData, services }) => {
 
   const servicesList = Object.values(services);
 
-  const sectionMap = {
-    "/services/pre-construction/": "Pre-Construction",
-    "/services/during-construction/": "During Construction",
-    "/services/post-construction/": "Post Construction",
-  };
+  const sectionMap = servicesList.reduce((acc, service) => {
+    acc[`/services/${service.post_name}/`] = service.post_title;
+    return acc;
+  }, {});
 
   const active = sectionMap[pathname] || "Pre-Construction";
+
+  useEffect(() => {
+    const activeIndex = Object.values(sectionMap).indexOf(active);
+    const activeLink = navLinksRef.current[activeIndex];
+
+    if (activeLink) {
+      activeLink.scrollIntoView({
+        behavior: "smooth",
+        inline: "center",
+        block: "nearest",
+      });
+    }
+  }, [active]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -58,7 +70,7 @@ const ServiceInner = ({ serviceData, services }) => {
   useEffect(() => {
     gsap.fromTo(
       navLinksRef.current,
-      { opacity: 0, y: 20 },
+      { opacity: 0, y: 30 },
       {
         opacity: 1,
         y: 0,
@@ -100,19 +112,21 @@ const ServiceInner = ({ serviceData, services }) => {
           top: isNavVisible ? `${isMobile ? "85px" : "100px"}` : "0px",
         }}
       >
-        <div className="flex  justify-between lg:px-16 xl:px-36">
-          {Object.values(sectionMap).map((section, index) => (
-            <Link
-              key={section}
-              ref={(el) => (navLinksRef.current[index] = el)}
-              href={`/services/${section.toLowerCase().replace(" ", "-")}`}
-              className={`text-center text-sm sm:text-base md:text-xl lg:text-2xl leading-[150%] transition-colors duration-300 ${
-                active === section ? "text-altermain" : "text-[#BDBDBD]"
-              }`}
-            >
-              {section}
-            </Link>
-          ))}
+        <div className="overflow-x-auto scrollbar-hide">
+          <div className="flex  w-max-- gap-x-6 justify-between">
+            {Object.values(sectionMap).map((section, index) => (
+              <Link
+                key={section}
+                ref={(el) => (navLinksRef.current[index] = el)}
+                href={`/services/${section.toLowerCase().replace(" ", "-")}`}
+                className={`whitespace-nowrap text-center text-sm sm:text-base md:text-xl lg:text-2xl leading-[150%] transition-colors duration-300  ${
+                  active === section ? "text-altermain" : "text-[#BDBDBD]"
+                }`}
+              >
+                {section}
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
 

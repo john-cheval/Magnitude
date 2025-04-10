@@ -17,6 +17,7 @@ const Section3 = ({ title, serviceData }) => {
         trigger: "#pinnedWorkSection",
         start: "top top",
         end: "bottom+=100% ",
+
         // scrub: 0.6,
         scrub: true,
         pin: true,
@@ -52,7 +53,7 @@ const Section3 = ({ title, serviceData }) => {
   return (
     <>
       <section
-        className="relative !bg-white hidden md:block w-full h-[100dvh]  md:h-[580px]-- lg:h-[650px]-- xl:h-[850px]--"
+        className="relative !bg-white hidden md:block w-full homeSection3   "
         id="pinnedWorkSection"
       >
         <div className="w-full flex items-center justify-center overflow-hidden h-[100dvh]">
@@ -69,7 +70,7 @@ const Section3 = ({ title, serviceData }) => {
           id="pinnedWorks"
         >
           <div
-            className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-x-4 gap-y-6 containers relative pb-20"
+            className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-x-4 gap-y-6 containers relative pb-32"
             id="pinnedWorksItems"
           >
             {homeCardData?.map((cardData, index) => (
@@ -87,10 +88,10 @@ const Section3 = ({ title, serviceData }) => {
                   height={0}
                   sizes="100vw"
                 />
-                <h5 className="text-altermain text-xl lg:text-2xl leading-[150%]">
+                <h5 className="text-altermain text-xl lg:text-2xl leading-[150%] ">
                   {cardData?.post_title}
                 </h5>
-                <span className="seperator2Dark md:!h-[22px]"></span>
+                <span className="seperator2Dark md:!h-[2px]"></span>
               </Link>
             ))}
           </div>
