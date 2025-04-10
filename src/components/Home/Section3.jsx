@@ -45,8 +45,8 @@ const Section3 = ({ title, serviceData }) => {
     timeline.fromTo(
       ".work-card",
       { opacity: 0, y: 100 },
-      { opacity: 1, y: 100, stagger: 0.2, ease: Power3.easeOut },
-      "-=0.5"
+      { opacity: 1, y: 100, stagger: 0.8, ease: Power3.easeOut },
+      "-=0.8"
     );
   }, []);
 
