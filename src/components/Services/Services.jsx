@@ -103,6 +103,7 @@ const Services = ({ servicesList }) => {
                     <FillButton
                       link={`/services/${service?.post_name}`}
                       text="Read more"
+                      dark={(index + 1) % 3 === 0}
                     />
                   </motion.div>
                 </motion.div>
@@ -168,7 +169,7 @@ const Services = ({ servicesList }) => {
                   <FillButton
                     link={`/services/${service?.post_name}`}
                     text={"Read more"}
-                    dark={index === 2 && true}
+                    dark={(index + 1) % 3 === 0}
                   />
                 </motion.div>
               </motion.div>
