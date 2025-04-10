@@ -35,7 +35,7 @@ const SectionOne = ({ serviceData }) => {
             width={0}
             height={0}
             priority
-            className="w-full h-auto max-w-[553px]-- max-h-[404px]-- object-cover"
+            className="w-full h-full max-w-[553px]-- max-h-[404px]-- object-cover"
             sizes="100vw"
           />
         )}
