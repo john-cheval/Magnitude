@@ -112,18 +112,20 @@ const ServiceInner = ({ serviceData, services }) => {
           top: isNavVisible ? `${isMobile ? "85px" : "100px"}` : "0px",
         }}
       >
-        <div className="overflow-x-auto scrollbar-hide">
-          <div className="flex  w-max-- gap-x-6 justify-between">
-            {Object.values(sectionMap).map((section, index) => (
+        <div className="overflow-x-auto-- scrollbar-hide--">
+          <div className="flex  w-max-- gap-x-11-- gap-2 justify-between justify-between-- serviceinnerhead">
+            {Object.values(services).map((section, index) => (
               <Link
-                key={section}
+                key={index}
                 ref={(el) => (navLinksRef.current[index] = el)}
-                href={`/services/${section.toLowerCase().replace(" ", "-")}`}
-                className={`whitespace-nowrap text-center text-sm sm:text-base md:text-xl lg:text-2xl leading-[150%] transition-colors duration-300  ${
-                  active === section ? "text-altermain" : "text-[#BDBDBD]"
+                href={`/services/${section.post_name}`}
+                className={`whitespace-nowrap-- text-center text-sm sm:text-base xl:text-lg leading-[150%] transition-colors duration-300  ${
+                  pathname === `/services/${section.post_name}/`
+                    ? "text-altermain"
+                    : "text-[#BDBDBD]"
                 }`}
               >
-                {section}
+                {section?.post_title}
               </Link>
             ))}
           </div>
