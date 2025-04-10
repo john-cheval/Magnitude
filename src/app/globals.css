@@ -286,3 +286,10 @@ input[type="number"]::-webkit-outer-spin-button {
     height: 100dvh;
   }
 }
+
+@media (min-width: 1400px) {
+  .serviceinnerhead {
+    justify-content: space-between;
+    row-gap: 40px;
+  }
+}
