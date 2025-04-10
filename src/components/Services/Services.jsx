@@ -78,7 +78,7 @@ const Services = ({ servicesList }) => {
                   </motion.h2>
                   <motion.span
                     className={`block w-14 h-[2px] ${
-                      index === 2 ? "bg-altermain" : "bg-main"
+                      (index + 1) % 3 === 0 ? "bg-altermain" : "bg-main"
                     }`}
                     initial={{ opacity: 0, scaleX: 0 }}
                     animate={isInView ? { opacity: 1, scaleX: 1 } : {}}
@@ -145,7 +145,7 @@ const Services = ({ servicesList }) => {
                 </motion.h2>
                 <motion.span
                   className={`block w-14 h-[2px]  ${
-                    index === 2 ? "bg-altermain" : "bg-main"
+                    (index + 1) % 3 === 0 ? "bg-altermain" : "bg-main"
                   }`}
                   initial={{ opacity: 0, scaleX: 0 }}
                   animate={isInView ? { opacity: 1, scaleX: 1 } : {}}
