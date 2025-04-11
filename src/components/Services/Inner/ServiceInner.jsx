@@ -32,8 +32,6 @@ const ServiceInner = ({ serviceData, services }) => {
     return acc;
   }, {});
 
-  console.log("componentMap", componentMap);
-
   const active = sectionMap[pathname] || "Pre-Construction";
 
   useEffect(() => {
@@ -124,14 +122,14 @@ const ServiceInner = ({ serviceData, services }) => {
           top: isNavVisible ? `${isMobile ? "85px" : "100px"}` : "0px",
         }}
       >
-        <div className="overflow-x-auto-- scrollbar-hide--">
-          <div className="flex  w-max-- gap-x-11-- gap-2 justify-between justify-between-- serviceinnerhead">
+        <div className="overflow-x-auto md:overflow-x-hidden scrollbar-hide">
+          <div className="flex  w-max-- gap-x-11-- gap-2 md:justify-between justify-between-- serviceinnerhead">
             {Object.values(services).map((section, index) => (
               <Link
                 key={index}
                 ref={(el) => (navLinksRef.current[index] = el)}
                 href={`/services/${section.post_name}`}
-                className={`whitespace-nowrap-- text-center text-sm sm:text-base xl:text-lg leading-[150%] transition-colors duration-300  ${
+                className={`whitespace-nowrap md:whitespace-normal text-center text-sm sm:text-base xl:text-lg leading-[150%] transition-colors duration-300  ${
                   pathname === `/services/${section.post_name}/`
                     ? "text-altermain"
                     : "text-[#BDBDBD]"
