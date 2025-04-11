@@ -2,12 +2,16 @@
 import React, { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
 import { gsap } from "gsap";
+import ReCaptcha from "@/utils/reCaptcha";
 
 const ContactForm = () => {
   const locationRef = useRef(null);
   const titleRef = useRef(null);
   const inputRefs = useRef([]);
   const buttonRef = useRef(null);
+  const recaptchaRef = useRef(null);
+  const [token, setToken] = useState("");
+  const [captchaError, setCaptchaError] = useState(false);
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -16,6 +20,14 @@ const ContactForm = () => {
     email: "",
     message: "",
   });
+
+  const isFormValid =
+    formData.firstName.trim() &&
+    formData.lasstName.trim() &&
+    formData.phone.trim() &&
+    formData.email.trim() &&
+    formData.message.trim() &&
+    token;
 
   useEffect(() => {
     gsap.fromTo(
@@ -71,6 +83,13 @@ const ContactForm = () => {
   };
 
   const handleSubmit = async (e) => {
+    if (!token) {
+      setCaptchaError(true);
+      return;
+    }
+
+    setCaptchaError(false);
+
     e.preventDefault();
     const newformData = new FormData();
     newformData.append("text-fname", formData.firstName);
@@ -93,7 +112,18 @@ const ContactForm = () => {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-      toast.success("Form Submitted Successfully");
+      if (!token) {
+        toast.error("Captcha token is missing. Please try again.");
+        return;
+      }
+
+      if (response.status === 200) {
+        toast.success("Form Submitted Successfully");
+      }
+      setToken("");
+      if (recaptchaRef.current) {
+        recaptchaRef.current.resetCaptcha();
+      }
 
       setFormData({
         firstName: "",
@@ -107,6 +137,9 @@ const ContactForm = () => {
     }
   };
 
+  const handleToken = (token) => {
+    setToken(token);
+  };
   return (
     <section
       ref={locationRef}
@@ -149,7 +182,7 @@ const ContactForm = () => {
 
           <input
             ref={(el) => (inputRefs.current[2] = el)}
-            type="number"
+            type="text"
             placeholder="Phone"
             required
             maxLength={200}
@@ -158,6 +191,33 @@ const ContactForm = () => {
             value={formData.phone}
             onChange={handleChange}
             className="input "
+            onInput={(e) => {
+              if (e.target.value.length > 15) {
+                e.target.value = e.target.value.slice(0, 15);
+              }
+            }}
+            onKeyDown={(e) => {
+              const allowedKeys = [
+                "Backspace",
+                "ArrowLeft",
+                "ArrowRight",
+                "Tab",
+                "Delete",
+              ];
+
+              const isNumber = /^[0-9]$/.test(e.key);
+              const isPlus = e.key === "+";
+              const inputValue = e.currentTarget.value;
+              const cursorPosition = e.currentTarget.selectionStart;
+
+              if (
+                (isPlus &&
+                  (cursorPosition !== 0 || inputValue.includes("+"))) ||
+                (!isNumber && !isPlus && !allowedKeys.includes(e.key))
+              ) {
+                e.preventDefault();
+              }
+            }}
           />
 
           <input
@@ -187,11 +247,24 @@ const ContactForm = () => {
           className="input "
         />
 
+        <div className="flex justify-center">
+          <ReCaptcha
+            siteKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+            callback={handleToken}
+            ref={recaptchaRef}
+          />
+        </div>
+
         <div className="flex justify-center mt-3 ">
           <button
             ref={buttonRef}
             type="submit"
-            className="text-sm uppercase  px-9 py-4 text-center inline-block w-fit bg-main border text-altermain mx-auto hover:bg-transparent hover:text-main hover:border-main transition-all duration-300"
+            disabled={!isFormValid}
+            className={`text-sm uppercase px-9 py-4 text-center inline-block w-fit bg-main border text-altermain mx-auto transition-all duration-300 hover:bg-transparent hover:text-main hover:border-main ${
+              !isFormValid
+                ? "opacity-50-- cursor-not-allowed"
+                : "hover:bg-transparent hover:text-main hover:border-main"
+            }`}
           >
             Submit
           </button>

@@ -4,6 +4,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { toast } from "react-toastify";
 import { gsap } from "gsap";
 import useIsMobile from "@/hooks/useIsMobile";
+import ReCaptcha from "@/utils/reCaptcha";
 
 const CareerForm = () => {
   const isMobile = useIsMobile();
@@ -12,6 +13,10 @@ const CareerForm = () => {
   const titleChildrenRef = useRef([]);
   const inputRefs = useRef([]);
   const buttonRef = useRef(null);
+  const recaptchaRef = useRef(null);
+  const [token, setToken] = useState("");
+  const [captchaError, setCaptchaError] = useState(false);
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -82,12 +87,21 @@ const CareerForm = () => {
     if (file) {
       setFormData({
         ...formData,
-        resume: file.name,
+        resume: file,
       });
     }
+
+    e.target.value = null;
   };
 
   const handleSubmit = async (e) => {
+    if (!token) {
+      setCaptchaError(true);
+      return;
+    }
+
+    setCaptchaError(false);
+
     e.preventDefault();
     const newFormData = new FormData();
     newFormData.append("text-fname", formData.firstName);
@@ -115,7 +129,19 @@ const CareerForm = () => {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-      toast.success("Form Submitted Successfully");
+      if (!token) {
+        toast.error("Captcha token is missing. Please try again.");
+        return;
+      }
+
+      if (response.status === 200) {
+        toast.success("Form Submitted Successfully");
+      }
+
+      setToken("");
+      if (recaptchaRef.current) {
+        recaptchaRef.current.resetCaptcha();
+      }
 
       setFormData({
         firstName: "",
@@ -131,6 +157,17 @@ const CareerForm = () => {
     }
   };
 
+  const handleToken = (token) => {
+    setToken(token);
+  };
+
+  const isFormValid =
+    formData.firstName.trim() &&
+    formData.lastName.trim() &&
+    formData.jobType.trim() &&
+    formData.subject.trim() &&
+    formData.resume &&
+    token;
   return (
     <section
       ref={formRef}
@@ -244,30 +281,34 @@ const CareerForm = () => {
           className="relative w-full"
           ref={(el) => (inputRefs.current[4] = el)}
         >
+          <label htmlFor="fileUpload" className="block cursor-pointer">
+            <div className="input flex items-center gap-x-5 justify-between pr-[10px]">
+              <p className="font-helvatica text-sm md:text-base text-[#9D9D9D] font-medium leading-[154%]">
+                {formData?.resume?.name ? (
+                  <span>{formData.resume?.name}</span>
+                ) : (
+                  <>
+                    <span> Upload Resume/CV</span>
+                    <span className="text-[#979797] text-xs md:text-sm">
+                      ( PDF, DOC, DOCX. File size limit: 2MB )
+                    </span>
+                  </>
+                )}
+              </p>
+
+              <div className="w-[141px] h-[44px] flex items-center justify-center bg-white text-black font-[Century Gothic] text-[12px] uppercase border border-gray-300">
+                Upload
+              </div>
+            </div>
+          </label>
           <input
             type="file"
             id="fileUpload"
-            name="fileUpload"
+            name="file-cv"
             accept=".pdf, .doc, .docx"
             onChange={handleFileChange}
             className="hidden"
           />
-
-          <div className="input flex items-center gap-x-5 justify-between pr-[10px] cursor-pointer">
-            <p className="font-helvatica text-sm md:text-base text-[#9D9D9D] font-medium leading-[154%]">
-              {formData.resume || "Upload Resume/CV"}{" "}
-              <span className="text-[#979797] text-xs md:text-sm">
-                ( PDF, DOC, DOCX. File size limit: 2MB )
-              </span>
-            </p>
-
-            <label
-              htmlFor="fileUpload"
-              className="w-[141px] h-[44px] flex items-center justify-center bg-white text-black font-[Century Gothic] text-[12px] uppercase cursor-pointer border border-gray-300"
-            >
-              Upload
-            </label>
-          </div>
         </div>
 
         <textarea
@@ -283,13 +324,34 @@ const CareerForm = () => {
           className="input"
         />
 
+        <div className="flex justify-center">
+          <ReCaptcha
+            siteKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+            callback={handleToken}
+            ref={recaptchaRef}
+          />
+        </div>
+
         <div
           className="flex justify-center mt-4 md:mt-2"
           ref={(el) => (inputRefs.current[6] = el)}
         >
-          <button
+          {/* <button
             type="submit"
             className="text-sm uppercase px-9 py-4 border text-center inline-block w-fit bg-main text-altermain mx-auto hover:bg-altermain hover:text-main transition-all duration-300 ease-in-out hover:border-main"
+          >
+            
+          </button> */}
+
+          <button
+            ref={buttonRef}
+            type="submit"
+            disabled={!isFormValid}
+            className={`text-sm uppercase px-9 py-4 text-center inline-block w-fit bg-main border text-altermain mx-auto transition-all hover:bg-altermain hover:text-main hover:border-main duration-300 ${
+              !isFormValid
+                ? "opacity-50-- cursor-not-allowed"
+                : "hover:bg-transparent hover:text-main hover:border-main"
+            }`}
           >
             {isMobile ? "Submit" : " Submit Your Application"}
           </button>

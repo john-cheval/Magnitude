@@ -271,19 +271,19 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @media (min-width: 1500px) {
   .homeSection3 {
-    height: 190dvh;
+    height: 190dvh !important;
   }
 }
 
 @media (min-width: 991px) and (max-width: 1299px) {
   .homeSection3 {
-    height: 130dvh;
+    height: 130dvh !important;
   }
 }
 
 @media (max-width: 990px) {
   .homeSection3 {
-    height: 100dvh;
+    height: 100dvh !important;
   }
 }
 

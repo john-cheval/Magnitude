@@ -7,6 +7,8 @@ import DuringConstruction from "./DuringConstruction";
 import PostConstruction from "./PostConstruction";
 import { gsap } from "gsap";
 import useIsMobile from "@/hooks/useIsMobile";
+import ServiceInnerOne from "./ServiceInnerOne";
+import ServiceInnerTwo from "./ServiceInnerTwo";
 
 const ServiceInner = ({ serviceData, services }) => {
   const isMobile = useIsMobile();
@@ -22,6 +24,11 @@ const ServiceInner = ({ serviceData, services }) => {
 
   const sectionMap = servicesList.reduce((acc, service) => {
     acc[`/services/${service.post_name}/`] = service.post_title;
+    return acc;
+  }, {});
+
+  const componentMap = servicesList.reduce((acc, service, index) => {
+    acc[service.post_title] = index === 1 ? ServiceInnerTwo : ServiceInnerOne;
     return acc;
   }, {});
 
@@ -55,16 +62,19 @@ const ServiceInner = ({ serviceData, services }) => {
   }, [lastScrollY]);
 
   const renderComponent = () => {
-    switch (active) {
-      case "Pre-Construction":
-        return <PreConstruction serviceData={serviceData?.section_list} />;
-      case "During Construction":
-        return <DuringConstruction serviceData={serviceData?.section_list} />;
-      case "Post Construction":
-        return <PostConstruction serviceData={serviceData?.section_list} />;
-      default:
-        return null;
-    }
+    // switch (active) {
+    //   case "Pre-Construction":
+    //     return <ServiceInnerOne serviceData={serviceData?.section_list} />;
+    //   case "During Construction":
+    //     return <ServiceInnerTwo serviceData={serviceData?.section_list} />;
+    //   case "Post Construction":
+    //     return <PostConstruction serviceData={serviceData?.section_list} />;
+    //   default:
+    //     return null;
+
+    // }
+    const DynamicComponent = componentMap[active] || ServiceInnerOne;
+    return <DynamicComponent serviceData={serviceData?.section_list} />;
   };
 
   useEffect(() => {
@@ -112,14 +122,14 @@ const ServiceInner = ({ serviceData, services }) => {
           top: isNavVisible ? `${isMobile ? "85px" : "100px"}` : "0px",
         }}
       >
-        <div className="overflow-x-auto-- scrollbar-hide--">
-          <div className="flex  w-max-- gap-x-11-- gap-2 justify-between justify-between-- serviceinnerhead">
+        <div className="overflow-x-auto md:overflow-x-hidden scrollbar-hide">
+          <div className="flex  w-max-- gap-x-11-- gap-2 md:justify-between justify-between-- serviceinnerhead">
             {Object.values(services).map((section, index) => (
               <Link
                 key={index}
                 ref={(el) => (navLinksRef.current[index] = el)}
                 href={`/services/${section.post_name}`}
-                className={`whitespace-nowrap-- text-center text-sm sm:text-base xl:text-lg leading-[150%] transition-colors duration-300  ${
+                className={`whitespace-nowrap md:whitespace-normal text-center text-sm sm:text-base xl:text-lg leading-[150%] transition-colors duration-300  ${
                   pathname === `/services/${section.post_name}/`
                     ? "text-altermain"
                     : "text-[#BDBDBD]"
