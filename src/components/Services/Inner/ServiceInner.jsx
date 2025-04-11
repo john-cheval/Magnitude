@@ -7,6 +7,8 @@ import DuringConstruction from "./DuringConstruction";
 import PostConstruction from "./PostConstruction";
 import { gsap } from "gsap";
 import useIsMobile from "@/hooks/useIsMobile";
+import ServiceInnerOne from "./ServiceInnerOne";
+import ServiceInnerTwo from "./ServiceInnerTwo";
 
 const ServiceInner = ({ serviceData, services }) => {
   const isMobile = useIsMobile();
@@ -24,6 +26,13 @@ const ServiceInner = ({ serviceData, services }) => {
     acc[`/services/${service.post_name}/`] = service.post_title;
     return acc;
   }, {});
+
+  const componentMap = servicesList.reduce((acc, service, index) => {
+    acc[service.post_title] = index === 1 ? ServiceInnerTwo : ServiceInnerOne;
+    return acc;
+  }, {});
+
+  console.log("componentMap", componentMap);
 
   const active = sectionMap[pathname] || "Pre-Construction";
 
@@ -55,16 +64,19 @@ const ServiceInner = ({ serviceData, services }) => {
   }, [lastScrollY]);
 
   const renderComponent = () => {
-    switch (active) {
-      case "Pre-Construction":
-        return <PreConstruction serviceData={serviceData?.section_list} />;
-      case "During Construction":
-        return <DuringConstruction serviceData={serviceData?.section_list} />;
-      case "Post Construction":
-        return <PostConstruction serviceData={serviceData?.section_list} />;
-      default:
-        return null;
-    }
+    // switch (active) {
+    //   case "Pre-Construction":
+    //     return <ServiceInnerOne serviceData={serviceData?.section_list} />;
+    //   case "During Construction":
+    //     return <ServiceInnerTwo serviceData={serviceData?.section_list} />;
+    //   case "Post Construction":
+    //     return <PostConstruction serviceData={serviceData?.section_list} />;
+    //   default:
+    //     return null;
+
+    // }
+    const DynamicComponent = componentMap[active] || ServiceInnerOne;
+    return <DynamicComponent serviceData={serviceData?.section_list} />;
   };
 
   useEffect(() => {
