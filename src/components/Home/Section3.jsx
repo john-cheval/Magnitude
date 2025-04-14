@@ -18,12 +18,12 @@ const Section3 = ({ title, serviceData }) => {
       scrollTrigger: {
         trigger: "#pinnedWorkSection",
         start: "top top",
-        end: "bottom+=100% ",
+        end: "bottom ",
 
         // scrub: 0.6,
-        scrub: true,
+        scrub: 1,
         pin: true,
-        // markers: true,
+        markers: true,
       },
     });
 
@@ -47,8 +47,8 @@ const Section3 = ({ title, serviceData }) => {
     timeline.fromTo(
       ".work-card",
       { opacity: 0, y: 100 },
-      { opacity: 1, y: 0, stagger: 0.2, ease: Power3.easeOut }
-      // "   -=0.5"
+      { opacity: 1, y: 0, stagger: 0.3, ease: Power3.easeOut },
+      "-=0.5"
     );
   }, []);
 
@@ -118,8 +118,8 @@ const Section3 = ({ title, serviceData }) => {
                   className="space-y-4 lg:space-y-6"
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
-                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.3 }}
+                  viewport={{ once: false }}
                 >
                   <Image
                     src={cardData?.home_page_image}
