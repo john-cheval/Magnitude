@@ -19,6 +19,7 @@ const Section3 = ({ title, serviceData }) => {
         trigger: "#pinnedWorkSection",
         start: "top top",
         end: "bottom ",
+        // end: "bottom+=100% ",
 
         // scrub: 0.6,
         scrub: 1,
