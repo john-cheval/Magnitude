@@ -24,7 +24,7 @@ const Section3 = ({ title, serviceData }) => {
         // scrub: 0.6,
         scrub: 1,
         pin: true,
-        markers: true,
+        // markers: true,
       },
     });
 
