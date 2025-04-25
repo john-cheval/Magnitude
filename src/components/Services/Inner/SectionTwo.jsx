@@ -15,7 +15,7 @@ const SectionTwo = ({ serviceData, layout }) => {
         isMobile ? "" : "containers mt-9"
       }`}
     >
-      {layout && (
+      {serviceData?.image && layout && (
         <motion.div
           className="col-span-12 md:col-span-6  lg:col-span-7"
           initial={{ scale: 0.8, opacity: 0 }}
@@ -54,7 +54,7 @@ const SectionTwo = ({ serviceData, layout }) => {
         </motion.div>
       )}
 
-      {isMobile && !layout && (
+      {serviceData?.image && isMobile && !layout && (
         <motion.div
           className="col-span-12 md:col-span-6 lg:col-span-12"
           initial={{ scale: 0.8, opacity: 0 }}
@@ -103,7 +103,7 @@ const SectionTwo = ({ serviceData, layout }) => {
         />
       </motion.div>
 
-      {!isMobile && !layout && (
+      {!isMobile && !layout && serviceData?.image && (
         <motion.div
           className="col-span-12 md:col-span-6  lg:col-span-5"
           initial={{ scale: 0.8, opacity: 0 }}

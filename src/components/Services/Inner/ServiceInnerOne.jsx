@@ -4,8 +4,6 @@ import SectionOne from "./SectionOne";
 import SectionTwo from "./SectionTwo";
 import SectionThree from "./SectionThree";
 const ServiceInnerOne = ({ serviceData }) => {
-  console.log(serviceData, "this is the serviceData");
-
   if (!serviceData || serviceData.length === 0)
     return (
       <p className="text-altermain text-base flex items-center justify-center">
