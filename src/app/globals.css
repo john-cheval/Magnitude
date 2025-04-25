@@ -163,7 +163,7 @@ input[type="number"]::-webkit-outer-spin-button {
   @apply text-sm md:text-base text-justify font-helvatica font-light leading-[186%];
 }
 
-.serviceKey h4 {
+.serviceKey ul li {
   @apply text-sm md:text-base font-helvatica font-normal md:font-medium leading-[186%] -ml-9 md:-ml-0 mb-6 text-center md:text-left;
   background-image: url("/common/list.svg");
   background-repeat: no-repeat;
