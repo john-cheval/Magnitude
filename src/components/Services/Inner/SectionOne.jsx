@@ -12,34 +12,36 @@ const SectionOne = ({ serviceData }) => {
       ref={sectionRef}
       className={`grid  md:grid-cols-12 ${isMobile ? "" : "containers"}`}
     >
-      <motion.div
-        className="col-span-12 md:col-span-6  lg:col-span-7"
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={isInView ? { scale: 1, opacity: 1 } : {}}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-      >
-        {serviceData?.image?.endsWith(".mp4") ? (
-          <video
-            src={serviceData?.image}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            className="w-full h-full object-cover"
-          />
-        ) : (
-          <Image
-            src={serviceData?.image}
-            alt={serviceData?.title}
-            width={0}
-            height={0}
-            priority
-            className="w-full h-full max-w-[553px]-- max-h-[404px]-- object-cover"
-            sizes="100vw"
-          />
-        )}
-      </motion.div>
+      {serviceData?.image && (
+        <motion.div
+          className="col-span-12 md:col-span-6  lg:col-span-7"
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={isInView ? { scale: 1, opacity: 1 } : {}}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          {serviceData?.image?.endsWith(".mp4") ? (
+            <video
+              src={serviceData?.image}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <Image
+              src={serviceData?.image}
+              alt={serviceData?.title}
+              width={0}
+              height={0}
+              priority
+              className="w-full h-full max-w-[553px]-- max-h-[404px]-- object-cover"
+              sizes="100vw"
+            />
+          )}
+        </motion.div>
+      )}
 
       <motion.div
         className={` px-7 md:px-10 lg:px-14  py-12  bg-[#f5f5f5] flex flex-col items-center md:items-start justify-center col-span-12 md:col-span-6  lg:col-span-5`}

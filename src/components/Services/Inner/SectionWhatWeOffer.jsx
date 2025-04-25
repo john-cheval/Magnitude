@@ -13,34 +13,35 @@ const SectionWhatWeOffer = ({ serviceList }) => {
       ref={sectionRef}
       className={`grid grid-cols-12   ${isMobile ? "" : "containers mt-9"}`}
     >
-      <motion.div
-        className="col-span-12 md:col-span-6  lg:col-span-7"
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={isInView ? { scale: 1, opacity: 1 } : {}}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-      >
-        {serviceList?.image?.endsWith(".mp4") ? (
-          <video
-            src={serviceList?.image}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            className="w-full h-full object-cover"
-          />
-        ) : (
-          <Image
-            src={serviceList?.image}
-            alt={serviceList?.title}
-            width={0}
-            height={0}
-            priority
-            className="w-full h-full max-w-[553px]-- max-h-[404px]-- object-cover"
-            sizes="100vw"
-          />
-        )}
-        {/* <Image
+      {serviceList?.image && (
+        <motion.div
+          className="col-span-12 md:col-span-6  lg:col-span-7"
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={isInView ? { scale: 1, opacity: 1 } : {}}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          {serviceList?.image?.endsWith(".mp4") ? (
+            <video
+              src={serviceList?.image}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <Image
+              src={serviceList?.image}
+              alt={serviceList?.title}
+              width={0}
+              height={0}
+              priority
+              className="w-full h-full max-w-[553px]-- max-h-[404px]-- object-cover"
+              sizes="100vw"
+            />
+          )}
+          {/* <Image
           src={serviceList?.image}
           alt={serviceList?.title}
           width={0}
@@ -48,7 +49,9 @@ const SectionWhatWeOffer = ({ serviceList }) => {
           className={`w-full h-full max-w-[553px]-- max-h-[404px]-- object-cover`}
           sizes="100vw"
         /> */}
-      </motion.div>
+        </motion.div>
+      )}
+
       <motion.div
         className={` px-7 md:px-12 lg:px-16 py-12  bg-altermain text-main  flex flex-col justify-center col-span-12 md:col-span-6  lg:col-span-5`}
         initial={{ opacity: 0, y: 30 }}

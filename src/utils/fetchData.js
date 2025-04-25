@@ -1,11 +1,11 @@
-import { cache } from "react";
+// import { cache } from "react";
 
-export const fetchData = cache(async (url) => {
+export const fetchData = /* cache */ async (url) => {
   try {
     const response = await fetch(url, {
-      next: {
+      /*  next: {
         revalidate: 3600,
-      },
+      }, */
     });
 
     if (!response.ok) {
@@ -17,4 +17,4 @@ export const fetchData = cache(async (url) => {
     console.error(error);
     return null;
   }
-});
+};
