@@ -8,7 +8,7 @@ import { useGSAP } from "@gsap/react";
 import ServiceMobile from "./ServiceMobile";
 import useIsMobile from "@/hooks/useIsMobile";
 gsap.registerPlugin(ScrollTrigger);
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 const Section3 = ({ title, serviceData }) => {
   const homeCardData = Object?.values(serviceData);
   const isMobile = useIsMobile();
@@ -49,7 +49,7 @@ const Section3 = ({ title, serviceData }) => {
       /*  ".work-card" */ gsap.utils.toArray(".work-card"),
       { opacity: 0, y: 100 },
       { opacity: 1, y: 0, stagger: 0.5, ease: Power3.easeOut },
-      "-=0.8"
+      "-=0.2"
     );
   }, []);
 

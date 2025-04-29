@@ -7,6 +7,7 @@ import { RiMenu3Fill } from "react-icons/ri";
 import { IoMdClose } from "react-icons/io";
 import { usePathname } from "next/navigation";
 import MobileNav from "./MobileNav";
+import { AnimatePresence, motion } from "framer-motion";
 
 const Navbar = ({ navLeft, navRight, mobileMenu }) => {
   const pathname = usePathname();
@@ -124,13 +125,22 @@ const Navbar = ({ navLeft, navRight, mobileMenu }) => {
           />
         )}
       </nav>
-      {isMobileOpen && (
-        <MobileNav
-          MobileNavLinks={mobileMenu}
-          isOpen={isMobileOpen}
-          handleClose={toggleMobileNav}
-        />
-      )}
+      <AnimatePresence>
+        {isMobileOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <MobileNav
+              MobileNavLinks={mobileMenu}
+              isOpen={isMobileOpen}
+              handleClose={toggleMobileNav}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 };
