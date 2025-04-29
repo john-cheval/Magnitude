@@ -80,7 +80,7 @@ const Section3 = ({ title, serviceData }) => {
           >
             {homeCardData?.slice(0, 3).map((cardData, index) => (
               <Link
-                href={`/services/${cardData?.post_name}`}
+                href={`/services`}
                 className="space-y-4 lg:space-y-6 cursor-pointer work-card"
                 prefetch={true}
                 key={cardData?.ID || index}
@@ -110,7 +110,7 @@ const Section3 = ({ title, serviceData }) => {
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-x-4 gap-y-14 containers relative pb-16 lg:pb-24">
             {homeCardData?.slice(3).map((cardData, index) => (
               <Link
-                href={`/services/${cardData?.post_name}`}
+                href={`/services`}
                 className="space-y-4 lg:space-y-6 cursor-pointer work-card"
                 prefetch={true}
                 key={cardData?.ID || index}

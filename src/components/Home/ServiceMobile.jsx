@@ -34,7 +34,7 @@ const ServiceMobile = ({ title, serviceData }) => {
               animate={cardInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.5, ease: "easeOut" }}
             >
-              <Link href={`/services/${cardData?.post_name}`} prefetch={true}>
+              <Link href={`/services`} prefetch={true}>
                 <motion.div
                   initial={{ scale: 1 }}
                   animate={cardInView ? { scale: 1.05 } : {}}
