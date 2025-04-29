@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 const Section4 = ({ imageUrl, homeCardData }) => {
   const cardRefs = useRef([]);
   useEffect(() => {
-    cardRefs.current.forEach((card, index) => {
+    cardRefs.current.forEach((card) => {
       gsap.fromTo(
         card,
         { opacity: 0, x: -50 },
