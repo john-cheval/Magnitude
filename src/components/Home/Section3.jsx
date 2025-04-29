@@ -22,7 +22,7 @@ const Section3 = ({ title, serviceData }) => {
         // end: "bottom+=100% ",
 
         // scrub: 0.6,
-        scrub: 1,
+        scrub: true,
         pin: true,
         // markers: true,
       },
@@ -46,10 +46,10 @@ const Section3 = ({ title, serviceData }) => {
     });
 
     timeline.fromTo(
-      ".work-card",
+      /*  ".work-card" */ gsap.utils.toArray(".work-card"),
       { opacity: 0, y: 100 },
-      { opacity: 1, y: 0, stagger: 0.3, ease: Power3.easeOut },
-      "-=0.5"
+      { opacity: 1, y: 0, stagger: 0.5, ease: Power3.easeOut },
+      "-=0.8"
     );
   }, []);
 
@@ -78,7 +78,7 @@ const Section3 = ({ title, serviceData }) => {
             className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-x-4 gap-y-6 containers relative pb-32--"
             id="pinnedWorksItems"
           >
-            {homeCardData?.slice(0, 3).map((cardData, index) => (
+            {homeCardData?.map((cardData, index) => (
               <Link
                 href={`/services`}
                 className="space-y-4 lg:space-y-6 cursor-pointer work-card"
@@ -88,7 +88,7 @@ const Section3 = ({ title, serviceData }) => {
                 <Image
                   src={cardData?.home_page_image}
                   alt={cardData?.post_title}
-                  className="w-full md:h-auto object-cover h-[350px]"
+                  className="w-full md:h-auto-- object-cover h-[350px]"
                   width={0}
                   height={0}
                   sizes="100vw"
@@ -103,7 +103,7 @@ const Section3 = ({ title, serviceData }) => {
         </div>
       </section>
 
-      <section
+      {/* <section
         className={`relative !bg-white hidden md:block w-full -mt-[250px] lg:-mt-[150px] xl:-mt-[50px] 2xl:-mt-[60px]   `}
       >
         <div className="relative  h-fit-- w-screen overflow-hidden">
@@ -139,7 +139,7 @@ const Section3 = ({ title, serviceData }) => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
       <div className="md:hidden block">
         <ServiceMobile title={title} serviceData={serviceData} />
       </div>
