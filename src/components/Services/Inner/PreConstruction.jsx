@@ -1,8 +1,8 @@
 import React from "react";
 
 import SectionWhatWeOffer from "./SectionWhatWeOffer";
-import SectionOne from "./SectionOne";
-import SectionTwo from "./SectionTwo";
+import SectionOne from "./Old/SectionOne";
+import SectionTwo from "./Old/SectionTwo";
 import SectionThree from "./SectionThree";
 
 const PreConstruction = ({ serviceData }) => {

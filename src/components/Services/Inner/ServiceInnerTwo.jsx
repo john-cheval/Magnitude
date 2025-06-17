@@ -1,6 +1,6 @@
 import React from "react";
-import SectionOne from "./SectionOne";
-import SectionTwo from "./SectionTwo";
+import SectionOne from "./Old/SectionOne";
+import SectionTwo from "./Old/SectionTwo";
 import SectionWhatWeOffer from "./SectionWhatWeOffer";
 import SectionThree from "./SectionThree";
 
