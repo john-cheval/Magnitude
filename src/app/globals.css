@@ -139,7 +139,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .description {
-  @apply text-sm md:text-base text-justify font-helvatica font-light leading-[186%];
+  @apply text-sm md:text-base text-justify font-helvatica font-light !leading-[186%];
 }
 .description-footer {
   @apply text-base text-justify font-helvatica font-light leading-[186%];
@@ -166,7 +166,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .description p:last-of-type {
-  @apply text-sm md:text-base text-justify font-helvatica font-light leading-[186%];
+  @apply text-sm md:text-base !text-center md:text-justify font-helvatica font-light !leading-[186%];
 }
 
 .serviceKey ul li {
@@ -237,7 +237,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .about p {
-  @apply text-sm md:text-base md:!text-justify font-helvatica font-light leading-[186%] !text-center;
+  @apply text-sm md:text-base  font-helvatica font-light !leading-[186%];
 }
 .home p {
   @apply text-sm md:text-base md:!text-justify font-helvatica font-light leading-[186%] !text-center;

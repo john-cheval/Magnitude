@@ -46,6 +46,8 @@ module.exports = {
           "linear-gradient(0deg, rgba(0, 0, 0, 0.93) 0.27%, rgba(0, 0, 0, 0.00) 99.73%)",
         contactTopGrad:
           "linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0.00) 100%)",
+        aboutgrad:
+          "linear-gradient(90deg, rgba(0, 0, 0, 0.71) 42.05%, rgba(0, 0, 0, 0.00) 89.81%)",
       },
     },
   },
