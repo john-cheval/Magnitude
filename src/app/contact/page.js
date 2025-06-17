@@ -1,10 +1,11 @@
+import ContactForm from "@/components/Contact/ContactForm";
 import Locations from "@/components/Contact/Locations";
 import { fetchData } from "@/utils/fetchData";
 import generateMetadataData from "@/utils/generateMetaData";
 import dynamic from "next/dynamic";
 import React from "react";
 const ContactHero = dynamic(() => import("@/components/Contact/ContactHero"));
-const ContactForm = dynamic(() => import("@/components/Contact/ContactForm"));
+
 const Section2 = dynamic(() => import("@/components/Contact/Section2"));
 
 const Footer = dynamic(() => import("@/components/common/Footer"));
@@ -19,6 +20,7 @@ const ContactPage = async () => {
   const { email_address, phone_number } = await fetchData(
     "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/full_details?ID=23"
   );
+
   if (!contactData) {
     return (
       <div className="h-screen flex items-center justify-center">
