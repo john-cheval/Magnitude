@@ -41,7 +41,7 @@ module.exports = {
         aboutBgGrad:
           "linear-gradient(0deg, #000 10%, rgba(0, 0, 0, 0.00) 100%)",
         serviceHeroGrad:
-          "linear-gradient(120deg, rgba(0, 0, 0, 0.93) 0.27%, rgba(0, 0, 0, 0.00) 75.73%)",
+          "linear-gradient(90deg, rgba(0, 0, 0, 0.51) 66.97%, rgba(0, 0, 0, 0.00) 92.81%)",
         serviceHeroGrad2:
           "linear-gradient(0deg, rgba(0, 0, 0, 0.93) 0.27%, rgba(0, 0, 0, 0.00) 99.73%)",
         contactTopGrad:
