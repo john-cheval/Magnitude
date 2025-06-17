@@ -141,9 +141,15 @@ input[type="number"]::-webkit-outer-spin-button {
 .description {
   @apply text-sm md:text-base text-justify font-helvatica font-light leading-[186%];
 }
+.description-footer {
+  @apply text-base text-justify font-helvatica font-light leading-[186%];
+}
 
 .description p:first-child {
   @apply mb-5;
+}
+.footer_heading {
+  @apply text-xl md:text-[22px] text-center md:text-left  leading-[150%] mb-3 md:mb-4;
 }
 
 .list ul li {
@@ -295,5 +301,12 @@ input[type="number"]::-webkit-outer-spin-button {
   .serviceinnerhead {
     justify-content: space-between;
     row-gap: 40px;
+  }
+}
+
+@media (max-width: 355px) {
+  .footer_heading,
+  .description-footer {
+    text-align: center !important;
   }
 }
