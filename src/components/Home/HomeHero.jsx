@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
-import OutlineButton from "../common/OutlineButton";
+// import OutlineButton from "../common/OutlineButton";
 import useIsMobile from "@/hooks/useIsMobile";
 import Link from "next/link";
 import Image from "next/image";
@@ -65,6 +65,7 @@ const HomeHero = ({ title, link, linkText, videoUrl }) => {
       {!videoLoaded && (
         <div className="absolute inset-0 z-10">
           <Image
+            // src={isMobile ? "/home.gif" : "/homee.gif"}
             src={isMobile ? "/MagnitudeMobile.jpg" : "/Magnitude.jpg"}
             alt="Hero Fallback"
             layout="fill"
@@ -81,6 +82,7 @@ const HomeHero = ({ title, link, linkText, videoUrl }) => {
         onLoadedData={handleVideoLoad}
         webkitplaysinline={"true"}
         poster={isMobile ? "/MagnitudeMobile.jpg" : "/Magnitude.jpg"}
+        // poster="/home.gif"
         muted={isMuted}
         playsInline
         preload="metadata"
@@ -102,14 +104,6 @@ const HomeHero = ({ title, link, linkText, videoUrl }) => {
           {" "}
           {title}
         </h1>
-        {/* <div ref={mobileLinkRef}>
-          <Link
-            href={link}
-            className="underline text-sm md:hidden uppercase hover:no-underline transition-all duration-300"
-          >
-            {linkText}
-          </Link>
-        </div> */}
 
         {videoLoaded && (
           <div
@@ -123,12 +117,6 @@ const HomeHero = ({ title, link, linkText, videoUrl }) => {
             )}
           </div>
         )}
-        {/* <div
-          ref={buttonRef}
-          className="md:flex items-center justify-center hidden w-full "
-        >
-          <OutlineButton link={link} text={linkText} />
-        </div> */}
       </div>
 
       {videoLoaded && (
