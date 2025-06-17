@@ -2,8 +2,9 @@ import "./globals.css";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { fetchMenus } from "@/utils/fetchMenu";
 import Navbar from "@/components/common/Navbar";
+import Footer from "@/components/common/Footer";
+import { fetchData } from "@/utils/fetchData";
 
 export const metadata = {
   title: "Magnitude",
@@ -11,7 +12,22 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  const { navDataLeft, navDataRight, mobileMenu } = await fetchMenus();
+  const [navDataLeft, navDataRight, mobileMenu, footerData] = await Promise.all(
+    [
+      fetchData(
+        "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/menu/primary"
+      ),
+      fetchData(
+        "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/menu/primaryright"
+      ),
+      fetchData(
+        "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/menu/mobilemenu"
+      ),
+      fetchData(
+        "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/footer_details"
+      ),
+    ]
+  );
   return (
     <html
       lang="en"
@@ -29,7 +45,7 @@ export default async function RootLayout({ children }) {
           {children}
           <ToastContainer />
         </main>
-        {/* <Footer /> */}
+        <Footer data={footerData} />
       </body>
     </html>
   );

@@ -3,8 +3,6 @@ import CareersHero from "@/components/Careers/CareersHero";
 import CareersJobList from "@/components/Careers/CareersJobList";
 import { fetchData } from "@/utils/fetchData";
 import generateMetadataData from "@/utils/generateMetaData";
-import dynamic from "next/dynamic";
-const Footer = dynamic(() => import("@/components/common/Footer"));
 
 import React from "react";
 
@@ -22,9 +20,7 @@ const CarrerInnerPage = async ({ params }) => {
   const careersList = await fetchData(
     `https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/careers_list`
   );
-  const { email_address, phone_number } = await fetchData(
-    "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/full_details?ID=23"
-  );
+
   return (
     <div className="bg-white">
       <CareersHero
@@ -33,7 +29,6 @@ const CarrerInnerPage = async ({ params }) => {
       />
       <CareersJobList careersList={careersList} />
       <CareerForm />
-      <Footer email_address={email_address} phone_number={phone_number} />
     </div>
   );
 };

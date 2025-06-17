@@ -1,13 +1,11 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { toast } from "react-toastify";
-import { gsap } from "gsap";
 import ReCaptcha from "@/utils/reCaptcha";
+import { motion } from "framer-motion";
+import { containerVariants, fadeInUp } from "@/app/lib/framer";
 
 const ContactForm = () => {
-  const locationRef = useRef(null);
-  const titleRef = useRef(null);
-  const inputRefs = useRef([]);
   const buttonRef = useRef(null);
   const recaptchaRef = useRef(null);
   const [token, setToken] = useState("");
@@ -29,51 +27,6 @@ const ContactForm = () => {
     formData.message.trim() &&
     token;
 
-  useEffect(() => {
-    gsap.fromTo(
-      titleRef.current,
-      { opacity: 0, y: -50 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        scrollTrigger: {
-          trigger: locationRef.current,
-          start: "top 80%",
-        },
-      }
-    );
-
-    gsap.fromTo(
-      inputRefs.current,
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
-        stagger: 0.2,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: locationRef.current,
-          start: "top 75%",
-        },
-      }
-    );
-
-    gsap.fromTo(
-      buttonRef.current,
-      { opacity: 0, y: 50 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.3,
-        scrollTrigger: {
-          trigger: locationRef.current,
-          start: "top 90%",
-        },
-      }
-    );
-  }, []);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -141,21 +94,35 @@ const ContactForm = () => {
     setToken(token);
   };
   return (
-    <section
-      ref={locationRef}
-      className="bg-altermain pt-16 pb-12  md:py-12  containers"
-    >
-      <h3
-        ref={titleRef}
-        className="main-heading2 mb-6  text-center md:text-left"
+    <section className="bg-altermain pt-16 pb-12  md:py-12  containers">
+      <motion.h3
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
+        viewport={{ once: true, amount: 0.2 }}
+        className="main-heading2 mb-6  !text-center "
       >
         Enquire Now
-      </h3>
-      <span className="seperator mb-7  mx-auto md:mx-0"></span>
-      <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <input
-            ref={(el) => (inputRefs.current[0] = el)}
+      </motion.h3>
+      <motion.span
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: "easeInOut", delay: 0.1 }}
+        viewport={{ once: true, amount: 0.2 }}
+        className="seperator mb-7  mx-auto "
+      ></motion.span>
+      <form
+        className="mt-6 flex flex-col gap-y-4 md:px-12 lg:px-20 xl:px-28 "
+        onSubmit={handleSubmit}
+      >
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-x-8 gap-y-6"
+        >
+          <motion.input
             type="text"
             placeholder="First Name"
             required
@@ -165,10 +132,11 @@ const ContactForm = () => {
             value={formData.firstName}
             onChange={handleChange}
             className="input "
+            variants={fadeInUp}
           />
 
-          <input
-            ref={(el) => (inputRefs.current[1] = el)}
+          <motion.input
+            variants={fadeInUp}
             type="text"
             placeholder="Last Name"
             required
@@ -180,13 +148,13 @@ const ContactForm = () => {
             className="input "
           />
 
-          <input
-            ref={(el) => (inputRefs.current[2] = el)}
+          <motion.input
             type="text"
             placeholder="Phone"
             required
             maxLength={200}
             id="phone"
+            variants={fadeInUp}
             name="phone"
             value={formData.phone}
             onChange={handleChange}
@@ -220,24 +188,27 @@ const ContactForm = () => {
             }}
           />
 
-          <input
-            ref={(el) => (inputRefs.current[3] = el)}
+          <motion.input
             type="email"
-            placeholder="email"
+            placeholder="Email"
             required
             maxLength={200}
             id="email"
+            variants={fadeInUp}
             name="email"
             value={formData.email}
             onChange={handleChange}
             className="input "
           />
-        </div>
+        </motion.div>
 
-        <textarea
+        <motion.textarea
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeInOut", delay: 0.2 }}
+          viewport={{ once: true, amount: 0.2 }}
           type="text"
           placeholder="Message"
-          ref={(el) => (inputRefs.current[4] = el)}
           maxLength={2000}
           rows={5}
           id="message"
@@ -247,20 +218,32 @@ const ContactForm = () => {
           className="input "
         />
 
-        <div className="flex justify-center">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeInOut", delay: 0.3 }}
+          viewport={{ once: true, amount: 0.2 }}
+          className="flex justify-center mt-3"
+        >
           <ReCaptcha
             siteKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
             callback={handleToken}
             ref={recaptchaRef}
           />
-        </div>
+        </motion.div>
 
-        <div className="flex justify-center mt-3 ">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeInOut", delay: 0.4 }}
+          viewport={{ once: true, amount: 0.2 }}
+          className="flex justify-center mt-2 "
+        >
           <button
             ref={buttonRef}
             type="submit"
             disabled={!isFormValid}
-            className={`text-sm uppercase px-9 py-4 text-center inline-block w-fit bg-main border text-altermain mx-auto transition-all duration-300 hover:bg-transparent hover:text-main hover:border-main ${
+            className={`text-sm uppercase px-11 py-4 text-center inline-block w-fit bg-main border text-altermain mx-auto transition-all duration-300 hover:bg-transparent hover:text-main hover:border-main ${
               !isFormValid
                 ? "opacity-50-- cursor-not-allowed"
                 : "hover:bg-transparent hover:text-main hover:border-main"
@@ -268,7 +251,7 @@ const ContactForm = () => {
           >
             Submit
           </button>
-        </div>
+        </motion.div>
       </form>
     </section>
   );

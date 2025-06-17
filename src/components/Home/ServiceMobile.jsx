@@ -24,7 +24,7 @@ const ServiceMobile = ({ title, serviceData }) => {
       <div className="grid grid-cols-1 pt-8 space-y-8">
         {homeCardData?.map((cardData, index) => {
           const cardRef = React.useRef(null);
-          const cardInView = useInView(cardRef, { once: false, amount: 0.3 });
+          const cardInView = useInView(cardRef, { once: true, amount: 0.3 });
 
           return (
             <motion.div

@@ -1,17 +1,15 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { toast } from "react-toastify";
-import { gsap } from "gsap";
 import useIsMobile from "@/hooks/useIsMobile";
 import ReCaptcha from "@/utils/reCaptcha";
+import { motion } from "framer-motion";
+import { containerVariants, fadeInUp } from "@/app/lib/framer";
 
 const CareerForm = () => {
   const isMobile = useIsMobile();
-  const formRef = useRef(null);
-  const titleRef = useRef(null);
-  const titleChildrenRef = useRef([]);
-  const inputRefs = useRef([]);
+
   const buttonRef = useRef(null);
   const recaptchaRef = useRef(null);
   const [token, setToken] = useState("");
@@ -26,53 +24,6 @@ const CareerForm = () => {
     message: "",
     email: "",
   });
-
-  useEffect(() => {
-    gsap.fromTo(
-      titleChildrenRef.current,
-      { opacity: 0, y: 20 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        stagger: 0.3,
-        scrollTrigger: {
-          trigger: formRef.current,
-          start: "top 80%",
-        },
-      }
-    );
-
-    gsap.fromTo(
-      inputRefs.current,
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
-        stagger: 0.2,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: formRef.current,
-          start: "top 75%",
-        },
-      }
-    );
-
-    gsap.fromTo(
-      buttonRef.current,
-      { opacity: 0, y: 50 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.3,
-        scrollTrigger: {
-          trigger: formRef.current,
-          start: "top 90%",
-        },
-      }
-    );
-  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -170,40 +121,50 @@ const CareerForm = () => {
     token;
   return (
     <section
-      ref={formRef}
       id="career-form"
       className="bg-altermain pt-11 md:pt-16 pb-12 containers"
     >
-      <div ref={titleRef} className="flex flex-col items-center">
-        <h2
-          ref={(el) => (titleChildrenRef.current[0] = el)}
-          className="main-heading2 mb-5 md:mb-6"
-        >
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+        className="flex flex-col items-center"
+      >
+        <motion.h2 variants={fadeInUp} className="main-heading2 mb-5 md:mb-6">
           Apply for a Career Opportunity
-        </h2>
-        <span
-          ref={(el) => (titleChildrenRef.current[1] = el)}
+        </motion.h2>
+        <motion.span
+          variants={fadeInUp}
           className="seperator mb-5 md:mb-6"
-        ></span>
-        <h4
-          ref={(el) => (titleChildrenRef.current[2] = el)}
+        ></motion.span>
+        <motion.h4
+          variants={fadeInUp}
           className="text-sm sm:!text-base md:!text-xl lg:!text-2xl description mb-3"
         >
           Join Our Team
-        </h4>
-        <p
-          ref={(el) => (titleChildrenRef.current[3] = el)}
+        </motion.h4>
+        <motion.p
+          variants={fadeInUp}
           className="description !text-center md:text-justify"
         >
           We are excited to learn more about you! Please complete the form below
           to apply for a position with us.
-        </p>
-      </div>
+        </motion.p>
+      </motion.div>
 
-      <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <input
-            ref={(el) => (inputRefs.current[0] = el)}
+      <form
+        className="mt-6 flex flex-col gap-y-4 md:space-y-6 md:px-12 lg:px-20 xl:px-28"
+        onSubmit={handleSubmit}
+      >
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-x-11 gap-y-5"
+        >
+          <motion.input
             type="text"
             placeholder="First Name"
             required
@@ -213,10 +174,11 @@ const CareerForm = () => {
             value={formData.firstName}
             onChange={handleChange}
             className="input"
+            variants={fadeInUp}
           />
 
-          <input
-            ref={(el) => (inputRefs.current[1] = el)}
+          <motion.input
+            variants={fadeInUp}
             type="text"
             placeholder="Last Name"
             required
@@ -228,10 +190,7 @@ const CareerForm = () => {
             className="input"
           />
 
-          <div
-            className="relative w-full"
-            ref={(el) => (inputRefs.current[2] = el)}
-          >
+          <motion.div className="relative w-full" variants={fadeInUp}>
             <select
               required
               id="jobType"
@@ -261,10 +220,10 @@ const CareerForm = () => {
               size={20}
               className="absolute right-5 top-1/2 transform -translate-y-1/2 text-[#9D9D9D] pointer-events-none"
             />
-          </div>
+          </motion.div>
 
-          <input
-            ref={(el) => (inputRefs.current[3] = el)}
+          <motion.input
+            variants={fadeInUp}
             type="text"
             placeholder="Subject"
             required
@@ -275,11 +234,14 @@ const CareerForm = () => {
             onChange={handleChange}
             className="input"
           />
-        </div>
+        </motion.div>
 
-        <div
+        <motion.div
           className="relative w-full"
-          ref={(el) => (inputRefs.current[4] = el)}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+          viewport={{ once: true, amount: 0.2 }}
         >
           <label htmlFor="fileUpload" className="block cursor-pointer">
             <div className="input flex items-center gap-x-5 justify-between pr-[10px]">
@@ -309,10 +271,13 @@ const CareerForm = () => {
             onChange={handleFileChange}
             className="hidden"
           />
-        </div>
+        </motion.div>
 
-        <textarea
-          ref={(el) => (inputRefs.current[5] = el)}
+        <motion.textarea
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeInOut", delay: 0.2 }}
+          viewport={{ once: true, amount: 0.2 }}
           type="text"
           placeholder="Message/Additional Notes"
           maxLength={2000}
@@ -324,25 +289,27 @@ const CareerForm = () => {
           className="input"
         />
 
-        <div className="flex justify-center">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeInOut", delay: 0.3 }}
+          viewport={{ once: true, amount: 0.2 }}
+          className="flex justify-center"
+        >
           <ReCaptcha
             siteKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
             callback={handleToken}
             ref={recaptchaRef}
           />
-        </div>
+        </motion.div>
 
-        <div
+        <motion.div
           className="flex justify-center mt-4 md:mt-2"
-          ref={(el) => (inputRefs.current[6] = el)}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeInOut", delay: 0.4 }}
+          viewport={{ once: true, amount: 0.2 }}
         >
-          {/* <button
-            type="submit"
-            className="text-sm uppercase px-9 py-4 border text-center inline-block w-fit bg-main text-altermain mx-auto hover:bg-altermain hover:text-main transition-all duration-300 ease-in-out hover:border-main"
-          >
-            
-          </button> */}
-
           <button
             ref={buttonRef}
             type="submit"
@@ -355,7 +322,7 @@ const CareerForm = () => {
           >
             {isMobile ? "Submit" : " Submit Your Application"}
           </button>
-        </div>
+        </motion.div>
       </form>
     </section>
   );

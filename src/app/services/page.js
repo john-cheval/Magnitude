@@ -2,25 +2,23 @@ import Services from "@/components/Services/Services";
 import React from "react";
 import generateMetadataData from "@/utils/generateMetaData";
 import { fetchData } from "@/utils/fetchData";
-import dynamic from "next/dynamic";
-const ServiceHero = dynamic(() => import("@/components/Services/ServiceHero"));
-const Footer = dynamic(() => import("@/components/common/Footer"));
+import ServiceHero from "@/components/Services/ServiceHero";
 
 export async function generateMetadata() {
   return await generateMetadataData(17, "services", false);
 }
 const ServicePage = async () => {
-  const servicesData = await fetchData(
-    "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/full_details?ID=17"
-  );
-  const servicesList = await fetchData(
-    "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/services"
-  );
-  const { email_address, phone_number } = await fetchData(
-    "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/full_details?ID=23"
-  );
+  const [servicesData, servicesList] = await Promise.all([
+    fetchData(
+      "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/full_details?ID=17"
+    ),
+    fetchData(
+      "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/services"
+    ),
+  ]);
+
   return (
-    <>
+    <div>
       <ServiceHero
         title={servicesData?.post_title}
         small_heading={servicesData?.small_heading}
@@ -28,8 +26,7 @@ const ServicePage = async () => {
         bannerImage={servicesData?.top_banner}
       />
       <Services servicesList={servicesList} />
-      <Footer email_address={email_address} phone_number={phone_number} />
-    </>
+    </div>
   );
 };
 

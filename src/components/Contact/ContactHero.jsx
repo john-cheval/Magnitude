@@ -1,10 +1,10 @@
 "use client";
-import useIsMobile from "@/hooks/useIsMobile";
+// import useIsMobile from "@/hooks/useIsMobile";
 import Image from "next/image";
 import React, { useRef, useState } from "react";
 
 function ContactHero({ bannerVideo }) {
-  const isMobile = useIsMobile();
+  // const isMobile = useIsMobile();
   const videoRef = useRef(null);
   const [videoLoaded, setVideoLoaded] = useState(false);
   const handleVideoLoad = () => {
@@ -23,7 +23,8 @@ function ContactHero({ bannerVideo }) {
       {!videoLoaded && (
         <div className="absolute inset-0 z-10">
           <Image
-            src={isMobile ? "/contactMobile.jpg" : "/contactDesk.jpg"}
+            // src={isMobile ? "/contactMobile.jpg" : "/contactDesk.jpg"}
+            src={"/contact.gif"}
             alt="Contact Fallback"
             layout="fill"
             objectFit="cover"
@@ -40,7 +41,8 @@ function ContactHero({ bannerVideo }) {
         ref={videoRef}
         playsInline
         preload="metadata"
-        poster={isMobile ? "/contactMobile.jpg" : "/contactDesk.jpg"}
+        // poster={isMobile ? "/contactMobile.jpg" : "/contactDesk.jpg"}
+        poster="/contact.gif"
         width="100%"
         height="100%"
         className="w-full md:h-full object-cover h-[275px] md:max-h-[288px]--"

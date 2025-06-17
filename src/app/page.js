@@ -8,22 +8,14 @@ export async function generateMetadata() {
 }
 
 export default async function Home() {
-  const homeData = await fetchData(
-    "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/full_details?ID=10"
-  );
-  const serviceData = await fetchData(
-    "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/services"
-  );
-  const { email_address, phone_number } = await fetchData(
-    "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/full_details?ID=23"
-  );
+  const [homeData, serviceData] = await Promise.all([
+    fetchData(
+      "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/full_details?ID=10"
+    ),
+    fetchData(
+      "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/services"
+    ),
+  ]);
 
-  return (
-    <HomePage
-      homeData={homeData}
-      serviceData={serviceData}
-      email_address={email_address}
-      phone_number={phone_number}
-    />
-  );
+  return <HomePage homeData={homeData} serviceData={serviceData} />;
 }

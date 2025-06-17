@@ -1,13 +1,8 @@
 "use client";
-
-import React, { memo, Suspense, useEffect, useRef } from "react";
-import { gsap } from "gsap";
+import React, { memo, Suspense } from "react";
+import { motion } from "framer-motion";
 
 const Locations = () => {
-  const headingRef = useRef(null);
-  const sectionRef = useRef(null);
-  const mapRef = useRef(null);
-
   const MapComponent = memo(() => (
     <iframe
       src="https://snazzymaps.com/embed/693860"
@@ -17,59 +12,25 @@ const Locations = () => {
       referrerPolicy="no-referrer-when-downgrade"
       className=" max-w-[350px]-- xl:w-full-- w-full h-[400px]     border-none  "
     ></iframe>
-    // <iframe
-    //   src="https://snazzymaps.com/embed/696038"
-    //   title="Magnitude"
-    //   allowFullScreen
-    //   width="100%"
-    //   loading="lazy"
-    //   referrerPolicy="no-referrer-when-downgrade"
-    //   className=" max-w-[350px]-- xl:w-full-- w-full h-[400px]     border-none  "
-    // ></iframe>
   ));
-  useEffect(() => {
-    gsap.fromTo(
-      headingRef.current,
-      { opacity: 0, y: -50 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-        },
-      }
-    );
-
-    gsap.fromTo(
-      mapRef.current,
-      { opacity: 0, y: -30 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        delay: 0.2,
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-        },
-      }
-    );
-  }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className="bg-altermain containers space-y-6 pt-4 md:pt-0"
-    >
-      <h3
-        ref={headingRef}
-        className="main-heading2 md:text-left text-center  mb-8 md:mb-0"
+    <section className="bg-altermain containers space-y-6 pt-4 md:pt-8">
+      <motion.h3
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
+        viewport={{ once: true, amount: 0.2 }}
+        className="main-heading2  !text-center  mb-8 md:mb-0"
       >
         Our Locations
-      </h3>
-      <div ref={mapRef} className="">
+      </motion.h3>
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: "easeInOut", delay: 0.2 }}
+        viewport={{ once: true, amount: 0.2 }}
+      >
         <Suspense
           fallback={
             <div className="w-full h-[400px] bg-gray-200 mx-auto-- mt-7--" />
@@ -77,7 +38,7 @@ const Locations = () => {
         >
           <MapComponent />
         </Suspense>
-      </div>
+      </motion.div>
     </section>
   );
 };

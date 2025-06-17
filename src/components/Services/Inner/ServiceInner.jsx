@@ -2,13 +2,10 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
-import PreConstruction from "./PreConstruction";
-import DuringConstruction from "./DuringConstruction";
-import PostConstruction from "./PostConstruction";
+
 import { gsap } from "gsap";
 import useIsMobile from "@/hooks/useIsMobile";
 import ServiceInnerOne from "./ServiceInnerOne";
-import ServiceInnerTwo from "./ServiceInnerTwo";
 
 const ServiceInner = ({ serviceData, services }) => {
   const isMobile = useIsMobile();
@@ -27,10 +24,10 @@ const ServiceInner = ({ serviceData, services }) => {
     return acc;
   }, {});
 
-  const componentMap = servicesList.reduce((acc, service, index) => {
-    acc[service.post_title] = index === 1 ? ServiceInnerTwo : ServiceInnerOne;
-    return acc;
-  }, {});
+  // const componentMap = servicesList.reduce((acc, service, index) => {
+  //   acc[service.post_title] = index === 1 ? ServiceInnerTwo : ServiceInnerOne;
+  //   return acc;
+  // }, {});
 
   const active = sectionMap[pathname] || "Pre-Construction";
 
@@ -62,18 +59,7 @@ const ServiceInner = ({ serviceData, services }) => {
   }, [lastScrollY]);
 
   const renderComponent = () => {
-    // switch (active) {
-    //   case "Pre-Construction":
-    //     return <ServiceInnerOne serviceData={serviceData?.section_list} />;
-    //   case "During Construction":
-    //     return <ServiceInnerTwo serviceData={serviceData?.section_list} />;
-    //   case "Post Construction":
-    //     return <PostConstruction serviceData={serviceData?.section_list} />;
-    //   default:
-    //     return null;
-
-    // }
-    const DynamicComponent = componentMap[active] || ServiceInnerOne;
+    const DynamicComponent = /* componentMap[active] || */ ServiceInnerOne;
     return <DynamicComponent serviceData={serviceData?.section_list} />;
   };
 
@@ -114,7 +100,7 @@ const ServiceInner = ({ serviceData, services }) => {
     <section ref={sectionRef} className="pt-24 md:pt-32 lg:pt-36  ">
       <div
         className={`containers ${
-          isNavVisible && "sticky"
+          /* isNavVisible &&  */ "sticky"
         } bg-white transition-all duration-300 z-50 ${
           isNavVisible ? "py-8 " : "py-8 shadow-md"
         }`}
@@ -144,7 +130,7 @@ const ServiceInner = ({ serviceData, services }) => {
 
       <div
         ref={contentRef}
-        className="mt-3 md:mt-8 transition-opacity duration-500 opacity-100"
+        className="mt-3- md:mt-8- transition-opacity duration-500 opacity-100"
       >
         {renderComponent()}
       </div>
