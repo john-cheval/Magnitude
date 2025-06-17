@@ -11,9 +11,9 @@ import { FaLocationDot, FaLinkedinIn } from "react-icons/fa6";
 const Footer = ({ data }) => {
   return (
     <footer className="containers bg-footerBG bg-cover bg-center h-full relative pb-10 md:pb-14  ">
-      <div className="w-full h-[1px] bg-main relative z-50  overflow-hidden" />
+      <div className="w-full h-[1px] bg-main/[0.5] relative z-50  overflow-hidden" />
 
-      <div className="flex flex-row  items-center- items-start flex-wrap xl:flex-nowrap justify-center md:justify-between space-y-5- z-50 relative pt-10 md:pt-24 grid- grid-cols-4 gap-x-10 border-b border-b-main pb-14 md:pb-20 gap-y-10">
+      <div className="flex flex-row  items-center- items-start flex-wrap xl:flex-nowrap justify-center md:justify-between space-y-5- z-50 relative pt-10 md:pt-24 grid- grid-cols-4 gap-x-10 border-b border-b-main/[0.5] pb-14 md:pb-20 gap-y-10">
         <div>
           <motion.div
             initial={{ opacity: 0, y: 50 }}

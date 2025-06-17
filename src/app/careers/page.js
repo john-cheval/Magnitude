@@ -1,4 +1,6 @@
-import CarrersPage from "@/page-views/CarrersPage";
+import CareerForm from "@/components/Careers/CareerForm";
+import CareersHero from "@/components/Careers/CareersHero";
+import CareersList from "@/components/Careers/CareersList";
 import { fetchData } from "@/utils/fetchData";
 import generateMetadataData from "@/utils/generateMetaData";
 import React from "react";
@@ -8,24 +10,24 @@ export async function generateMetadata() {
 }
 
 const Careers = async () => {
-  const careersData = await fetchData(
-    "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/full_details?ID=20"
-  );
-  const careersCategory = await fetchData(
-    "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/careers_category"
-  );
-  const { email_address, phone_number } = await fetchData(
-    "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/full_details?ID=23"
-  );
+  const [careersData, careersCategory] = await Promise.all([
+    fetchData(
+      "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/full_details?ID=20"
+    ),
+    fetchData(
+      "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/careers_category"
+    ),
+  ]);
+
   return (
-    <div>
-      <CarrersPage
-        careersData={careersData}
-        careersCategory={careersCategory}
-        email_address={email_address}
-        phone_number={phone_number}
+    <>
+      <CareersHero
+        title={careersData?.post_title}
+        bannerImage={careersData?.top_banner}
       />
-    </div>
+      <CareersList careersCategory={careersCategory} />
+      <CareerForm />
+    </>
   );
 };
 
