@@ -6,7 +6,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import useIsMobile from "@/hooks/useIsMobile";
 import ServiceInnerOne from "./ServiceInnerOne";
-import ServiceInnerTwo from "./ServiceInnerTwo";
 
 const ServiceInner = ({ serviceData, services }) => {
   const isMobile = useIsMobile();
