@@ -3,7 +3,6 @@ import React from "react";
 import * as motion from "motion/react-client";
 import { containerVariants, fadeInUp } from "@/app/lib/framer";
 const SectionOne = ({ serviceData }) => {
-  console.log(serviceData, "this isthe dara");
   return (
     <section>
       {serviceData?.image && (
@@ -37,7 +36,7 @@ const SectionOne = ({ serviceData }) => {
           )}
 
           <motion.div
-            className={`  flex flex-col items-center md:items-start justify-center md:absolute top-1/2 right-[5%]  2xl:right-[10%] md:-translate-y-1/2 w-full md:max-w-[400px] lg:max-w-[600px] xl:max-w-[800px] py-7 md:py-0 containers bg-[#f5f5f5] md:bg-transparent ${
+            className={`  flex flex-col items-center md:items-start justify-center md:absolute top-1/2 right-[5%]   md:-translate-y-1/2 w-full md:max-w-[400px] lg:max-w-[600px] 2xl:max-w-[800px]- py-7 md:py-0 containers bg-[#f5f5f5] md:bg-transparent ${
               serviceData?.title === "Pre-Construction"
                 ? "text-altermain"
                 : "text-main"
