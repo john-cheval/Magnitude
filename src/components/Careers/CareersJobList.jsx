@@ -46,7 +46,7 @@ const CareersJobList = ({ careersList }) => {
 
             <div
               dangerouslySetInnerHTML={{ __html: job?.post_content }}
-              className="description !text-sm "
+              className="text-sm space-y-3  text-left font-helvatica font-light !leading-[186%]"
             ></div>
           </div>
 

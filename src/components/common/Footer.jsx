@@ -1,5 +1,4 @@
 import React from "react";
-
 import Image from "next/image";
 import Link from "next/link";
 import * as motion from "motion/react-client";
@@ -10,7 +9,7 @@ import { FaLocationDot, FaLinkedinIn } from "react-icons/fa6";
 
 const Footer = ({ data }) => {
   return (
-    <footer className="containers bg-footerBG bg-cover bg-center h-full relative pb-10 md:pb-14  ">
+    <footer className="containers bg-footerBG bg-cover bg-center h-full relative pb-10 md:pb-14 ">
       <div className="w-full h-[1px] bg-main/[0.5] relative z-50  overflow-hidden" />
 
       <div className="flex flex-row  items-center- items-start flex-wrap xl:flex-nowrap justify-center md:justify-between space-y-5- z-50 relative pt-10 md:pt-24 grid- grid-cols-4 gap-x-10 border-b border-b-main/[0.5] pb-14 md:pb-20 gap-y-10">
@@ -19,7 +18,7 @@ const Footer = ({ data }) => {
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: false, amount: 0.2 }}
           >
             <Image
               src={"/common/footer_logo.svg"}
@@ -35,7 +34,7 @@ const Footer = ({ data }) => {
             nitial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: false, amount: 0.2 }}
             className="description-footer mt-3 md:mt-6 md:max-w-[300px] !text-center md:!text-left"
           >
             {data?.footer_text}
@@ -46,7 +45,7 @@ const Footer = ({ data }) => {
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: false, amount: 0.2 }}
         >
           <motion.p variants={fadeInUp} className="footer_heading !text-left">
             Quick Links
@@ -73,7 +72,7 @@ const Footer = ({ data }) => {
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: false, amount: 0.2 }}
         >
           <motion.p variants={fadeInUp} className="footer_heading !text-left">
             Services
@@ -100,7 +99,7 @@ const Footer = ({ data }) => {
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: false, amount: 0.2 }}
         >
           <motion.p variants={fadeInUp} className="footer_heading">
             Contact
@@ -176,19 +175,33 @@ const Footer = ({ data }) => {
         </motion.div>
       </div>
 
-      <motion.p
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
-        viewport={{ once: true, amount: 0.2 }}
-        className="text-sm md:text-base font-helvatica font-light leading-[170%] text-center pt-7 group "
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: false, amount: 0.2 }}
+        className="pt-7  flex flex-col items-center sm:items-start gap-y-2 sm:gap-y-0 sm:flex-row sm:justify-between relative z-[999999]"
       >
-        Designed & Developed by{" "}
-        <Link className="group-hover:underline" href={"https://chevalme.com/"}>
-          Cheval
-        </Link>{" "}
-        | © {new Date().getFullYear()} Magnitude . All rights reserved
-      </motion.p>
+        <motion.p
+          variants={fadeInUp}
+          className="font-helvatica text-sm md:text-base leading-[170%]  "
+        >
+          © {new Date().getFullYear()} MAGNITUDE.All Rights Reserved
+        </motion.p>
+        <motion.p
+          variants={fadeInUp}
+          className="font-helvatica text-sm md:text-base leading-[170%] group"
+        >
+          Designed & Developed by{" "}
+          <Link
+            className="group-hover:underline"
+            href={"https://chevalme.com/"}
+            target="_blank"
+          >
+            Cheval
+          </Link>
+        </motion.p>
+      </motion.div>
 
       <div className="absolute w-full h-full max-h-[345px] md:max-h-full bg-footerGrad2 md:bg-footerGrad top-0 left-0" />
     </footer>

@@ -21,16 +21,26 @@ const CareersHero = ({ title, bannerImage }) => {
     }
   }, [pathname]);
 
+  console.log(secondPathSegment, "hello");
+
   return (
     <section className="containers pt-28 md:pt-40 lg:pt-44">
       {/* Animated Heading */}
 
-      <div className="flex justify-between items-center">
+      <div
+        className={`flex ${
+          secondPathSegment
+            ? "justify-between"
+            : "justify-center md:justify-start"
+        }  items-center`}
+      >
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="main-heading !text-main capitalize text-center md:text-left"
+          className={`main-heading  ${
+            secondPathSegment ? "!text-altermain" : "!text-main"
+          } capitalize !text-center md:!text-left`}
         >
           {title}
         </motion.h1>
@@ -58,7 +68,7 @@ const CareersHero = ({ title, bannerImage }) => {
         initial={{ scale: 0.8, opacity: 0 }}
         whileInView={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true }}
         className="mt-5 md:mt-8 lg:mt-10 overflow-hidden"
       >
         <Image
