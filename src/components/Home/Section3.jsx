@@ -14,8 +14,6 @@ const Section3 = ({ title, serviceData }) => {
   const homeCardData = Object?.values(serviceData);
   const isMobile = useIsMobile();
 
-  console.log(homeCardData, "this is the homeCardData");
-
   useGSAP(() => {
     const timeline = gsap.timeline({
       scrollTrigger: {

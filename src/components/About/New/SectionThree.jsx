@@ -24,7 +24,7 @@ const SectionThree = ({ list, valuesData }) => {
         </motion.h3>
         <motion.span className="seperator mb-4" variants={fadeInUp} />
         <motion.div
-          className="description !text-center w-full md:max-w-[80%] "
+          className="text-sm font-helvatica font-light !leading-[186%] text-center w-full md:max-w-[80%] "
           dangerouslySetInnerHTML={{ __html: list?.description }}
           variants={fadeInUp}
         />
