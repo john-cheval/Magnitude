@@ -10,8 +10,8 @@ const SectionOne = ({ serviceData }) => {
           className="relative"
           initial={{ scale: 0.8, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          viewport={{ once: true }}
         >
           {serviceData?.image?.endsWith(".mp4") ? (
             <video
@@ -49,6 +49,9 @@ const SectionOne = ({ serviceData }) => {
             <motion.h2
               className="main-heading2 mb-2 md:mb-6"
               variants={fadeInUp}
+              style={{
+                lineHeight: 1.2,
+              }}
             >
               {serviceData?.title}
             </motion.h2>
