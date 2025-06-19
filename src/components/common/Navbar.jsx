@@ -12,23 +12,22 @@ import { AnimatePresence, motion } from "framer-motion";
 const Navbar = ({ navLeft, navRight, mobileMenu }) => {
   const pathname = usePathname();
   const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       if (isMobileOpen) return;
-      if (window.scrollY > lastScrollY && window.scrollY > 150) {
+      if ( window.scrollY > 150) {
         setIsVisible(false);
       } else {
         setIsVisible(true);
       }
-      setLastScrollY(window.scrollY);
+      
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY, isMobileOpen]);
+  }, [ isMobileOpen]);
 
   const toggleMobileNav = () => {
     setIsMobileOpen(!isMobileOpen);
@@ -36,8 +35,8 @@ const Navbar = ({ navLeft, navRight, mobileMenu }) => {
 
   return (
     <header
-      className={`bg-navBg py-7 md:py-10 md:pb-8-- px-6   md:px-16 lg:px-[52px] fixed left-0-- top-0  w-full z-[999955] transition-transform duration-300 ${
-        isVisible ? "translate-y-0" : "-translate-y-full"
+      className={`bg-navBg py-7- md:py-10- md:pb-8-- px-6   md:px-16 lg:px-[52px] fixed left-0-- top-0  w-full z-[999955] transition-all duration-300 ${
+        isVisible ? "py-7 md:py-10" : "-translate-y-full- py-7"
       }`}
       style={{
         willChange: "transform",

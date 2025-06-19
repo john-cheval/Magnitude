@@ -45,7 +45,7 @@ const Services = ({ servicesList }) => {
               <>
                 {isMobile && (
                   <motion.div
-                    className="col-span-12 md:col-span-6 lg:col-span-7"
+                    className="col-span-12 md:col-span-6 lg:col-span-7-"
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={isInView ? { scale: 1, opacity: 1 } : {}}
                     transition={{ duration: 0.8, ease: "easeOut" }}
@@ -63,7 +63,7 @@ const Services = ({ servicesList }) => {
                 <motion.div
                   className={`lg:pl-[59px] lg:pr-20 ${
                     isMobile ? "containers" : "px-10"
-                  } py-12 md:py-16 space-y-6 ${bgColor} flex flex-col items-center md:items-start justify-center col-span-12 md:col-span-6 lg:col-span-5`}
+                  } py-12 md:py-16 space-y-6 ${bgColor} flex flex-col items-center md:items-start justify-center col-span-12 md:col-span-6 lg:col-span-5-`}
                   initial={{ opacity: 0, y: 30 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ delay: 0.3, duration: 0.6 }}
@@ -73,6 +73,7 @@ const Services = ({ servicesList }) => {
                     initial={{ opacity: 0, y: 30 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ delay: 0.4, duration: 0.6 }}
+                    style={{lineHeight:1.2}}
                   >
                     {service?.post_title}
                   </motion.h2>
@@ -113,7 +114,7 @@ const Services = ({ servicesList }) => {
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={isInView ? { scale: 1, opacity: 1 } : {}}
                 transition={{ duration: 0.8, ease: "easeOut" }}
-                className="col-span-12 md:col-span-6 lg:col-span-5"
+                className="col-span-12 md:col-span-6 lg:col-span-5-"
               >
                 <Image
                   src={service?.image}
@@ -130,7 +131,7 @@ const Services = ({ servicesList }) => {
               <motion.div
                 className={`lg:pl-[59px] lg:pr-20 ${
                   isMobile ? "containers" : "px-10"
-                } py-12 md:py-16 space-y-6 flex flex-col items-center md:items-start ${bgColor} col-span-12 md:col-span-6 justify-center lg:col-span-7`}
+                } py-12 md:py-16 space-y-6 flex flex-col items-center md:items-start ${bgColor} col-span-12 md:col-span-6 justify-center lg:col-span-7-`}
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.3, duration: 0.6 }}
@@ -140,6 +141,7 @@ const Services = ({ servicesList }) => {
                   initial={{ opacity: 0, y: 30 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ delay: 0.4, duration: 0.6 }}
+                  style={{lineHeight:1.2}}
                 >
                   {service?.post_title}
                 </motion.h2>
@@ -175,7 +177,7 @@ const Services = ({ servicesList }) => {
               </motion.div>
             ) : (
               <motion.div
-                className="col-span-12 md:col-span-6 lg:col-span-7"
+                className="col-span-12 md:col-span-6 lg:col-span-7-"
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={isInView ? { scale: 1, opacity: 1 } : {}}
                 transition={{ duration: 0.8, ease: "easeOut" }}
