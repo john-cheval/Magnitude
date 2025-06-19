@@ -21,8 +21,6 @@ const CareersHero = ({ title, bannerImage }) => {
     }
   }, [pathname]);
 
-  console.log(secondPathSegment, "hello");
-
   return (
     <section className="containers pt-28 md:pt-40 lg:pt-44">
       {/* Animated Heading */}
