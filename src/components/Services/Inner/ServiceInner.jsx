@@ -109,7 +109,7 @@ const ServiceInner = ({ serviceData, services }) => {
         }}
       >
         <div className="overflow-x-auto md:overflow-x-hidden scrollbar-hide">
-          <div className="flex  w-max-- gap-x-11-- gap-2 md:justify-between justify-between-- serviceinnerhead">
+          <div className="flex  w-max-- gap-x-11-- gap-x-7 md:gap-2 md:justify-between justify-between-- serviceinnerhead">
             {Object.values(services).map((section, index) => (
               <Link
                 key={index}
