@@ -43,10 +43,10 @@ const ServiceMobile = ({ title, serviceData }) => {
                   <Image
                     src={cardData?.home_page_image}
                     alt={cardData?.post_title}
-                    className="w-full h-auto object-cover h-[350px]-- mb-5"
-                    height={0}
-                    width={0}
+                    height={100}
+                    width={300}
                     sizes="100vw"
+                    className="w-full h-auto object-cover h-[350px]-- mb-5"
                   />
                 </motion.div>
 

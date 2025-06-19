@@ -1,8 +1,9 @@
 "use client";
 import React, { memo, Suspense } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
-const Locations = () => {
+const Locations = ({mapImage}) => {
   const MapComponent = memo(() => (
     <iframe
       src="https://snazzymaps.com/embed/693860"
@@ -25,20 +26,30 @@ const Locations = () => {
       >
         Our Locations
       </motion.h3>
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: "easeInOut", delay: 0.2 }}
-        viewport={{ once: true, amount: 0.2 }}
-      >
-        <Suspense
-          fallback={
-            <div className="w-full h-[400px] bg-gray-200 mx-auto-- mt-7--" />
-          }
-        >
-          <MapComponent />
-        </Suspense>
-      </motion.div>
+
+      {mapImage ? (<motion.div initial={{ opacity: 0, scale: 0.8 }}
+ whileInView={{ opacity: 1, scale: 1 }}
+ transition={{ duration: 0.5, ease: "easeInOut", delay: 0.2 }}
+ viewport={{ once: true, amount: 0.2 }}>
+        <Image src={mapImage} alt="MagnitudeLocation" width={1000} height={400} className="w-full h-full object-cover "/>
+      </motion.div>):(
+ <motion.div
+ initial={{ opacity: 0, y: 50 }}
+ whileInView={{ opacity: 1, y: 0 }}
+ transition={{ duration: 0.5, ease: "easeInOut", delay: 0.2 }}
+ viewport={{ once: true, amount: 0.2 }}
+>
+ <Suspense
+   fallback={
+     <div className="w-full h-[400px] bg-gray-200 mx-auto-- mt-7--" />
+   }
+ >
+   <MapComponent />
+ </Suspense>
+</motion.div>
+      )}
+
+     
     </section>
   );
 };

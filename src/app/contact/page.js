@@ -31,7 +31,7 @@ const ContactPage = async () => {
         phoneList={contactData?.address_list}
         title={contactData?.post_title}
       />
-      <Locations />
+      <Locations mapImage={contactData?.google_map_image?.url} />
       <ContactForm />
     </>
   );
