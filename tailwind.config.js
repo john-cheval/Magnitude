@@ -48,6 +48,8 @@ module.exports = {
           "linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0.00) 100%)",
         aboutgrad:
           "linear-gradient(90deg, rgba(0, 0, 0, 0.71) 42.05%, rgba(0, 0, 0, 0.00) 89.81%)",
+        serviceInnerGrad:
+          "linear-gradient(0deg, #000 0%, rgba(0, 0, 0, 0.00) 100%)",
       },
     },
   },

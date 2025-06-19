@@ -5,9 +5,10 @@ import Link from "next/link";
 import gsap, { Power3 } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import ServiceMobile from "./ServiceMobile";
+// import ServiceMobile from "./ServiceMobile";
 import useIsMobile from "@/hooks/useIsMobile";
 import { GoArrowRight } from "react-icons/go";
+import ServiceMobileAlter from "./ServiceMobileAlter";
 gsap.registerPlugin(ScrollTrigger);
 // import { motion } from "framer-motion";
 const Section3 = ({ title, serviceData }) => {
@@ -110,6 +111,7 @@ const Section3 = ({ title, serviceData }) => {
               {homeCardData?.map((data, index) => {
                 return (
                   <Link
+                    key={index}
                     href={"/services"}
                     className={`text-altermain  font-century text-xl lg:text-2xl group hover:translate-x-2 transition-transform duration-300  !leading-[150%] py-4 lg:py-6 flex  items-center justify-between border-b border-b-[#CECECE] ${
                       index === 0 && "border-t border-t-[#cecece]"
@@ -126,7 +128,8 @@ const Section3 = ({ title, serviceData }) => {
       </section>
 
       <div className="md:hidden block">
-        <ServiceMobile title={title} serviceData={serviceData} />
+        {/* <ServiceMobile title={title} serviceData={serviceData} /> */}
+        <ServiceMobileAlter title={title} serviceData={serviceData} />
       </div>
     </>
   );
