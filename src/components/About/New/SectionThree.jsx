@@ -5,7 +5,7 @@ import { containerVariants, fadeInUp } from "@/app/lib/framer";
 const SectionThree = ({ list, valuesData }) => {
   return (
     <section
-      className="my-11 py-16- md:py-24- 2xl:py-[190px]- containers h-screen flex items-center justify-center flex-col gap-y-4 md:gap-y-6"
+      className="my-5 md:my-11 py-16- md:py-24- 2xl:py-[190px]- containers h-screen flex items-center justify-center flex-col gap-y-4 md:gap-y-6"
       style={{
         backgroundImage: `url(${list?.image})`,
         backgroundSize: "cover",

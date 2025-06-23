@@ -31,8 +31,6 @@ const AboutHero = ({ list }) => {
     }
   };
 
-  console.log(videoLoaded, "is vide leaded");
-
   React.useEffect(() => {
     const video = videoRef.current;
 
@@ -73,7 +71,7 @@ const AboutHero = ({ list }) => {
 
             {videoLoaded && (
               <div
-                className=" w-fit  cursor-pointer z-50 absolute bottom-5 md:bottom-1/4 right-1/2 -translate-x-1/2 md:-translate-x-0 md:right-1/4"
+                className=" w-fit  cursor-pointer z-50 absolute bottom-5 md:bottom-1/4 right-1/2 -translate-x-1/2- md:-translate-x-0 md:right-1/4"
                 onClick={toggleMute}
               >
                 {isMuted ? (

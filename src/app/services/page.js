@@ -18,15 +18,16 @@ const ServicePage = async () => {
   ]);
 
   return (
-    <div>
+    <>
       <ServiceHero
         title={servicesData?.post_title}
         small_heading={servicesData?.small_heading}
         description={servicesData?.short_description}
         bannerImage={servicesData?.top_banner}
+        bannerImageMobile={servicesData?.top_image_mobile?.url}
       />
       <Services servicesList={servicesList} />
-    </div>
+    </>
   );
 };
 
