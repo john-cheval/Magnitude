@@ -99,13 +99,13 @@ const ServiceInner = ({ serviceData, services }) => {
   return (
     <section ref={sectionRef} className="pt-24 md:pt-32 lg:pt-36  ">
       <div
-        className={`containers ${
+        className={`containers transition-all duration-300 ${
           /* isNavVisible &&  */ "sticky"
         } bg-white transition-all duration-300 z-50 ${
-          isNavVisible ? "py-8 " : "py-8 shadow-md"
+          isNavVisible ? "py-5 md:py-8 " : "py-5 md:py-8 shadow-md"
         }`}
         style={{
-          top: isNavVisible ? `${isMobile ? "85px" : "100px"}` : "0px",
+          top: isNavVisible ? `${isMobile ? "85px" : "85px"}` : "-100px",
         }}
       >
         <div className="overflow-x-auto md:overflow-x-hidden scrollbar-hide">

@@ -9,11 +9,14 @@ import { useGSAP } from "@gsap/react";
 import useIsMobile from "@/hooks/useIsMobile";
 import { GoArrowRight } from "react-icons/go";
 import ServiceMobileAlter from "./ServiceMobileAlter";
+import isVideo from "@/app/lib/checkVideo";
 gsap.registerPlugin(ScrollTrigger);
 // import { motion } from "framer-motion";
 const Section3 = ({ title, serviceData }) => {
   const homeCardData = Object?.values(serviceData);
   const isMobile = useIsMobile();
+
+  console.log(homeCardData, "this is the home card Daa");
 
   useGSAP(() => {
     const timeline = gsap.timeline({
@@ -95,14 +98,26 @@ const Section3 = ({ title, serviceData }) => {
                   prefetch={true}
                   key={cardData?.ID || index}
                 >
-                  <Image
-                    src={cardData?.home_page_image}
-                    alt={cardData?.post_title}
-                    className="w-full md:h-auto-- object-cover h-[460px]"
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                  />
+                  {isVideo(cardData?.home_page_image?.url) ? (
+                    <video
+                      src={cardData?.home_page_image?.url}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      preload="metadata"
+                      className="w-full h-full"
+                    />
+                  ) : (
+                    <Image
+                      src={cardData?.home_page_image?.url}
+                      alt={cardData?.post_title}
+                      className="w-full md:h-auto-- object-cover h-[460px]-"
+                      width={0}
+                      height={0}
+                      sizes="100vw"
+                    />
+                  )}
                 </div>
               ))}
             </div>
