@@ -4,6 +4,7 @@ import Link from "next/link";
 import React from "react";
 import { motion, useInView } from "framer-motion";
 import { GoArrowRight } from "react-icons/go";
+import isVideo from "@/app/lib/checkVideo";
 
 const ServiceMobileAlter = ({ title, serviceData }) => {
   const homeCardData = Object?.values(serviceData);
@@ -36,14 +37,26 @@ const ServiceMobileAlter = ({ title, serviceData }) => {
               }}
               viewport={{ once: true, amount: 0.2 }}
             >
-              <Image
-                src={item?.home_page_image}
-                alt={item?.post_title}
-                height={100}
-                width={300}
-                sizes="100vw"
-                className={`w-full h-full object-cover h-[350px]--`}
-              />
+              {isVideo(item?.home_page_image?.url) ? (
+                <video
+                  src={item?.home_page_image?.url}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  className="w-full h-full"
+                />
+              ) : (
+                <Image
+                  src={item?.home_page_image?.url}
+                  alt={item?.post_title}
+                  className="w-full h-auto md:h-auto-- object-cover h-[460px]-"
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                />
+              )}
             </motion.div>
           );
         })}

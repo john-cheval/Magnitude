@@ -6,7 +6,7 @@ import { containerVariants, fadeInUp } from "@/app/lib/framer";
 const WhyChooseUs = ({ whyChooseData, imageUrl }) => {
   return (
     <section
-      className="bg-altermain pt-[280px] sm:pt-[300px] md:pt-[400px] whychoose pb-10 sm:pb-20 mt-10  relative h-screen"
+      className="bg-altermain pt-[280px] sm:pt-[300px] md:pt-[400px] whychoose pb-10 sm:pb-20 md:mt-10  relative h-screen"
       style={{
         backgroundImage: `url(${imageUrl})`,
         backgroundSize: "100% auto",
