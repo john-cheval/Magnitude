@@ -5,7 +5,7 @@ import { containerVariants, fadeInUp } from "@/app/lib/framer";
 const SectionThree = ({ list, valuesData }) => {
   return (
     <section
-      className="my-11 py-16 md:py-24 2xl:py-[190px] containers"
+      className="my-11 py-16- md:py-24- 2xl:py-[190px]- containers h-screen flex items-center justify-center flex-col gap-y-4 md:gap-y-6"
       style={{
         backgroundImage: `url(${list?.image})`,
         backgroundSize: "cover",
@@ -24,7 +24,7 @@ const SectionThree = ({ list, valuesData }) => {
         </motion.h3>
         <motion.span className="seperator mb-4" variants={fadeInUp} />
         <motion.div
-          className="text-sm font-helvatica font-light !leading-[186%] text-center w-full md:max-w-[80%] "
+          className="text-base font-helvatica font-light !leading-[186%] text-center w-full md:max-w-[80%] "
           dangerouslySetInnerHTML={{ __html: list?.description }}
           variants={fadeInUp}
         />

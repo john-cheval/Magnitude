@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const SectionTwo = ({ list }) => {
   return (
-    <section className={`relative`}>
+    <section className={`relative lg:h-screen`}>
       <div className="relative">
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}

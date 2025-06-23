@@ -6,7 +6,7 @@ import { containerVariants, fadeInUp } from "@/app/lib/framer";
 
 const AboutHero = ({ list }) => {
   return (
-    <section className="grid grid-cols-12 mt-28 xl:mt-20 h-fit">
+    <section className="grid grid-cols-12 mt-28 xl:mt-20 lg:h-screen items-center">
       <motion.div
         initial={{ scale: 0.8, opacity: 0 }}
         whileInView={{ scale: 1, opacity: 1 }}
