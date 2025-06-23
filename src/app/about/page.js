@@ -1,8 +1,6 @@
 import React from "react";
 import generateMetadataData from "@/utils/generateMetaData";
 import { fetchData } from "@/utils/fetchData";
-
-import dynamic from "next/dynamic";
 import AboutHero from "@/components/About/New/Hero";
 import SectionTwo from "@/components/About/New/SectionTwo";
 import SectionThree from "@/components/About/New/SectionThree";

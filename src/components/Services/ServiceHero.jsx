@@ -4,7 +4,7 @@ import * as motion from "motion/react-client";
 
 const ServiceHero = ({ title, small_heading, description, bannerImage }) => {
   return (
-    <section className={`mt-[100px]`}>
+    <section className={`mt-[100px] h-screen-`}>
       <div className="relative">
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
@@ -19,7 +19,7 @@ const ServiceHero = ({ title, small_heading, description, bannerImage }) => {
             width={1200}
             height={530}
             sizes="100vw"
-            className="w-full h-[450px] md:h-auto md:max-h-[715px] object-cover mt-5 md:mt-8 lg:mt-10"
+            className="w-full h-[450px] md:h-auto md:max-h-screen object-cover mt-5 md:mt-8 lg:mt-10"
           />
         </motion.div>
 
