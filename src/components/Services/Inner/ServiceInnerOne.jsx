@@ -13,9 +13,17 @@ const ServiceInnerOne = ({ serviceData }) => {
   return (
     <>
       <div className="text-altermain">
-        <SectionOne serviceData={serviceData[0]?.list[0]} />
-        <SectionTwo serviceData={serviceData[0]?.list} />
-        <SectionThree data={serviceData[2]?.list[0]} />
+        {serviceData[0]?.list[0] && (
+          <SectionOne serviceData={serviceData[0]?.list[0]} />
+        )}
+
+        {serviceData[0]?.list && (
+          <SectionTwo serviceData={serviceData[0]?.list} />
+        )}
+
+        {serviceData[2]?.list[0] && (
+          <SectionThree data={serviceData[2]?.list[0]} />
+        )}
       </div>
     </>
   );

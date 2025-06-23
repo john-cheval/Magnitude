@@ -1,10 +1,51 @@
+"use client";
 import isVideo from "@/app/lib/checkVideo";
 import Image from "next/image";
-import React from "react";
-import * as motion from "motion/react-client";
+import React, { useRef, useState } from "react";
+import { motion } from "framer-motion";
 import { containerVariants, fadeInUp } from "@/app/lib/framer";
+import { GoMute } from "react-icons/go";
+import { LuVolume } from "react-icons/lu";
 
 const AboutHero = ({ list }) => {
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef(null);
+  const [videoLoaded, setVideoLoaded] = useState(false);
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !videoRef.current.muted;
+      setIsMuted(videoRef.current.muted);
+    }
+  };
+
+  const handleVideoLoad = () => {
+    setVideoLoaded(true);
+
+    if (
+      typeof window !== "undefined" &&
+      window.performance &&
+      window.performance.mark
+    ) {
+      window.performance.mark("video-loaded");
+    }
+  };
+
+  console.log(videoLoaded, "is vide leaded");
+
+  React.useEffect(() => {
+    const video = videoRef.current;
+
+    if (video?.readyState >= 3) {
+      setVideoLoaded(true);
+    } else {
+      const onReady = () => setVideoLoaded(true);
+      video?.addEventListener("canplaythrough", onReady);
+
+      return () => video?.removeEventListener("canplaythrough", onReady);
+    }
+  }, []);
+
   return (
     <section className="grid grid-cols-12 mt-28 xl:mt-20 lg:h-screen items-center">
       <motion.div
@@ -15,17 +56,34 @@ const AboutHero = ({ list }) => {
         className="col-span-12 lg:col-span-6 xl:col-span-7"
       >
         {isVideo(list?.image) ? (
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="metadata"
-            poster="/about.gif"
-          >
-            <source src={list?.image || "/about.gif"} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+          <div className="relative">
+            <video
+              autoPlay
+              loop
+              onLoadedData={handleVideoLoad}
+              muted={isMuted}
+              playsInline
+              preload="metadata"
+              ref={videoRef}
+              // poster="/about.gif"
+            >
+              <source src={list?.image} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+
+            {videoLoaded && (
+              <div
+                className=" w-fit  cursor-pointer z-50 absolute bottom-5 md:bottom-1/4 right-1/2 -translate-x-1/2 md:-translate-x-0 md:right-1/4"
+                onClick={toggleMute}
+              >
+                {isMuted ? (
+                  <GoMute className="text-main text-lg" />
+                ) : (
+                  <LuVolume className="text-main text-lg" />
+                )}
+              </div>
+            )}
+          </div>
         ) : (
           <Image
             src={list?.image}
@@ -44,7 +102,7 @@ const AboutHero = ({ list }) => {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        className="col-span-12 lg:col-span-6 xl:col-span-5 lg:-ml-10 flex flex-col justify-center items-center lg:items-start w-full lg:max-w-[85%] gap-y-6 px-[20px] lg:px-0 my-5 lg:my-0 "
+        className="col-span-12 lg:col-span-6 xl:col-span-5 lg:-ml-10 flex flex-col justify-center items-center lg:items-start w-full lg:max-w-[85%] gap-y-6 px-[20px] lg:px-0 my-5 lg:my-0 relative z-[100] "
       >
         <motion.h2 className="main-heading2" variants={fadeInUp}>
           {list?.title}
