@@ -2,6 +2,7 @@ import React from "react";
 import * as motion from "motion/react-client";
 import { containerVariants, fadeInUp } from "@/app/lib/framer";
 import Image from "next/image";
+import isVideo from "@/app/lib/checkVideo";
 
 const SectionThree = ({ data }) => {
   return (
@@ -37,14 +38,29 @@ const SectionThree = ({ data }) => {
         transition={{ duration: 0.8, ease: "easeOut" }}
         viewport={{ once: true, amount: 0.2 }}
       >
-        <Image
-          src={data?.image}
-          alt={data?.title}
-          width={550}
-          height={250}
-          sizes="100vw"
-          className="w-full h-full object-cover -order-1 md:order-2"
-        />
+        {isVideo(data?.image) ? (
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            className="w-full h-full object-cover -order-1 md:order-2"
+          >
+            <source src={data?.image} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        ) : (
+          <Image
+            src={data?.image}
+            alt={data?.title}
+            priority
+            width={550}
+            height={250}
+            sizes="100vw"
+            className="w-full h-full object-cover -order-1 md:order-2"
+          />
+        )}
       </motion.div>
     </section>
   );
