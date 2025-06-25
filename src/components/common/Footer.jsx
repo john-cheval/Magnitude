@@ -80,6 +80,7 @@ const Footer = ({ data }) => {
 
           <ul className="space-y-2 md:space-y-4">
             {data?.menu_services?.map((link, index) => {
+              const [servic, links] = link?.url?.split("/").filter(Boolean);
               return (
                 <motion.li
                   key={index}
@@ -88,7 +89,7 @@ const Footer = ({ data }) => {
                   whileHover={{ x: 8 }}
                   transition={{ type: "tween", duration: 0.3 }}
                 >
-                  <Link href={link?.url}>{link?.title}</Link>
+                  <Link href={`/services/${links}`}>{link?.title}</Link>
                 </motion.li>
               );
             })}
@@ -148,7 +149,7 @@ const Footer = ({ data }) => {
               transition={{ type: "tween", duration: 0.3 }}
             >
               <Link
-                href={data?.address}
+                href={"https://maps.app.goo.gl/jE6vfutkvJc5KacC7"}
                 target="_blank"
                 className="description-footer flex items-center gap-x-3 "
               >
@@ -166,7 +167,8 @@ const Footer = ({ data }) => {
               Follow us on
             </span>
             <Link
-              href={"/"}
+              target="_blank"
+              href={"https://www.linkedin.com/company/magnitudeyachtsllc/"}
               className="p-3 border border-main rounded-full flex items-center justify-center w-fit"
             >
               <FaLinkedinIn />
