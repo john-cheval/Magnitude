@@ -10,6 +10,16 @@ export async function generateMetadata({ params }) {
   const id = (await params).id;
   return await generateMetadataData(id, `careers/${id}`, true);
 }
+
+const safeFetchData = async (url) => {
+  try {
+    const res = await fetchData(url);
+    return res || [];
+  } catch (err) {
+    console.error("Fetch error:", err);
+    return [];
+  }
+};
 const CarrerInnerPage = async ({ params }) => {
   const paramsID = (await params).id;
 
@@ -17,17 +27,18 @@ const CarrerInnerPage = async ({ params }) => {
     `https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/careers_category_detail?slug=${paramsID}`
   );
 
-  const careersList = await fetchData(
-    `https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/careers_list`
+  const careersList = await safeFetchData(
+    `https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/careers_list?catid=${careersBannerData?.term_id}`
   );
-
   return (
     <div className="bg-white">
       <CareersHero
         title={careersBannerData?.name}
         bannerImage={careersBannerData?.banner}
       />
-      <CareersJobList careersList={careersList} />
+
+      {careersList && <CareersJobList careersList={careersList} />}
+
       <CareerForm />
     </div>
   );
