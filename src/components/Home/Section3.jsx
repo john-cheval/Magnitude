@@ -93,7 +93,7 @@ const Section3 = ({ title, serviceData }) => {
                   className={`space-y-4 lg:space-y-6 cursor-pointer work-card ${
                     index === 1 && "mt-16"
                   }`}
-                  prefetch={true}
+                  // prefetch={true}
                   key={cardData?.ID || index}
                 >
                   {isVideo(cardData?.home_page_image?.url) ? (
