@@ -226,7 +226,10 @@ const ContactForm = () => {
           className="flex justify-center mt-3"
         >
           <ReCaptcha
-            siteKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+            siteKey={
+              process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ||
+              "6LeCshMrAAAAAHsDPIn5ewGPJQkPdXoSGeaQI6nY"
+            }
             callback={handleToken}
             ref={recaptchaRef}
           />
