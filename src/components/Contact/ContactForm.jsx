@@ -54,7 +54,7 @@ const ContactForm = () => {
 
     try {
       const response = await fetch(
-        "https://chevaldemo.xyz/demo/magnitude/wp-json/contact-form-7/v1/contact-forms/111/feedback",
+        "https://manage.magnitudeyachts.com/wp-json/contact-form-7/v1/contact-forms/111/feedback",
         {
           method: "POST",
           body: newformData,

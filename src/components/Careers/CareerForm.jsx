@@ -69,7 +69,7 @@ const CareerForm = () => {
 
     try {
       const response = await fetch(
-        "https://chevaldemo.xyz/demo/magnitude/wp-json/contact-form-7/v1/contact-forms/6/feedback",
+        "https://manage.magnitudeyachts.com/wp-json/contact-form-7/v1/contact-forms/6/feedback",
         {
           method: "POST",
           body: newFormData,
@@ -85,8 +85,16 @@ const CareerForm = () => {
         return;
       }
 
-      if (response.status === 200) {
-        toast.success("Form Submitted Successfully");
+      // if (response.status === 200) {
+      //   toast.success("Form Submitted Successfully");
+      // }
+
+      const result = await response.json();
+
+      if (result.status === "mail_sent") {
+        toast.success("Form submitted successfully!");
+      } else {
+        toast.error(result.message || "Form submission failed.");
       }
 
       setToken("");
