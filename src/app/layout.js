@@ -6,6 +6,7 @@ import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
 import { fetchData } from "@/utils/fetchData";
 import { baseUrl } from "@/utils/apiUrl";
+import Script from "next/script";
 
 export const metadata = {
   title: "Magnitude",
@@ -39,6 +40,18 @@ export default async function RootLayout({ children }) {
           <ToastContainer />
         </main>
         <Footer data={footerData} />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-BRP760DJM3"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-BRP760DJM3');
+          `}
+        </Script>
       </body>
     </html>
   );

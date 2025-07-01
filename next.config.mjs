@@ -10,6 +10,11 @@ const nextConfig = {
 
         hostname: "chevaldemo.xyz",
       },
+      {
+        protocol: "https",
+
+        hostname: "manage.magnitudeyachts.com",
+      },
     ],
   },
 };
