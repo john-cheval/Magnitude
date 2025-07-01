@@ -1,6 +1,7 @@
 import CareerForm from "@/components/Careers/CareerForm";
 import CareersHero from "@/components/Careers/CareersHero";
 import CareersList from "@/components/Careers/CareersList";
+import { baseUrl } from "@/utils/apiUrl";
 import { fetchData } from "@/utils/fetchData";
 import generateMetadataData from "@/utils/generateMetaData";
 import React from "react";
@@ -11,12 +12,8 @@ export async function generateMetadata() {
 
 const Careers = async () => {
   const [careersData, careersCategory] = await Promise.all([
-    fetchData(
-      "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/full_details?ID=20"
-    ),
-    fetchData(
-      "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/careers_category"
-    ),
+    fetchData(`${baseUrl}/full_details?ID=20`),
+    fetchData(`${baseUrl}/careers_category`),
   ]);
 
   return (

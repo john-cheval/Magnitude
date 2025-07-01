@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
 import { fetchData } from "@/utils/fetchData";
+import { baseUrl } from "@/utils/apiUrl";
 
 export const metadata = {
   title: "Magnitude",
@@ -14,18 +15,10 @@ export const metadata = {
 export default async function RootLayout({ children }) {
   const [navDataLeft, navDataRight, mobileMenu, footerData] = await Promise.all(
     [
-      fetchData(
-        "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/menu/primary"
-      ),
-      fetchData(
-        "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/menu/primaryright"
-      ),
-      fetchData(
-        "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/menu/mobilemenu"
-      ),
-      fetchData(
-        "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/footer_details"
-      ),
+      fetchData(`${baseUrl}/menu/primary`),
+      fetchData(`${baseUrl}/menu/primaryright`),
+      fetchData(` ${baseUrl}/menu/mobilemenu`),
+      fetchData(`${baseUrl}/footer_details`),
     ]
   );
   return (

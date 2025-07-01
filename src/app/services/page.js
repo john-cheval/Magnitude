@@ -3,18 +3,15 @@ import React from "react";
 import generateMetadataData from "@/utils/generateMetaData";
 import { fetchData } from "@/utils/fetchData";
 import ServiceHero from "@/components/Services/ServiceHero";
+import { baseUrl } from "@/utils/apiUrl";
 
 export async function generateMetadata() {
   return await generateMetadataData(17, "services", false);
 }
 const ServicePage = async () => {
   const [servicesData, servicesList] = await Promise.all([
-    fetchData(
-      "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/full_details?ID=17"
-    ),
-    fetchData(
-      "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/services"
-    ),
+    fetchData(`${baseUrl}/full_details?ID=17`),
+    fetchData(`${baseUrl}/services`),
   ]);
 
   return (

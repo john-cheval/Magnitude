@@ -5,14 +5,13 @@ import AboutHero from "@/components/About/New/Hero";
 import SectionTwo from "@/components/About/New/SectionTwo";
 import SectionThree from "@/components/About/New/SectionThree";
 import WhyChooseUs from "@/components/About/WhyChooseUs";
+import { baseUrl } from "@/utils/apiUrl";
 
 export async function generateMetadata() {
   return await generateMetadataData(14, "about", false);
 }
 const About = async () => {
-  const aboutData = await fetchData(
-    "https://chevaldemo.xyz/demo/magnitude/wp-json/custom/v1/full_details?ID=14"
-  );
+  const aboutData = await fetchData(` ${baseUrl}/full_details?ID=14`);
 
   return (
     <>
