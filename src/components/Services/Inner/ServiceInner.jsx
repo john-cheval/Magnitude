@@ -108,8 +108,8 @@ const ServiceInner = ({ serviceData, services }) => {
           top: isNavVisible ? `${isMobile ? "85px" : "85px"}` : "-100px",
         }}
       >
-        <div className="overflow-x-auto md:overflow-x-hidden scrollbar-hide">
-          <div className="flex  w-max-- gap-x-11-- gap-x-7 md:gap-2 md:justify-between justify-between-- serviceinnerhead">
+        <div className="">
+          <div className="flex  w-max-- gap-x-11-- gap-x-7 md:gap-2 md:justify-between justify-between-- serviceinnerhead overflow-x-auto scrollbar-hide md:overflow-x-hidden ">
             {Object.values(services).map((section, index) => (
               <Link
                 key={index}
