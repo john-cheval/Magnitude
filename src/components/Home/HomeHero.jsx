@@ -135,6 +135,12 @@ const HomeHero = ({ title, link, linkText, videoUrl }) => {
       <div className="absolute w-full h-full hidden md:block max-h-[288px] bg-homeHero2 top-0 left-0 z-40" />
 
       <div className="absolute w-full h-full max-h-[288px] bg-homeHero bottom-0 left-0 z-40 hidden md:block" />
+
+      <div className="box absolute bottom-3 left-1/2 -translate-x-1/2 z-50 hidden md:block">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </section>
   );
 };
